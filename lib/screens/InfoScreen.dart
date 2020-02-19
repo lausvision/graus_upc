@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/screens/InfoScreen.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
-class HomeScreen extends StatefulWidget {
+class InfoScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _InfoScreenState createState() => _InfoScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  _HomeScreenState();
+class _InfoScreenState extends State<InfoScreen> {
+  _InfoScreenState();
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    if (index == 0) {
+    if (index == 1) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => InfoScreen(),
+          builder: (context) => HomeScreen(),
         ),
       );
     } else if (index == 2) {
