@@ -40,7 +40,7 @@ void _onItemTapped(int index) {
         selectedFontSize: 13,
         unselectedLabelStyle: TextStyle(fontSize: 11, color: Colors.red),
         unselectedIconTheme: IconThemeData(size: 12, color: Colors.grey[600]),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.white,
         iconSize: 24,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -59,7 +59,7 @@ void _onItemTapped(int index) {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.teal,
+        selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
       appBar: AppBar(
@@ -68,15 +68,8 @@ void _onItemTapped(int index) {
         centerTitle: true,
         // title: Text( 'Tu Perfil', style: TextStyle(color: Colors.teal), ),
         backgroundColor: Colors.grey[300],
-        leading: IconButton(
-          icon: Icon(Icons.exit_to_app),
-          tooltip: 'Log out',
-          color: Colors.teal,
-          onPressed: () {
-          
-          },
-        ),
-        actions: <Widget>[],
+        
+        
       ),
     );
   }
