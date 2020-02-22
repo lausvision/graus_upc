@@ -35,3 +35,11 @@ lib/generated_plugin_registrant.dart
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+
+
+# No subir google-services.json
+**/google-services.json
+
+# No subir AndroidManifest.xml
+**/src/debug/AndroidManifest.xml

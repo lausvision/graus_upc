@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
+import 'package:graus_upc/screens/login_page.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -59,13 +60,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
-      appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        // title: Text( 'Tu Perfil', style: TextStyle(color: Colors.teal), ),
-        backgroundColor: Colors.grey[300],
-      ),
+      
+     // body: LoginPage(),
     );
   }
 }
