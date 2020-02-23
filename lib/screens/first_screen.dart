@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/login_page.dart';
 import 'package:graus_upc/screens/sign_in.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirstScreen extends StatelessWidget {
   @override
