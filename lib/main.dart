@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/data/datab.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Datab(),
+        body: HomeScreen(),
       ),
     );
   }
