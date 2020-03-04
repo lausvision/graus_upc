@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/models/llegirjsongraus.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
@@ -9,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   _HomeScreenState();
+  List<dynamic> llista = llegirLlista();
 
   int _selectedIndex = 1;
 
@@ -64,8 +66,25 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        // title: Text( 'Tu Perfil', style: TextStyle(color: Colors.teal), ),
         backgroundColor: Colors.grey[300],
+      ),
+      body: ListView.builder(
+        itemCount: llista.length,
+        itemBuilder: (context, index) => InkWell(
+          onTap: () {},
+          child: ListTile(
+            title: Text(
+              llista[index].nom,
+            ),
+            subtitle: Row(
+              children: <Widget>[
+                Text(llista[index].localitzacio),
+                Expanded(child: Container()),
+                Text(llista[index].modalitat),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
