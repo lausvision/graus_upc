@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -10,7 +10,12 @@ String email;
 String imageUrl;
 
 Future<String> signInWithGoogle() async {
-  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+  GoogleSignInAccount googleSignInAccount;
+  try {
+    googleSignInAccount = await googleSignIn.signIn();
+  } on PlatformException catch (e) {
+    return "PlatformException Error: ${e.toString()}";
+  }
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
 
