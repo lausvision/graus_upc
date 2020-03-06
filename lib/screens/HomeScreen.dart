@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   _HomeScreenState();
-  List<dynamic> llista = llegirLlista();
+  //List<dynamic> llista = llegirLlista();
 
   int _selectedIndex = 1;
 
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         backgroundColor: Colors.grey[300],
       ),
-      body: ListView.builder(
+      /*body: ListView.builder(
         itemCount: llista.length,
         itemBuilder: (context, index) => InkWell(
           onTap: () {},
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-      ),
+      )*/
     );
   }
 }
