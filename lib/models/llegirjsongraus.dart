@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 const dynamic fitxer = 'data.json';
 
 class Grau {
@@ -70,11 +72,11 @@ void mostraLlista(List<dynamic> llista) {
 
   }
 }
-
+/*
 ///////////////////////////////////////////MAIN/////////////////////////////////////////////////////////
 void main(List<dynamic> args) {
   // LEEMOS LISTA
   List<dynamic> llista = llegirLlista();
 
   mostraLlista(llista);
-}
+}*/
