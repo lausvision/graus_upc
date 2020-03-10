@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/llegirjsongraus.dart';
+//import 'package:graus_upc/models/llegirjsongraus.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
