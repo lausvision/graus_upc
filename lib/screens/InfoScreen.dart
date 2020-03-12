@@ -75,7 +75,7 @@ class _InfoScreenState extends State<InfoScreen> {
         // title: Text( 'Tu Perfil', style: TextStyle(color: Colors.teal), ),
         backgroundColor: Colors.transparent,
         title: Text(
-          "CALENDARI PREINSCRIPCIÓ",
+          "CALENDARI PAU",
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -87,10 +87,10 @@ class _InfoScreenState extends State<InfoScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TableCalendar(
-              initialCalendarFormat: CalendarFormat.week,
+              initialCalendarFormat: CalendarFormat.month,
               calendarStyle: CalendarStyle(
                   todayColor: Colors.blue[50],
-                  selectedColor: Theme.of(context).primaryColor,
+                  selectedColor:  Theme.of(context).primaryColor,
                   todayStyle: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0,
@@ -98,7 +98,7 @@ class _InfoScreenState extends State<InfoScreen> {
               headerStyle: HeaderStyle(
                 centerHeaderTitle: true,
                 formatButtonDecoration: BoxDecoration(
-                  color: Colors.teal,
+                  color: Colors.blueGrey[600],
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 formatButtonTextStyle: TextStyle(color: Colors.white),
@@ -113,7 +113,7 @@ class _InfoScreenState extends State<InfoScreen> {
                     margin: const EdgeInsets.all(4.0),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.deepOrange[100], //Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10.0)),
                     child: Text(
                       date.day.toString(),
@@ -123,7 +123,7 @@ class _InfoScreenState extends State<InfoScreen> {
                     margin: const EdgeInsets.all(4.0),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: Colors.teal,
+                        color: Colors.blueGrey[300],
                         borderRadius: BorderRadius.circular(10.0)),
                     child: Text(
                       date.day.toString(),
