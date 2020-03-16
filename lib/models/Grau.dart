@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Grau{
-  String _nom, _objectius, _modalitat, _link, _foto, _localitzacio, _branca, _ambit;
+  String _nom, _objectius, _modalitat, _link, _foto, _localitzacio, _branca, _ambit,_id;
   double _nota;
 
   Grau(
@@ -12,8 +13,9 @@ class Grau{
     this._localitzacio,
     this._branca,
     this._ambit,
-    this._nota
-  );
+    this._nota,
+    this._id
+    );
  
   get nom => _nom;
   get objectius => _objectius;
@@ -24,5 +26,13 @@ class Grau{
   get branca => _branca;
   get ambit => _ambit;
   get nota => _nota;
+  get id => _id;
+
+}
+
+class LlistaGraus{
+  List<Grau> llistaGraus;
+
+  LlistaGraus({this.llistaGraus});
 
 }
