@@ -1,9 +1,9 @@
 
-class Graus{
+class Grau{
   String _nom, _objectius, _modalitat, _link, _foto, _localitzacio, _branca, _ambit;
   double _nota;
 
-  Graus(
+  Grau(
     this._nom,
     this._objectius,
     this._modalitat,
