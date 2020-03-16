@@ -19,6 +19,7 @@ List<Grau> loadData(List<DocumentSnapshot> docs) {
         docs[i].data['branca'],
         docs[i].data['ambit'],
         docs[i].data['nota'],
+        docs[i].documentID,
       ),
     );
   }
