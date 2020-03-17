@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 
 
-class MyHomePage extends StatefulWidget {
+class Preferit extends StatefulWidget {
  @override
- _MyHomePageState createState() {
-   return _MyHomePageState();
+ _PreferitState createState() {
+   return _PreferitState();
  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _PreferitState extends State<Preferit> {
  @override
  Widget build(BuildContext context) {
    return Scaffold(
@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
  Widget _buildBody(BuildContext context) {
    return StreamBuilder<QuerySnapshot>(
-     stream: Firestore.instance.collection('usuaris').snapshots(),
+     stream: Firestore.instance.collection('graus').snapshots(),
      builder: (context, snapshot) {
        if (!snapshot.hasData) return LinearProgressIndicator();
 
@@ -38,10 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
  }
 
  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-   final record = Record.fromSnapshot(data);
+   //final record = Record.fromSnapshot(data);
 
    return Padding(
-     key: ValueKey(record.codi),
      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
      child: Container(
        decoration: BoxDecoration(
@@ -49,21 +48,20 @@ class _MyHomePageState extends State<MyHomePage> {
          borderRadius: BorderRadius.circular(5.0),
        ),
        child: ListTile(
-         title: Text('${record.codi}'),
-         trailing: Text(record.preferits.toString()),
-         onTap: () => Firestore.instance.runTransaction((transaction) async {
+         title: Text(''),
+        /* onTap: () => Firestore.instance.runTransaction((transaction) async {
                final freshSnapshot = await transaction.get(record.reference);
                final fresh = Record.fromSnapshot(freshSnapshot);
 
                await transaction
                    .update(record.reference, {'preferitstotal': fresh.preferits});
-             }),
+             }),*/
        ),
      ),
    );
  }
 }
-
+/*
 class Record {
  final int codi;
  final List<String> preferits;
@@ -81,3 +79,4 @@ class Record {
  @override
  String toString() => "Record<$codi:$preferits>";
 }
+*/

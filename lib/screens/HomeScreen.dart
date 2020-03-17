@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:graus_upc/models/llegirjsongraus.dart';
+import 'package:graus_upc/data/mostrallista.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   _HomeScreenState();
-  //List<dynamic> llista = llegirLlista();
+  //List<dynamic> llista = MostraLlista();
 
   int _selectedIndex = 1;
 
@@ -68,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         backgroundColor: Colors.grey[300],
       ),
+      body: Llista(),
       /*body: ListView.builder(
         itemCount: llista.length,
         itemBuilder: (context, index) => InkWell(

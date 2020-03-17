@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:graus_upc/screens/HomeScreen.dart';
-import 'package:graus_upc/data/llegeix.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
+//import 'package:graus_upc/data/transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,6 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: HomeScreen(),
+        //Trans(),
       ),
     );
   }
