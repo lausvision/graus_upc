@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Grau{
   String _nom, _objectius, _modalitat, _link, _foto, _localitzacio, _branca, _ambit,_id;
