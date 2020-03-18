@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:floating_search_bar/floating_search_bar.dart';
+  
 
 class Llista extends StatefulWidget {
   const Llista({
@@ -21,8 +23,8 @@ class _LlistaState extends State<Llista> {
           .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const Text('Loading...');
-            return ListView.builder(
-              itemExtent: 100,
+            return FloatingSearchBar.builder(
+              //itemExtent: 100,
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) =>
                   _product(context, snapshot.data.documents[index]),
