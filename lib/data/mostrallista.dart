@@ -15,7 +15,10 @@ class _LlistaState extends State<Llista> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-          stream: Firestore.instance.collection('Graus').snapshots(),
+          stream: Firestore.instance
+          .collection('Graus')
+          .orderBy('nom',descending: true)
+          .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const Text('Loading...');
             return ListView.builder(
@@ -66,9 +69,11 @@ class _LlistaState extends State<Llista> {
                 style: TextStyle(fontSize: 12),
               ),
               Text(
+                
                 document['branca'],
                 textAlign: TextAlign.end,
                 style: TextStyle(fontSize: 12),
+                overflow: TextOverflow.fade,
               ),
             ],
           ),
