@@ -31,6 +31,7 @@ dependencies:
   google_sign_in: ^4.1.4
 
   table_calendar: ^2.2.2
+  flappy_search_bar: ^1.4.1
 
 dev_dependencies:
   flutter_test:
