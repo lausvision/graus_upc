@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:floating_search_bar/floating_search_bar.dart';
 
 class Llista extends StatefulWidget {
   const Llista({
@@ -15,14 +16,18 @@ class _LlistaState extends State<Llista> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-          stream: Firestore.instance.collection('Graus').snapshots(),
+          stream:
+              Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const Text('Loading...');
-            return ListView.builder(
-              itemExtent: 100,
+            return FloatingSearchBar.builder(
+              //itemExtent: 100,
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) =>
                   _product(context, snapshot.data.documents[index]),
+              endDrawer: Drawer(
+                child: Container(),
+              ),
             );
           }),
     );
@@ -44,7 +49,7 @@ class _LlistaState extends State<Llista> {
                       document['nom'],
                       style: TextStyle(fontSize: 16),
                     ),
-                    SizedBox(width: 50),
+                    Expanded(child: Container()),
                     Container(
                       padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
@@ -69,6 +74,7 @@ class _LlistaState extends State<Llista> {
                 document['branca'],
                 textAlign: TextAlign.end,
                 style: TextStyle(fontSize: 12),
+                overflow: TextOverflow.fade,
               ),
             ],
           ),

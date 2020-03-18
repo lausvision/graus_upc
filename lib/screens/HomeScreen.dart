@@ -1,4 +1,7 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/data/mostrallista.dart';
 
@@ -14,6 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   _HomeScreenState();
 
   int _selectedIndex = 1;
+
+
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -65,20 +70,14 @@ class _HomeScreenState extends State<HomeScreen> {
           selectedItemColor: Colors.black,
           onTap: _onItemTapped,
         ),
-        appBar: AppBar(
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          backgroundColor: Colors.grey[300],
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.filter_list),
-                tooltip: 'Filtros',
-                color: Colors.black,
-                highlightColor: Colors.pink[150],
-                onPressed: () {})
-          ],
-        ),
-        body: Llista());
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+         
+              Expanded(child: Llista()),
+            ],
+          ),
+        ));
   }
 }
