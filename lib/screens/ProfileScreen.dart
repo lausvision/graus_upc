@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
+import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/login_page.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (index == 0) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => InfoScreen(),
         ),
       );
     } else if (index == 1) {
