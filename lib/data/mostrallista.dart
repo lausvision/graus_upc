@@ -17,7 +17,7 @@ class _LlistaState extends State<Llista> {
       body: StreamBuilder(
           stream: Firestore.instance
           .collection('Graus')
-          .orderBy('nom',descending: true)
+          .orderBy('nom')
           .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const Text('Loading...');
