@@ -44,7 +44,7 @@ class _LlistaState extends State<Llista> {
                       document['nom'],
                       style: TextStyle(fontSize: 16),
                     ),
-                    SizedBox(width: 50),
+                    Expanded(child: Container()),
                     Container(
                       padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
