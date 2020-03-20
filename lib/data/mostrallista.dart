@@ -12,6 +12,19 @@ class Llista extends StatefulWidget {
 }
 
 class _LlistaState extends State<Llista> {
+
+  _onSearch(String value) async {
+    print('busqueda de ${value}');
+
+    if (value.isEmpty) {
+      setState(() {});
+      return;
+    }
+
+    
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +41,11 @@ class _LlistaState extends State<Llista> {
               endDrawer: Drawer(
                 child: Container(),
               ),
+              onChanged: (String value){
+                _onSearch(value);
+              },
+              onTap:(){} ,
+              
             );
           }),
     );
