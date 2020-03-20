@@ -12,8 +12,8 @@ loadfile() {
       "localitzacio":
           "Centre Universitari EAE,C. de Tarragona 110 planta soterranea 08015 - Barcelona",
       "loc": "EAE, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Formar professionals capaços de desenvolupar tasques de direcció, gestió, assessorament, planificació i avaluació de les organitzacions privades o públiques, tant productives com de serveis, i també capaços de desenvolupar capacitats emprenedores i iniciatives empresarials amb una visió holística de les empreses i les organitzacions.",
       "ambit":
@@ -30,8 +30,8 @@ loadfile() {
       "localitzacio":
           "Centre Universitari Euncet, Ctra. BV 1221 de Terrassa a Talamanca, km 3 08225 - Terrassa",
       "loc": "EUNCET, Terrassa",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Formar professionals capaços de desenvolupar tasques de direcció, gestió, assessorament, planificació i avaluació de les organitzacions privades o públiques, tant productives com de serveis, i també capaços de desenvolupar capacitats emprenedores i iniciatives empresarials amb una visió holística de les empreses i les organitzacions.",
       "ambit":
@@ -47,8 +47,8 @@ loadfile() {
       "localitzacio":
           "Centre Universitari Euncet, Ctra. BV 1221 de Terrassa a Talamanca, km 3 08225 - Terrassa",
       "loc": "EUNCET, Terrassa",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Formar professionals capaços de desenvolupar tasques de direcció, gestió, assessorament, planificació i avaluació de les organitzacions privades o públiques, tant productives com de serveis, i també capaços de desenvolupar capacitats emprenedores i iniciatives empresarials amb una visió holística de les empreses i les organitzacions.",
       "ambit":
@@ -64,8 +64,8 @@ loadfile() {
       "localitzacio":
           "Escola Politècnica Superior d'Edificació de Barcelona, Edifici P, Av. del Doctor Marañón, 44-50 08028 - Barcelona",
       "loc": "EPSEB, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Proporcionar una formació adequada de perfil europeu i de caràcter generalista sobre les bases teoricotècniques i les tecnologies pròpies del sector de l'edificació, juntament amb la capacitat de millora contínua i de transmissió del coneixement i formar l'estudiantat amb les competències necessàries per exercir la professió d'arquitecte/a tècnic/a.",
       "ambit":
@@ -99,7 +99,7 @@ loadfile() {
           "Escola Tècnica Superior d'Arquitectura de Barcelona, Campus Sud Edifici A, Av. Diagonal, 649 08028 - Barcelona",
       "loc": "ETSAB, Barcelona",
       "nota": 6.61,
-      "notes": [6.61, 5.29, 5.01, 5, 5.98],
+      "notes": [6.61, 5.29, 5.01, 5.0, 5.98],
       "objectius":
           "Formar professionals preparats per a la seva inserció en el mercat laboral capaços de portar a terme projectes independents i exhaustius aplicats al disseny.",
       "ambit":
@@ -132,8 +132,8 @@ loadfile() {
       "localitzacio":
           "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels",
       "loc": "ESAB, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5.63],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.63],
       "objectius":
           "Formar professionals amb els coneixements en ciències culinàries i gastronòmiques que permetin comprendre i visionar el fenomen culinari i gastronòmic des d'una perspectiva científica, tecnològica, social, cultural i de gestió empresarial, dotant-los de les competències necessàries per innovar, dissenyar, produir i gestionar serveis culinaris i gastronòmics en els àmbits de l'alta cuina, la restauració comercial i col·lectiva, la indústria alimentària i l'hoteleria, així com desenvolupar projectes d'investigació i desenvolupament en el camp de les ciències gastronòmiques.",
       "ambit":
@@ -149,8 +149,8 @@ loadfile() {
       "localitzacio":
           "Centre Universitari Euncet, Can Dragó, C. de Rosselló i Porcel, 7-11 08016 - Barcelona",
       "loc": "EUNCET, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Adquirir competències professionals vinculades a les activitats relacionades amb l'esport i el condicionament físic amb una visió preponderant dels mercats internacionals i la internacionalització dels productes, els serveis i les organitzacions.",
       "ambit":
@@ -168,7 +168,7 @@ loadfile() {
           "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels",
       "loc": "ESAB, Castelldefels",
       "nota": 6.117,
-      "notes": [6.117, 5, null, null, null],
+      "notes": [6.117, 5.0, null, null, null],
       "objectius":
           "Formar professionals per dur a terme feines de recerca i assessorament en els àmbits mediambiental i climàtic, i sobre els impactes de les actuacions econòmiques i socials en el medi marí i costaner (aprofitament ètic, responsable i sostenible dels recursos marins, caracterització de costes, canvi climàtic i el seu impacte sobre el medi marí i la zona costanera, etc.). A més a més, orientar per a la formació d'altres científics i tècnics i, en general, de la societat sobre totes les activitats relacionades amb les ciències i les tecnologies marines (bàsiques i aplicades), el seu desenvolupament i la seva divulgació.",
       "ambit":
@@ -238,8 +238,8 @@ loadfile() {
       "localitzacio":
           "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels",
       "loc": "ESAB, Castelldefels",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Formar professionals amb els coneixements científics i tecnològics necessaris per projectar, planificar, dirigir i gestionar els recursos relacionats amb la tecnologia i el processament de productes agroalimentaris, i amb els coneixements sobre els mecanismes de control de qualitat i seguretat dels aliments i la viabilitat econòmica de les empreses alimentàries. Tot això, des de la perspectiva de la innovació i el desenvolupament tecnològic i del respecte al medi ambient.",
       "ambit":
@@ -308,7 +308,7 @@ loadfile() {
           "Escola d'Enginyeria de Barcelona Est, Campus Diagonal Besós Edifici A, Av. d' Eduard Maristany, 16 08019 - Barcelona",
       "loc": "EEBE, Barcelona",
       "nota": 7.412,
-      "notes": [7.412, 8.78, 8.23, 9, 8.77],
+      "notes": [7.412, 8.78, 8.23, 9.0, 8.77],
       "objectius":
           "Formar professionals amb una visió clara de l'electrònica industrial com a element imprescindible en els sistemes productius actuals i en les instal·lacions de producció de béns de consum i de serveis en general. A les persones titulades no els ha de ser aliè el càlcul de circuits elèctrics i electrònics, a més de la informàtica, en especial, la informàtica industrial i els busos de camp, i el conjunt dels sistemes de comunicacions, la instrumentació i els sistemes automàtics, el seu monitoratge i control, juntament amb les tècniques electròniques analògiques, digitals i de potència necessàries per implementar solucions a problemes de naturalesa electrònica o automàtica.",
       "ambit":
@@ -343,7 +343,7 @@ loadfile() {
           "Escola d'Enginyeria de Barcelona Est, Campus Diagonal Besós Edifici A, Av. d' Eduard Maristany, 16 08019 - Barcelona",
       "loc": "EEBE, Barcelona",
       "nota": 5.756,
-      "notes": [5.756, 5.77, 5, 5, 6.91],
+      "notes": [5.756, 5.77, 5.0, 5.0, 6.91],
       "objectius":
           "Donar a conèixer en profunditat, a més de les disciplines comunes a l'enginyeria industrial, les màquines elèctriques, les instal·lacions d'alta, de mitjana i de baixa tensió, la regulació i el control de dispositius elèctrics, l'electrònica per a aquest control, tant si és per a baixa com per a alta potència, centrals elèctriques, energies renovables, sistemes hidràulics i tèrmics i electrotècnia.",
       "ambit":
@@ -394,7 +394,7 @@ loadfile() {
           "Escola Politècnica Superior d'Enginyeria de Vilanova i la Geltrú, Campus Vilanova i la Geltrú Edifici VG2, Av. de Víctor Balaguer, 1 08800 - Vilanova i la Geltrú",
       "loc": "EPSEVG, Vilanova i la Geltrú",
       "nota": 7.272,
-      "notes": [7.272, 6.9, 6.14, 5.37, 5],
+      "notes": [7.272, 6.9, 6.14, 5.37, 5.0],
       "objectius":
           "Oferir els coneixements necessaris vinculats al disseny, la construcció i el manteniment de sistemes informàtics, especialment en l'àmbit de les tecnologies de la informació. Formar l'estudiantat perquè pugui definir i seleccionar plataformes tant de maquinari (hardware) com de programari (software) per al desenvolupament d'aplicacions informàtiques. Capacitar per a l'aplicació dels conceptes d'economia i de gestió de recursos humans als projectes informàtics, i la comprensió de les necessitats tecnològiques d'una organització en tot allò que es refereix a les tecnologies de la informació i la comunicació.",
       "ambit":
@@ -428,8 +428,8 @@ loadfile() {
       "localitzacio":
           "Escola Politècnica Superior d'Enginyeria de Manresa, Av. de les Bases de Manresa, 61-73 08242 - Manresa",
       "loc": "EPSEM, Manresa",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Gestionar les etapes d'exploració, prospecció, explotació i restauració en qualsevol projecte destinat a l'obtenció de recursos minerals. ",
       "ambit":
@@ -445,8 +445,8 @@ loadfile() {
       "localitzacio":
           "Escola d'Enginyeria de Barcelona Est, Campus Diagonal Besós Edifici A, Av. d' Eduard Maristany, 16 08019 - Barcelona",
       "loc": "EEBE, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Formar professionals amb uns coneixements profunds dels fonaments dels processos de transformació de matèria i energia, amb i sense reacció química, de la concepció, el càlcul, el disseny, la construcció i l'operació d'instal·lacions o equips en els quals la matèria experimenta un canvi d'estat, de contingut d'energia o de composició. Aportar a l'estudiantat els coneixements tècnics i les competències necessàries per organitzar, dissenyar i controlar la producció de plantes químiques, i per gestionar i desenvolupar plans de control de qualitat i de gestió mediambiental, propis de la indústria química i sectors relacionats, com el farmacèutic, biotecnològic, alimentari o mediambiental.",
       "ambit":
@@ -479,8 +479,8 @@ loadfile() {
       "localitzacio":
           "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels / Escola Tècnica Superior d'Enginyeria de Camins, Canals i Ports de Barcelona, Campus Nord Edifici C2, C. de Jordi Girona, 1-3 08034 - Barcelona",
       "loc": "ESAB, Castelldefels",
-      "nota": 5,
-      "notes": [5, 5, null, null, null],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, null, null, null],
       "objectius":
           "Adquirir els coneixements científics i tecnològics necessaris per projectar, planificar, dirigir i gestionar els processos relacionats amb la producció agrícola i ramadera; els mecanismes de control de qualitat i seguretat dels aliments; la viabilitat econòmica de les empreses agràries; les actuacions destinades a la preservació i la millora mediambiental i paisatgística de l'entorn; l'ordenació del territori, i la producció hortofructícola.",
       "ambit":
@@ -497,7 +497,7 @@ loadfile() {
           "Escola Politècnica Superior d'Enginyeria de Vilanova i la Geltrú, Campus Vilanova i la Geltrú Edifici VG2, Av. de Víctor Balaguer, 1 08800 - Vilanova i la Geltrú",
       "loc": "EPSEVG, Vilanova i la Geltrú",
       "nota": 5.832,
-      "notes": [5.832, 5.57, 5, 5.81, 5],
+      "notes": [5.832, 5.57, 5.0, 5.81, 5.0],
       "objectius":
           "Formar professionals que siguin capaços de crear nous productes, conceptes i serveis que aportin valor afegit al sistema productiu, portant la direcció i la gestió de tot el procés de vida d'un producte. Els graduats i les graduades hauran de conèixer amb profunditat, a més de les disciplines comunes a l'enginyeria industrial, el disseny i el desenvolupament de productes, l'anàlisi i la identificació d'oportunitats d'innovació en un mercat globalitzat, atenent a les necessitats socials i futures. Tot això, respectant els drets fonamentals, els drets humans i el medi ambient, i treballant en favor del progrés i del desenvolupament de l'entorn socioeconòmic més proper.",
       "ambit":
@@ -530,8 +530,8 @@ loadfile() {
       "localitzacio":
           "Escola d'Enginyeria de Barcelona Est, Campus Diagonal Besós Edifici A, Av. d' Eduard Maristany, 16 08019 - Barcelona",
       "loc": "EEBE, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 7.59],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 7.59],
       "objectius":
           "Formar professionals amb una preparació científica i tècnica multidisciplinària amb capacitat per dissenyar, desenvolupar, implementar, gestionar i millorar la producció, la transformació, el processament, el control, el reciclatge i l'emmagatzematge de materials, la seguretat i la integritat de materials i components, ja siguin materials metàl·lics, ceràmics, polímers, compostos o biològics, etc. A més, aquest estudi dotarà els professionals d'una gran versatilitat per adaptar-se a noves situacions i assimilar els futurs avenços tecnològics que la indústria necessiti per millorar els seus productes i processos. Amb aquesta titulació s'adquiriran les capacitats necessàries per integrar-se en qualsevol professió dels àmbits relacionats amb el desenvolupament industrial, la recerca o la innovació.",
       "ambit":
@@ -565,8 +565,8 @@ loadfile() {
       "localitzacio":
           "Escola Superior d'Enginyeries Industrial, Aeroespacial i Audiovisual de Terrassa, C. de Colom, 1-11 08222 - Terrassa",
       "loc": "ESEIAAT, Terrassa",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Preparar professionals polivalents, amb una formació genèrica en enginyeria de telecomunicacions i amb capacitat per concebre, dissenyar, implementar i operar productes, sistemes i serveis en el camp de l'enginyeria de sistemes audiovisuals, inclosos els camps de l'acústica, la imatge, l'àudio, el vídeo i els entorns multimèdia.",
       "ambit":
@@ -599,8 +599,8 @@ loadfile() {
       "localitzacio":
           "Escola Politècnica Superior d'Enginyeria de Manresa, Av. de les Bases de Manresa, 61-73 08242 - Manresa",
       "loc": "EPSEM, Manresa",
-      "nota": 5,
-      "notes": [5, 5.2, 5.22, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.2, 5.22, 5.0, 5.0],
       "objectius":
           "Formar professionals capaços de donar resposta a problemes d'enginyeria que integren simultàniament aspectes dels àmbits de l'electrònica, la informàtica i les comunicacions. Les persones titulades, d'una banda, disposaran d'un ampli ventall de coneixements, atesa la formació generalista en els tres àmbits esmentats, i, d'altra banda, seran clau per atendre un sector emergent de gran impacte com el que se centra en els camps dels electrodomèstics, els automòbils, la maquinària de producció, els ginys electrònics portàtils, els sistemes de control de trànsit o l'equipament mèdic, entre d'altres.",
       "ambit":
@@ -617,7 +617,7 @@ loadfile() {
           "Escola Tècnica Superior d'Enginyeria de Telecomunicació de Barcelona, Campus Nord Edifici B3, C. de Jordi Girona, 1-3 08034 - Barcelona",
       "loc": "ETSETB, Barcelona",
       "nota": 6.058,
-      "notes": [6.058, 6.92, 5, 5.53, 5.31],
+      "notes": [6.058, 6.92, 5.0, 5.53, 5.31],
       "objectius":
           "Formar professionals amb un perfil polivalent, amb una formació àmplia i profunda en enginyeria de telecomunicació i amb capacitat per concebre, dissenyar, implementar i operar productes, sistemes i serveis en els àmbits dels sistemes de telecomunicació, la telemàtica, l'electrònica i els sistemes audiovisuals. Aquest estudi segueix la iniciativa CDIO, que han incorporat les principals universitats del món per a la formació integral en enginyeria. La CDIO inclou el treball de les competències i habilitats que s'adapten al perfil que necessiten les empreses o institucions, perquè les persones titulades puguin esdevenir emprenedors i empresaris o puguin fer recerca.",
       "ambit":
@@ -651,8 +651,8 @@ loadfile() {
       "localitzacio":
           "Escola Politècnica Superior d'Edificació de Barcelona, Edifici P, Av. del Doctor Marañón, 44-50 08028 - Barcelona",
       "loc": "EPSEB, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Proporcionar una formació adequada de perfil europeu i de caràcter generalista sobre les bases teoricotècniques i les tecnologies pròpies del sector de la geomàtica i la geoinformació, i emmarcada en el desenvolupament de la capacitat de millora contínua i de transmissió del coneixement. Dotar l'estudiantat de les competències necessàries per a l'exercici de la professió d'enginyer tècnic en topografia, d'acord amb allò que disposa el marc jurídic.",
       "ambit":
@@ -669,7 +669,7 @@ loadfile() {
           "Facultat de Nàutica de Barcelona, C. Pla de Palau, 18 08003 - Barcelona",
       "loc": "FNB, Barcelona",
       "nota": 5.142,
-      "notes": [5.142, 5, 5.02, 5.97, 5.44],
+      "notes": [5.142, 5.0, 5.02, 5.97, 5.44],
       "objectius":
           "Proporcionar als futurs titulats i titulades els coneixements necessaris per exercir com a  expert en propulsió i sistemes del vaixell. Aportar a l'estudiantat una formació amb una marcada orientació professional cap a les activitats tecnològiques lligades a l'àmbit de l'enginyeria naval en camps com: vaixells i embarcacions de tot tipus; plataformes i artefactes flotants i fixos (dics flotants, estructures per a l'explotació i aprofitament de recursos marins o estructures marines per a la generació d'energia renovable); vivers marins i sistemes de pesca, i altres indústries marítimes. ",
       "ambit":
@@ -720,7 +720,7 @@ loadfile() {
           "Escola Superior d'Enginyeries Industrial, Aeroespacial i Audiovisual de Terrassa, C. de Colom, 1-11 08222 - Terrassa",
       "loc": "ESEIAAT, Terrassa",
       "nota": 5.172,
-      "notes": [5.172, 5, 5, 6.05, 5],
+      "notes": [5.172, 5.0, 5.0, 6.05, 5.0],
       "objectius":
           "Formar professionals amb una base científica i tècnica multidisciplinària que els capaciti per dissenyar, desenvolupar, posar en pràctica, gestionar i millorar productes, sistemes, instal·lacions i processos en tots els àmbits industrials: mecànica, química, elèctrica, electrònica, automàtica, construccions industrials, energia, materials, organització industrial i transport. Proporcionar a l'estudiantat la versatilitat necessària per adaptar-se a noves situacions i assimilar els futurs avenços tecnològics que la indústria necessiti incorporar per millorar els seus productes i processos.",
       "ambit":
@@ -787,8 +787,8 @@ loadfile() {
       "localitzacio":
           "Centre de la Imatge i la Tecnologia Multimèdia (CITM), C. de la Igualtat, 33 08222 - Terrassa",
       "loc": "CITM, Terrassa",
-      "nota": 5,
-      "notes": [5, 6.68, 7.84, 7.33, 6.12],
+      "nota": 5.0,
+      "notes": [5.0, 6.68, 7.84, 7.33, 6.12],
       "objectius":
           "Preparar professionals que siguin capaços de crear, realitzar i implementar productes multimèdia d'acord amb les tecnologies que tinguin al seu abast.",
       "ambit":
@@ -823,7 +823,7 @@ loadfile() {
           "Centre Universitari Euncet, Ctra. BV 1221 de Terrassa a Talamanca, km 3 08225 - Terrassa",
       "loc": "EUNCET, Terrassa",
       "nota": 5.755,
-      "notes": [5.755, 5, 5.73, 5, 5],
+      "notes": [5.755, 5.0, 5.73, 5.0, 5.0],
       "objectius":
           "Formar professionals innovadors en màrqueting i comunicació digital, com també, experts en el món en línia i les seves tendències.",
       "ambit":
@@ -839,8 +839,8 @@ loadfile() {
       "localitzacio":
           "Centre Universitari Euncet, Ctra. BV 1221 de Terrassa a Talamanca, km 3 08225 - Terrassa",
       "loc": "EUNCET, Terrassa",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Formar professionals innovadors en màrqueting i comunicació digital, com també, experts en el món en línia i les seves tendències.",
       "ambit":
@@ -873,8 +873,8 @@ loadfile() {
       "localitzacio":
           "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels / Escola Tècnica Superior d'Enginyeria de Camins, Canals i Ports de Barcelona, Campus Nord Edifici C2, C. de Jordi Girona, 1-3 08034 - Barcelona / Escola Tècnica Superior d'Arquitectura de Barcelonam, Campus Sud Edifici A, Av. Diagonal, 649 08028 - Barcelona",
       "loc": "ESAB, Castelldefels",
-      "nota": 5,
-      "notes": [5, null, null, null, null],
+      "nota": 5.0,
+      "notes": [5.0, null, null, null, null],
       "objectius":
           "Adquirir els coneixements científics i tecnològics necessaris per planificar i dissenyar paisatges i espais lliures per a projectes i per planificar-ne i controlar-ne la construcció, el manteniment i la rehabilitació.",
       "ambit":
@@ -907,8 +907,8 @@ loadfile() {
       "localitzacio":
           "Facultat de Nàutica de Barcelona, C. pla de Palau, 18 08003 - Barcelona",
       "loc": "FNB, Barcelona",
-      "nota": 5,
-      "notes": [5, 5, 5, 5, 5],
+      "nota": 5.0,
+      "notes": [5.0, 5.0, 5.0, 5.0, 5.0],
       "objectius":
           "Formar l'estudiantat perquè pugui exercir la professió de segon oficial de màquines de la marina mercant.",
       "ambit":
@@ -1017,7 +1017,7 @@ class Graus {
   }
 
   factory Graus.fromJson(Map<String, dynamic> json) {
-    double nota = double.parse(json['nota']);
+    //double nota = double.parse(json['nota']);
     return new Graus(
       json['nom'] as String,
       json['branca'] as String,
@@ -1028,7 +1028,7 @@ class Graus {
       json['ambit'] as String,
       json['link'] as String,
       json['foto'] as String,
-      nota,
+      json['nota'] as double,
       json['notes'] as List<dynamic>,
     );
   }

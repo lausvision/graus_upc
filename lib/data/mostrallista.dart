@@ -55,27 +55,32 @@ class _LlistaState extends State<Llista> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.black),
-                      child: Align(
-                        alignment: Alignment(0.90, -0.90),
-                        child: Text(
-                          document['nota'].toString(),
-                          textAlign: TextAlign.end,
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
+                      child: Text(
+                        document['nota'].toString(),
+                        textAlign: TextAlign.end,
+                        style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
                   ]),
               SizedBox(height: 10),
-              Text(
-                document['localitzacio'],
-                style: TextStyle(fontSize: 12),
-              ),
-              Text(
-                document['branca'],
-                textAlign: TextAlign.end,
-                style: TextStyle(fontSize: 12),
-                overflow: TextOverflow.fade,
-              ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      document['loc'],
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Expanded(child: Container()),
+                    Container(
+                      child: Text(
+                        document['branca'],
+                        textAlign: TextAlign.end,
+                        style: TextStyle(fontSize: 12),
+                        overflow: TextOverflow.fade,
+                      ),
+                    ),
+                  ]),
             ],
           ),
         ),

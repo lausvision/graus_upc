@@ -5,13 +5,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Centre Universitari EAE,C. de Tarragona 110 planta soterranea 08015 - Barcelona",
         "loc": "EAE, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals capaços de desenvolupar tasques de direcció, gestió, assessorament, planificació i avaluació de les organitzacions privades o públiques, tant productives com de serveis, i també capaços de desenvolupar capacitats emprenedores i iniciatives empresarials amb una visió holística de les empreses i les organitzacions.",
         "ambit": "Sector públic nacional, regional i local, organismes internacionals, docència i investigació, sector financer, empresa privada i exercici lliure de la professió.",
@@ -24,13 +24,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Centre Universitari Euncet, Ctra. BV 1221 de Terrassa a Talamanca, km 3 08225 - Terrassa",
         "loc": "EUNCET, Terrassa",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals capaços de desenvolupar tasques de direcció, gestió, assessorament, planificació i avaluació de les organitzacions privades o públiques, tant productives com de serveis, i també capaços de desenvolupar capacitats emprenedores i iniciatives empresarials amb una visió holística de les empreses i les organitzacions.",
         "ambit": "Sector públic nacional, regional i local, organismes internacionals, docència i investigació, sector financer, empresa privada i exercici lliure de la professió.",
@@ -43,13 +43,13 @@
         "modalitat": "Semipresencial",
         "localitzacio": "Centre Universitari Euncet, Ctra. BV 1221 de Terrassa a Talamanca, km 3 08225 - Terrassa",
         "loc": "EUNCET, Terrassa",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals capaços de desenvolupar tasques de direcció, gestió, assessorament, planificació i avaluació de les organitzacions privades o públiques, tant productives com de serveis, i també capaços de desenvolupar capacitats emprenedores i iniciatives empresarials amb una visió holística de les empreses i les organitzacions.",
         "ambit": "Sector públic nacional, regional i local, organismes internacionals, docència i investigació, sector financer, empresa privada i exercici lliure de la professió.",
@@ -62,13 +62,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Politècnica Superior d'Edificació de Barcelona, Edifici P, Av. del Doctor Marañón, 44-50 08028 - Barcelona",
         "loc": "EPSEB, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Proporcionar una formació adequada de perfil europeu i de caràcter generalista sobre les bases teoricotècniques i les tecnologies pròpies del sector de l'edificació, juntament amb la capacitat de millora contínua i de transmissió del coneixement i formar l'estudiantat amb les competències necessàries per exercir la professió d'arquitecte/a tècnic/a.",
         "ambit": "Ordenació i direcció de l'execució d'obres d'edificació, control de la qualitat dels materials de les obres, control de la normativa tècnica de les obres, organització i gestió de l'economia i la seguretat de les obres, treballs en empreses constructores i immobiliàries, consultories tècniques immobiliàries, empreses de taxacions i prestacions i exercici lliure de la professió.",
@@ -105,7 +105,7 @@
             6.61,
             5.29,
             5.01,
-            5,
+            5.0,
             5.98
         ],
         "objectius": "Formar professionals preparats per a la seva inserció en el mercat laboral capaços de portar a terme projectes independents i exhaustius aplicats al disseny.",
@@ -138,12 +138,12 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels",
         "loc": "ESAB, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
+            5.0,
+            5.0,
+            5.0,
+            5.0,
             5.63
         ],
         "objectius": "Formar professionals amb els coneixements en ciències culinàries i gastronòmiques que permetin comprendre i visionar el fenomen culinari i gastronòmic des d'una perspectiva científica, tecnològica, social, cultural i de gestió empresarial, dotant-los de les competències necessàries per innovar, dissenyar, produir i gestionar serveis culinaris i gastronòmics en els àmbits de l'alta cuina, la restauració comercial i col·lectiva, la indústria alimentària i l'hoteleria, així com desenvolupar projectes d'investigació i desenvolupament en el camp de les ciències gastronòmiques.",
@@ -157,13 +157,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Centre Universitari Euncet, Can Dragó, C. de Rosselló i Porcel, 7-11 08016 - Barcelona",
         "loc": "EUNCET, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Adquirir competències professionals vinculades a les activitats relacionades amb l'esport i el condicionament físic amb una visió preponderant dels mercats internacionals i la internacionalització dels productes, els serveis i les organitzacions.",
         "ambit": "Expert/a en tecnologia aplicada a l'esport i al fitnes, responsable d'unitats de disseny, comercialització i distribució de productes vinculats a l'esport i al fitnes, responsable de la planificació, el desenvolupament i la comercialització de serveis esportius i de fitnes, gestor/a i consultor/a d'empreses d'organització d'esdeveniments esportius, especialista en la gestió d'activitats esportives, de la salut i del fitnes.",
@@ -179,7 +179,7 @@
         "nota": 6.117,
         "notes": [
             6.117,
-            5,
+            5.0,
             null,
             null,
             null
@@ -252,13 +252,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels",
         "loc": "ESAB, Castelldefels",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals amb els coneixements científics i tecnològics necessaris per projectar, planificar, dirigir i gestionar els recursos relacionats amb la tecnologia i el processament de productes agroalimentaris, i amb els coneixements sobre els mecanismes de control de qualitat i seguretat dels aliments i la viabilitat econòmica de les empreses alimentàries. Tot això, des de la perspectiva de la innovació i el desenvolupament tecnològic i del respecte al medi ambient.",
         "ambit": "Director/a tècnic/a d'empreses i indústries del sector alimentari, i tècnic/a de comercialització i màrqueting, especialista en recerca, disseny i desenvolupament tecnològic de nous productes alimentaris, especialista en modelització i optimització de processos, exercici lliure de la professió: consultoria, assessoria, peritatge i direcció d'obres en l'àmbit agroalimentari.",
@@ -333,7 +333,7 @@
             7.412,
             8.78,
             8.23,
-            9,
+            9.0,
             8.77
         ],
         "objectius": "Formar professionals amb una visió clara de l'electrònica industrial com a element imprescindible en els sistemes productius actuals i en les instal·lacions de producció de béns de consum i de serveis en general. A les persones titulades no els ha de ser aliè el càlcul de circuits elèctrics i electrònics, a més de la informàtica, en especial, la informàtica industrial i els busos de camp, i el conjunt dels sistemes de comunicacions, la instrumentació i els sistemes automàtics, el seu monitoratge i control, juntament amb les tècniques electròniques analògiques, digitals i de potència necessàries per implementar solucions a problemes de naturalesa electrònica o automàtica.",
@@ -370,8 +370,8 @@
         "notes": [
             5.756,
             5.77,
-            5,
-            5,
+            5.0,
+            5.0,
             6.91
         ],
         "objectius": "Donar a conèixer en profunditat, a més de les disciplines comunes a l'enginyeria industrial, les màquines elèctriques, les instal·lacions d'alta, de mitjana i de baixa tensió, la regulació i el control de dispositius elèctrics, l'electrònica per a aquest control, tant si és per a baixa com per a alta potència, centrals elèctriques, energies renovables, sistemes hidràulics i tèrmics i electrotècnia.",
@@ -429,7 +429,7 @@
             6.9,
             6.14,
             5.37,
-            5
+            5.0
         ],
         "objectius": "Oferir els coneixements necessaris vinculats al disseny, la construcció i el manteniment de sistemes informàtics, especialment en l'àmbit de les tecnologies de la informació. Formar l'estudiantat perquè pugui definir i seleccionar plataformes tant de maquinari (hardware) com de programari (software) per al desenvolupament d'aplicacions informàtiques. Capacitar per a l'aplicació dels conceptes d'economia i de gestió de recursos humans als projectes informàtics, i la comprensió de les necessitats tecnològiques d'una organització en tot allò que es refereix a les tecnologies de la informació i la comunicació.",
         "ambit": "Departaments d'informàtica, empreses del sector TIC, entitats financeres, empreses de telecomunicacions, d'electricitat, d'alta tecnologia i de seguretat, consultores informàtiques i recerca.",
@@ -461,13 +461,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Politècnica Superior d'Enginyeria de Manresa, Av. de les Bases de Manresa, 61-73 08242 - Manresa",
         "loc": "EPSEM, Manresa",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Gestionar les etapes d'exploració, prospecció, explotació i restauració en qualsevol projecte destinat a l'obtenció de recursos minerals. ",
         "ambit": "Sector de la mineria: prospecció, explotació i restauració tant en mineria subterrània com en explotacions mineres a cel obert. Plantes de tractament d'àrids, fàbriques de ciment, empreses dedicades a les voladures en explotacions mineres i obra civil, i empreses dedicades a la fabricació de formigó i roques ornamentals i industrials. Sector de l'obra civil: empreses dedicades a l'obra pública (túnels, carreteres, urbanitzacions). Altres sectors: estudis sobre impacte ambiental, planificació territorial, geologia aplicada, seguretat laboral, organització i control de qualitat i administracions públiques.",
@@ -480,13 +480,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola d'Enginyeria de Barcelona Est, Campus Diagonal Besós Edifici A, Av. d' Eduard Maristany, 16 08019 - Barcelona",
         "loc": "EEBE, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals amb uns coneixements profunds dels fonaments dels processos de transformació de matèria i energia, amb i sense reacció química, de la concepció, el càlcul, el disseny, la construcció i l'operació d'instal·lacions o equips en els quals la matèria experimenta un canvi d'estat, de contingut d'energia o de composició. Aportar a l'estudiantat els coneixements tècnics i les competències necessàries per organitzar, dissenyar i controlar la producció de plantes químiques, i per gestionar i desenvolupar plans de control de qualitat i de gestió mediambiental, propis de la indústria química i sectors relacionats, com el farmacèutic, biotecnològic, alimentari o mediambiental.",
         "ambit": "Indústria farmacèutica, paperera, petroquímica, alimentària, metal·lúrgica i energètica, laboratoris d'anàlisi química, d'assajos i de control de qualitat, empreses consultores i assessories.",
@@ -518,10 +518,10 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels / Escola Tècnica Superior d'Enginyeria de Camins, Canals i Ports de Barcelona, Campus Nord Edifici C2, C. de Jordi Girona, 1-3 08034 - Barcelona",
         "loc": "ESAB, Castelldefels",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
+            5.0,
+            5.0,
             null,
             null,
             null
@@ -541,9 +541,9 @@
         "notes": [
             5.832,
             5.57,
-            5,
+            5.0,
             5.81,
-            5
+            5.0
         ],
         "objectius": "Formar professionals que siguin capaços de crear nous productes, conceptes i serveis que aportin valor afegit al sistema productiu, portant la direcció i la gestió de tot el procés de vida d'un producte. Els graduats i les graduades hauran de conèixer amb profunditat, a més de les disciplines comunes a l'enginyeria industrial, el disseny i el desenvolupament de productes, l'anàlisi i la identificació d'oportunitats d'innovació en un mercat globalitzat, atenent a les necessitats socials i futures. Tot això, respectant els drets fonamentals, els drets humans i el medi ambient, i treballant en favor del progrés i del desenvolupament de l'entorn socioeconòmic més proper.",
         "ambit": "Empreses de consultoria i d'assessoria, empreses de fabricació i de disseny de màquines, factories d'automòbils i d'accessoris, empreses siderometal·lúrgiques i matriceres i docència.",
@@ -575,12 +575,12 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola d'Enginyeria de Barcelona Est, Campus Diagonal Besós Edifici A, Av. d' Eduard Maristany, 16 08019 - Barcelona",
         "loc": "EEBE, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
+            5.0,
+            5.0,
+            5.0,
+            5.0,
             7.59
         ],
         "objectius": "Formar professionals amb una preparació científica i tècnica multidisciplinària amb capacitat per dissenyar, desenvolupar, implementar, gestionar i millorar la producció, la transformació, el processament, el control, el reciclatge i l'emmagatzematge de materials, la seguretat i la integritat de materials i components, ja siguin materials metàl·lics, ceràmics, polímers, compostos o biològics, etc. A més, aquest estudi dotarà els professionals d'una gran versatilitat per adaptar-se a noves situacions i assimilar els futurs avenços tecnològics que la indústria necessiti per millorar els seus productes i processos. Amb aquesta titulació s'adquiriran les capacitats necessàries per integrar-se en qualsevol professió dels àmbits relacionats amb el desenvolupament industrial, la recerca o la innovació.",
@@ -613,13 +613,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Superior d'Enginyeries Industrial, Aeroespacial i Audiovisual de Terrassa, C. de Colom, 1-11 08222 - Terrassa",
         "loc": "ESEIAAT, Terrassa",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Preparar professionals polivalents, amb una formació genèrica en enginyeria de telecomunicacions i amb capacitat per concebre, dissenyar, implementar i operar productes, sistemes i serveis en el camp de l'enginyeria de sistemes audiovisuals, inclosos els camps de l'acústica, la imatge, l'àudio, el vídeo i els entorns multimèdia.",
         "ambit": "Disseny, desenvolupament i gestió de sistemes per a la captació, el processament, la transmissió i la recepció de continguts d'àudio o vídeo, projecció i gestió de l'execució d'instal·lacions de telecomunicació públiques i privades, i de solucions d'acústica arquitectònica i acústica ambiental, empreses d'equips electrònics i informàtics per al sector audiovisual, disseny de continguts multimèdia en instal·lacions de gravació i difusió de ràdio i televisió.",
@@ -651,13 +651,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Politècnica Superior d'Enginyeria de Manresa, Av. de les Bases de Manresa, 61-73 08242 - Manresa",
         "loc": "EPSEM, Manresa",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
+            5.0,
             5.2,
             5.22,
-            5,
-            5
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals capaços de donar resposta a problemes d'enginyeria que integren simultàniament aspectes dels àmbits de l'electrònica, la informàtica i les comunicacions. Les persones titulades, d'una banda, disposaran d'un ampli ventall de coneixements, atesa la formació generalista en els tres àmbits esmentats, i, d'altra banda, seran clau per atendre un sector emergent de gran impacte com el que se centra en els camps dels electrodomèstics, els automòbils, la maquinària de producció, els ginys electrònics portàtils, els sistemes de control de trànsit o l'equipament mèdic, entre d'altres.",
         "ambit": "Indústria de l'automòbil, incloent-hi l'auxiliar, empreses que desenvolupen maquinària de producció, equipaments d'assaig i/o de laboratori, indústria biomèdica, indústria electrònica, indústria domòtica o mediambiental, indústria de sistemes de control i empreses que desenvolupen sistemes integrats o sistemes complets dins un xip.",
@@ -674,7 +674,7 @@
         "notes": [
             6.058,
             6.92,
-            5,
+            5.0,
             5.53,
             5.31
         ],
@@ -708,13 +708,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Politècnica Superior d'Edificació de Barcelona, Edifici P, Av. del Doctor Marañón, 44-50 08028 - Barcelona",
         "loc": "EPSEB, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Proporcionar una formació adequada de perfil europeu i de caràcter generalista sobre les bases teoricotècniques i les tecnologies pròpies del sector de la geomàtica i la geoinformació, i emmarcada en el desenvolupament de la capacitat de millora contínua i de transmissió del coneixement. Dotar l'estudiantat de les competències necessàries per a l'exercici de la professió d'enginyer tècnic en topografia, d'acord amb allò que disposa el marc jurídic.",
         "ambit": "Sistemes d'informació geogràfica, ús de geoinformació per a aplicacions mòbils i dades massives (big data), sistemes de posicionament global (GPS‐GNSS), ciutats intel·ligents (smart cities), control de flotes, fotogrametria (incloent-hi l'ús de vehicles no tripulats: drons i UAV), teledetecció, geodèsia i topografia.",
@@ -730,7 +730,7 @@
         "nota": 5.142,
         "notes": [
             5.142,
-            5,
+            5.0,
             5.02,
             5.97,
             5.44
@@ -787,10 +787,10 @@
         "nota": 5.172,
         "notes": [
             5.172,
-            5,
-            5,
+            5.0,
+            5.0,
             6.05,
-            5
+            5.0
         ],
         "objectius": "Formar professionals amb una base científica i tècnica multidisciplinària que els capaciti per dissenyar, desenvolupar, posar en pràctica, gestionar i millorar productes, sistemes, instal·lacions i processos en tots els àmbits industrials: mecànica, química, elèctrica, electrònica, automàtica, construccions industrials, energia, materials, organització industrial i transport. Proporcionar a l'estudiantat la versatilitat necessària per adaptar-se a noves situacions i assimilar els futurs avenços tecnològics que la indústria necessiti incorporar per millorar els seus productes i processos.",
         "ambit": "Oficines tècniques, departaments d'R+D+I, departaments de producció i compres i consultories tecnològiques i de gestió.",
@@ -860,9 +860,9 @@
         "modalitat": "Presencial",
         "localitzacio": "Centre de la Imatge i la Tecnologia Multimèdia (CITM), C. de la Igualtat, 33 08222 - Terrassa",
         "loc": "CITM, Terrassa",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
+            5.0,
             6.68,
             7.84,
             7.33,
@@ -901,10 +901,10 @@
         "nota": 5.755,
         "notes": [
             5.755,
-            5,
+            5.0,
             5.73,
-            5,
-            5
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals innovadors en màrqueting i comunicació digital, com també, experts en el món en línia i les seves tendències.",
         "ambit": "Màrqueting, publicitat, relacions públiques, comunicació corporativa, comercial i vendes, fidelització de clients, desenvolupament de producte i investigació de mercats.",
@@ -917,13 +917,13 @@
         "modalitat": "Semipresencial",
         "localitzacio": "Centre Universitari Euncet, Ctra. BV 1221 de Terrassa a Talamanca, km 3 08225 - Terrassa",
         "loc": "EUNCET, Terrassa",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Formar professionals innovadors en màrqueting i comunicació digital, com també, experts en el món en línia i les seves tendències.",
         "ambit": "Màrqueting, publicitat, relacions públiques, comunicació corporativa, comercial i vendes, fidelització de clients, desenvolupament de producte i investigació de mercats.",
@@ -955,9 +955,9 @@
         "modalitat": "Presencial",
         "localitzacio": "Escola Superior d'Agricultura de Barcelona, Campus Baix Llobregat Edifici D4, C. Esteve Terradas, 8 08860 - Castelldefels / Escola Tècnica Superior d'Enginyeria de Camins, Canals i Ports de Barcelona, Campus Nord Edifici C2, C. de Jordi Girona, 1-3 08034 - Barcelona / Escola Tècnica Superior d'Arquitectura de Barcelonam, Campus Sud Edifici A, Av. Diagonal, 649 08028 - Barcelona",
         "loc": "ESAB, Castelldefels",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
+            5.0,
             null,
             null,
             null,
@@ -993,13 +993,13 @@
         "modalitat": "Presencial",
         "localitzacio": "Facultat de Nàutica de Barcelona, C. pla de Palau, 18 08003 - Barcelona",
         "loc": "FNB, Barcelona",
-        "nota": 5,
+        "nota": 5.0,
         "notes": [
-            5,
-            5,
-            5,
-            5,
-            5
+            5.0,
+            5.0,
+            5.0,
+            5.0,
+            5.0
         ],
         "objectius": "Formar l'estudiantat perquè pugui exercir la professió de segon oficial de màquines de la marina mercant.",
         "ambit": "Marina mercant, centrals tèrmiques i nuclears, manteniment industrial, fred industrial i climatització, inspecció marítima, administració marítima, formació, empreses navilieres, servei de vigilància duanera i drassanes.",
