@@ -2,6 +2,13 @@
 
 A new Flutter project.
 
+## Builded with 🛠️
+Dart and flutter libraries.
+
+
+## Authors ✒️
+Laura Molina and Marti Olle.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
