@@ -348,7 +348,7 @@ loadfile() {
           "Donar a conèixer en profunditat, a més de les disciplines comunes a l'enginyeria industrial, les màquines elèctriques, les instal·lacions d'alta, de mitjana i de baixa tensió, la regulació i el control de dispositius elèctrics, l'electrònica per a aquest control, tant si és per a baixa com per a alta potència, centrals elèctriques, energies renovables, sistemes hidràulics i tèrmics i electrotècnia.",
       "ambit":
           "Empreses dedicades a l'elaboració de projectes tècnics, mesuraments, taxacions, valoracions, peritatges, estudis i informes en l'àmbit de l'enginyeria elèctrica, la consultoria i els serveis, la construcció i les obres públiques, la distribució d'aigua, gas i electricitat, la instal·lació i el manteniment electromecànic, la fabricació de maquinària elèctrica, electrònica i mecànica, els productes químics, els automòbils i accessoris, la siderometal·lúrgia, la matriceria i la caldereria, disseny i direcció d'obra d'instal·lacions domèstiques i industrials, gestió energètica i mediambiental, manteniment de qualsevol tipus d'indústries, producció d'una gran varietat de productes industrials i centrals elèctriques.",
-      "link": "",
+      "link": "http://universitats.gencat.cat/ca/detalls/oferta/1570-Enginyeria-Electrica",
       "foto":
           "https://www.upc.edu/ca/media/la-upc/galeriaimatges-1/biblioteca-campus-baix-llobregat.jpg/@@images/image.jpeg"
     },
@@ -451,7 +451,7 @@ loadfile() {
           "Formar professionals amb uns coneixements profunds dels fonaments dels processos de transformació de matèria i energia, amb i sense reacció química, de la concepció, el càlcul, el disseny, la construcció i l'operació d'instal·lacions o equips en els quals la matèria experimenta un canvi d'estat, de contingut d'energia o de composició. Aportar a l'estudiantat els coneixements tècnics i les competències necessàries per organitzar, dissenyar i controlar la producció de plantes químiques, i per gestionar i desenvolupar plans de control de qualitat i de gestió mediambiental, propis de la indústria química i sectors relacionats, com el farmacèutic, biotecnològic, alimentari o mediambiental.",
       "ambit":
           "Indústria farmacèutica, paperera, petroquímica, alimentària, metal·lúrgica i energètica, laboratoris d'anàlisi química, d'assajos i de control de qualitat, empreses consultores i assessories.",
-      "link": "",
+      "link": "http://universitats.gencat.cat/ca/detalls/oferta/4091-Enginyeria-Quimica",
       "foto":
           "https://www.upc.edu/ca/media/la-upc/galeriaimatges-1/biblioteca-campus-baix-llobregat.jpg/@@images/image.jpeg"
     },

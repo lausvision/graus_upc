@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:floating_search_bar/floating_search_bar.dart';
 
 class Llista extends StatefulWidget {
   const Llista({
@@ -12,19 +11,6 @@ class Llista extends StatefulWidget {
 }
 
 class _LlistaState extends State<Llista> {
-
-  _onSearch(String value) async {
-    print('busqueda de ${value}');
-
-    if (value.isEmpty) {
-      setState(() {});
-      return;
-    }
-
-    
-    
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,19 +19,11 @@ class _LlistaState extends State<Llista> {
               Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const Text('Loading...');
-            return FloatingSearchBar.builder(
-              //itemExtent: 100,
+            return ListView.builder(
+              itemExtent: 100,
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) =>
                   _product(context, snapshot.data.documents[index]),
-              endDrawer: Drawer(
-                child: Container(),
-              ),
-              onChanged: (String value){
-                _onSearch(value);
-              },
-              onTap:(){} ,
-              
             );
           }),
     );
@@ -54,7 +32,7 @@ class _LlistaState extends State<Llista> {
   Widget _product(BuildContext context, DocumentSnapshot document) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,14 +65,14 @@ class _LlistaState extends State<Llista> {
                   children: <Widget>[
                     Text(
                       document['loc'],
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 14),
                     ),
                     Expanded(child: Container()),
                     Container(
                       child: Text(
                         document['branca'],
                         textAlign: TextAlign.end,
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 14),
                         overflow: TextOverflow.fade,
                       ),
                     ),

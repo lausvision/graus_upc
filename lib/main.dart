@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
+//import 'package:graus_upc/screens/versio.dart';
 //import 'package:graus_upc/data/llegeix.dart';
 
 void main() => runApp(MyApp());

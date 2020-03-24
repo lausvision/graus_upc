@@ -1,10 +1,8 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
+//import 'package:graus_upc/data/mostrallista.dart';
+import 'package:graus_upc/data/busqueda.dart';
 import 'package:graus_upc/data/mostrallista.dart';
-
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
@@ -17,8 +15,36 @@ class _HomeScreenState extends State<HomeScreen> {
   _HomeScreenState();
 
   int _selectedIndex = 1;
+  TextEditingController editingController = TextEditingController();
 
+  var result = [];
+  var temp = [];
 
+  initiateSearch(val) {
+    if (val.length == 0) {
+      setState(() {
+        result = [];
+        temp = [];
+      });
+    }
+    var capital = val.substring(0, 1).toUpperCase() + val.substring(1);
+    if (result.length == 0 && val.length == 1) {
+      Busqueda().nombre(val).then((QuerySnapshot docs) {
+        for (int i = 0; i < docs.documents.length; i++) {
+          result.add(docs.documents[i].data);
+        }
+      });
+    } else {
+      temp = [];
+      result.forEach((element) {
+        if (element['nom'].startsWith(capital)) {
+          setState(() {
+            temp.add(element);
+          });
+        }
+      });
+    }
+  }
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -71,13 +97,94 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: _onItemTapped,
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             children: <Widget>[
-              
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: TextField(
+                  onChanged: (value) {
+                    initiateSearch(value);
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Search",
+                    suffixIcon: Icon(Icons.menu),
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                    ),
+                  ),
+                ),
+              ),
               Expanded(child: Llista()),
+              SizedBox(height: 10),
+              ListView(
+                  padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                  primary: false,
+                  shrinkWrap: true,
+                  children: temp.map((element) {
+                    return card(element);
+                  }).toList())
             ],
           ),
         ));
   }
+}
+
+Widget card(document) {
+  return Card(
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    document['nom'],
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  Expanded(child: Container()),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black),
+                    child: Text(
+                      document['nota'].toString(),
+                      textAlign: TextAlign.end,
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ),
+                ]),
+            SizedBox(height: 10),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    document['loc'],
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Expanded(child: Container()),
+                  Container(
+                    child: Text(
+                      document['branca'],
+                      textAlign: TextAlign.end,
+                      style: TextStyle(fontSize: 14),
+                      overflow: TextOverflow.fade,
+                    ),
+                  ),
+                ]),
+          ],
+        ),
+      ),
+    ),
+  );
 }
