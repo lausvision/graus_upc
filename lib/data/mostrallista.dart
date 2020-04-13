@@ -41,21 +41,11 @@ class _LlistaState extends State<Llista> {
               Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const Text('Loading...');
-            return FloatingSearchBar.builder(
-              //itemExtent: 100,
+            return ListView.builder(
+              itemExtent: 100,
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) =>
                   _product(context, snapshot.data.documents[index]),
-              endDrawer: Drawer(
-                child: Container(),
-              ),
-              onChanged: (String value){
-                _onSearch(value);
-              },
-              onTap:(){
-
-              } ,
-              
             );
           }),
     );
@@ -97,14 +87,14 @@ class _LlistaState extends State<Llista> {
                   children: <Widget>[
                     Text(
                       document['loc'],
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 14),
                     ),
                     Expanded(child: Container()),
                     Container(
                       child: Text(
                         document['branca'],
                         textAlign: TextAlign.end,
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 14),
                         overflow: TextOverflow.fade,
                       ),
                     ),
