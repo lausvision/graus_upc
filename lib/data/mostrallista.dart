@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:floating_search_bar/floating_search_bar.dart';
+import 'package:graus_upc/screens/FichaScreen.dart';
 
 class Llista extends StatefulWidget {
   const Llista({
@@ -13,17 +14,24 @@ class Llista extends StatefulWidget {
 
 class _LlistaState extends State<Llista> {
 
-  _onSearch(String value) async {
-    print('busqueda de ${value}');
 
-    if (value.isEmpty) {
-      setState(() {});
-      return;
-    }
+    Future<List<DocumentSnapshot>> _onSearch(String value) =>
+    Firestore.instance
+      .collection('graus')
+      .orderBy('nom')
+      .startAt([value])
+      .endAt([value + '\uf8ff'])
+      .getDocuments()
+      .then((snapshot) {
+        for (var i = 0; i < snapshot.documents.length; i++) {
+          _product(context, snapshot.documents[i]);
+        }
+        
+       // return snapshot.documents;
+      });
 
-    
-    
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +52,9 @@ class _LlistaState extends State<Llista> {
               onChanged: (String value){
                 _onSearch(value);
               },
-              onTap:(){} ,
+              onTap:(){
+
+              } ,
               
             );
           }),
@@ -55,7 +65,7 @@ class _LlistaState extends State<Llista> {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Center(
+        child: InkWell(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
@@ -101,8 +111,18 @@ class _LlistaState extends State<Llista> {
                   ]),
             ],
           ),
+          onTap:(){
+                Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return FichaScreen();
+              },
+            ),
+          );
+              } , 
         ),
       ),
+      
     );
   }
 }
