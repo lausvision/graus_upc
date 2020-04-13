@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FichaScreen extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class FichaScreen extends StatefulWidget {
 }
 
 class _FichaScreenState extends State<FichaScreen> {
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +24,7 @@ class _FichaScreenState extends State<FichaScreen> {
           IconButton(
               padding: const EdgeInsets.only(right: 35.0),
               icon: Icon(Icons.favorite_border),
-              tooltip: 'Share',
+              tooltip: 'Favorite',
               color: Colors.black,
               onPressed: () {}),
           IconButton(
@@ -44,8 +47,9 @@ class _FichaScreenState extends State<FichaScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 80.0),
                     child: Container(
-                      margin: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(15),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
                             'Descripció:',
@@ -70,6 +74,14 @@ class _FichaScreenState extends State<FichaScreen> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
+                          Text(
+                            'vflkdkyfugihuugfdysyghlgkdfsgk',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Hyperlink('https://www.upc.edu/*grau.hyper*/','Web del Grau'),
                         ],
                       ),
                     ),
@@ -78,6 +90,37 @@ class _FichaScreenState extends State<FichaScreen> {
               ],
             );
           }),
+    );
+  }
+}
+
+
+
+
+class Hyperlink extends StatelessWidget {
+  final String _url;
+  final String _text;
+
+  Hyperlink(this._url, this._text);
+
+  _launchURL() async {
+  if (await canLaunch(_url)) {
+      await launch(_url);
+    } else {
+      throw 'Could not launch $_url';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+     //children: Widget Icon(Icons.web), 
+      child: Text( 
+       _text, 
+       style: TextStyle(decoration: TextDecoration.underline,
+       color: Colors.blue),      
+      ), 
+      onTap: _launchURL,
     );
   }
 }
