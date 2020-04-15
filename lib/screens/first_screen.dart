@@ -75,13 +75,6 @@ class _FirstScreenState extends State<FirstScreen> {
             ),
             LogOutClass(),
             Container(
-              /* decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [Colors.blue[100], Colors.white],
-            ),
-          ),*/
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -96,13 +89,6 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                     SizedBox(height: 40),
                     Text(
-                      'NAME',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black54),
-                    ),
-                    Text(
                       name,
                       style: TextStyle(
                           fontSize: 25,
@@ -110,13 +96,6 @@ class _FirstScreenState extends State<FirstScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 20),
-                    Text(
-                      'EMAIL',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black54),
-                    ),
                     Text(
                       email,
                       style: TextStyle(
