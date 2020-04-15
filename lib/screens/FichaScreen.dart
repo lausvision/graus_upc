@@ -45,22 +45,82 @@ class _FichaScreenState extends State<FichaScreen> {
         body: Stack(
           alignment: AlignmentDirectional.topCenter,
           children: <Widget>[
-            SizedBox(
-              child: Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(foto),
-                  ),
-                ),
-              ),
-            ),
+            Foton(foto: foto),
+            NotaDeTall(nota: nota),
             Titol(nom: nom, localitzacio: localitzacio),
             TextGeneral(descripcio: descripcio, objectiu: objectiu, link: link),
           ],
         ));
+  }
+}
+
+class NotaDeTall extends StatelessWidget {
+  const NotaDeTall({
+    Key key,
+    @required this.nota,
+  }) : super(key: key);
+
+  final String nota;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Padding(
+          padding: const EdgeInsets.only(top: 180, left: 270),
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.black,
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 2,
+                  ),
+                ),
+                child: Text(
+                  nota,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Nota del tall',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              )
+            ],
+          )),
+    );
+  }
+}
+
+class Foton extends StatelessWidget {
+  const Foton({
+    Key key,
+    @required this.foto,
+  }) : super(key: key);
+
+  final String foto;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Container(
+        height: 200,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(foto),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -78,7 +138,7 @@ class Titol extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top:150),
+        padding: const EdgeInsets.only(top: 150),
         child: Column(
           children: <Widget>[
             Text(
@@ -126,7 +186,7 @@ class TextGeneral extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top: 200.0),
+        padding: const EdgeInsets.only(top: 220.0),
         child: Container(
           margin: EdgeInsets.all(15),
           child: Column(
@@ -140,14 +200,14 @@ class TextGeneral extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              Text(
+              CollapsibleText(descripcio),
+              /*Text(
                 descripcio,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 12,
                   color: Colors.white,
                 ),
-              ),
-              SizedBox(height:10),
+              )*/
               Text(
                 'Sortides professionals: ',
                 style: TextStyle(
@@ -156,14 +216,15 @@ class TextGeneral extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
+              SizedBox(height: 10),
               Text(
                 objectiu,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 12,
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height:10),
+              SizedBox(height: 10),
               Center(child: Hyperlink(link, 'Web del Grau')),
             ],
           ),
@@ -194,9 +255,69 @@ class Hyperlink extends StatelessWidget {
       child: Text(
         _text,
         style:
-            TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+            TextStyle(
+              decoration: TextDecoration.underline, 
+            color: Colors.blue,
+            fontSize: 16),
       ),
       onTap: _launchURL,
+    );
+  }
+}
+
+class CollapsibleText extends StatefulWidget {
+  final String descripcio;
+  CollapsibleText(this.descripcio);
+
+  @override
+  _CollapsibleTextState createState() => _CollapsibleTextState(descripcio);
+}
+
+class _CollapsibleTextState extends State<CollapsibleText> {
+  String descripcio;
+  _CollapsibleTextState(this.descripcio);
+  bool _expanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // padding: const EdgeInsets.only(left: 7.0),
+      height: (_expanded ? null : 100),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            descripcio,
+            overflow: TextOverflow.fade,
+            maxLines: (_expanded ? null : 3),
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.white,
+            ),
+          ),
+          Container(
+            height: 15,
+            child: FlatButton(
+              color: Colors.black,
+              child: Text(
+                _expanded ? 'Amaga' : 'Llegir més',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  _expanded = !_expanded;
+                });
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
