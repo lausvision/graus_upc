@@ -34,17 +34,7 @@ class _FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-          children: <Widget>[
-            Container(
-               decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/marble.png"), // <-- BACKGROUND IMAGE
-              fit: BoxFit.cover,
-            ),
-          ),
-            ),
-            Scaffold(
+    return Scaffold(
         backgroundColor: Colors.blue[100],
         bottomNavigationBar: BottomNavigationBar(
           selectedFontSize: 13,
@@ -72,106 +62,109 @@ class _FirstScreenState extends State<FirstScreen> {
           selectedItemColor: Colors.black,
           onTap: _onItemTapped,
         ),
-        appBar: AppBar(
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          // title: Text( 'Tu Perfil', style: TextStyle(color: Colors.teal), ),
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-            icon: Icon(Icons.exit_to_app),
-            tooltip: 'Sign out',
-            color: Colors.black,
-            onPressed: () {
-              signOutGoogle();
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) {
-                return LoginPage();
-              }), ModalRoute.withName('/'));
-            },
+        body: Stack(
+          alignment: AlignmentDirectional.topCenter,
+          children: <Widget>[
+             Container(
+               decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/marble.png"), // <-- BACKGROUND IMAGE
+              fit: BoxFit.cover,
+            ),
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.edit),
-                tooltip: 'Edit profile',
-                color: Colors.black,
-                onPressed: () {
-                  /*
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => EditProfileScreen(
-                        userId,
-                        Objeto(
-                          'New name',
-                          'New username',
-                          'New email',
-                          '*****',
-                          '*****',
-                        ),
-                      ),
-                    ),
-                  );*/
-                })
-          ],
-        ),
-        body: Container(
-          /* decoration: BoxDecoration(
+            ),
+            LogOutClass(),
+            Container(
+              /* decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [Colors.blue[100], Colors.white],
             ),
           ),*/
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    imageUrl,
-                  ),
-                  radius: 65,
-                  backgroundColor: Colors.transparent,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        imageUrl,
+                      ),
+                      radius: 65,
+                      backgroundColor: Colors.transparent,
+                    ),
+                    SizedBox(height: 40),
+                    Text(
+                      'NAME',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54),
+                    ),
+                    Text(
+                      name,
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'EMAIL',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54),
+                    ),
+                    Text(
+                      email,
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 40),
+                  ],
                 ),
-                SizedBox(height: 40),
-                Text(
-                  'NAME',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black54),
-                ),
-                Text(
-                  name,
-                  style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'EMAIL',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black54),
-                ),
-                Text(
-                  email,
-                  style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 40),
-              ],
+              ),
             ),
-          ),
+          ],
+        ));
+  }
+}
+
+class LogOutClass extends StatelessWidget {
+  const LogOutClass({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 35.0, left: 300),
+        child: Column(
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.exit_to_app),
+              tooltip: 'Sign out',
+              color: Colors.black,
+              onPressed: () {
+                signOutGoogle();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) {
+                  return LoginPage();
+                }), ModalRoute.withName('/'));
+              },
+            ),
+            Text(
+              'Sortir',
+              style: TextStyle(fontSize: 15, color: Colors.black),
+            )
+          ],
         ),
       ),
-
-          ] 
     );
   }
 }
