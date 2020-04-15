@@ -105,7 +105,13 @@ class _LlistaState extends State<Llista> {
                 Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return FichaScreen();
+                return FichaScreen(
+                  document['nom'],
+                  document['ambit'],
+                  document['loc'],
+                  document['link'],
+                  document['nota'].toString(),
+                  document['objectius']);
               },
             ),
           );

@@ -4,13 +4,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FichaScreen extends StatefulWidget {
+  String nom, descripcio, localitzacio, link, nota,objectiu;
+  FichaScreen(
+      this.nom, this.descripcio, this.localitzacio, this.link, this.nota,this.objectiu);
+
   @override
-  _FichaScreenState createState() => _FichaScreenState();
+  _FichaScreenState createState() =>
+      _FichaScreenState(nom, descripcio, localitzacio, link, nota,objectiu);
 }
 
 class _FichaScreenState extends State<FichaScreen> {
+  String nom, descripcio, localitzacio, link, nota,objectiu;
+  _FichaScreenState(
+      this.nom, this.descripcio, this.localitzacio, this.link, this.nota,this.objectiu);
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +50,23 @@ class _FichaScreenState extends State<FichaScreen> {
             return Stack(
               alignment: AlignmentDirectional.topCenter,
               children: <Widget>[
+                Text(
+                  nom,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue[50],
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+            
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.location_city),
+                    Text(localitzacio),
+                    SizedBox(width: 10)
+                  ],
+                ),
                 SizedBox(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 80.0),
@@ -60,7 +84,7 @@ class _FichaScreenState extends State<FichaScreen> {
                             ),
                           ),
                           Text(
-                            'vflkdkyfugihuugfdysyghlgkdfsgk',
+                            descripcio,
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,
@@ -75,13 +99,14 @@ class _FichaScreenState extends State<FichaScreen> {
                             ),
                           ),
                           Text(
-                            'vflkdkyfugihuugfdysyghlgkdfsgk',
+                            objectiu,
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,
                             ),
                           ),
-                          Hyperlink('https://www.upc.edu/*grau.hyper*/','Web del Grau'),
+                          Hyperlink(link,
+                              'Web del Grau'),
                         ],
                       ),
                     ),
@@ -94,9 +119,6 @@ class _FichaScreenState extends State<FichaScreen> {
   }
 }
 
-
-
-
 class Hyperlink extends StatelessWidget {
   final String _url;
   final String _text;
@@ -104,7 +126,7 @@ class Hyperlink extends StatelessWidget {
   Hyperlink(this._url, this._text);
 
   _launchURL() async {
-  if (await canLaunch(_url)) {
+    if (await canLaunch(_url)) {
       await launch(_url);
     } else {
       throw 'Could not launch $_url';
@@ -114,12 +136,12 @@ class Hyperlink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-     //children: Widget Icon(Icons.web), 
-      child: Text( 
-       _text, 
-       style: TextStyle(decoration: TextDecoration.underline,
-       color: Colors.blue),      
-      ), 
+      //children: Widget Icon(Icons.web),
+      child: Text(
+        _text,
+        style:
+            TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+      ),
       onTap: _launchURL,
     );
   }
