@@ -63,53 +63,74 @@ class _FirstScreenState extends State<FirstScreen> {
           onTap: _onItemTapped,
         ),
         body: Stack(
-          alignment: AlignmentDirectional.topCenter,
+          alignment: AlignmentDirectional.topStart,
           children: <Widget>[
-             Container(
-               decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/marble.png"), // <-- BACKGROUND IMAGE
-              fit: BoxFit.cover,
-            ),
-          ),
-            ),
+            WallpaperFoto(),
             LogOutClass(),
-            Container(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        imageUrl,
-                      ),
-                      radius: 65,
-                      backgroundColor: Colors.transparent,
-                    ),
-                    SizedBox(height: 40),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      email,
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 40),
-                  ],
-                ),
+            Padding(
+              padding: const EdgeInsets.only(top: 50.0, left: 20),
+              child: Text(
+                email,
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
               ),
             ),
+            FotoPerfil(),
+            Padding(
+                padding: const EdgeInsets.only(top: 150.0, left: 180),
+                child: Text(
+                  name,
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+           
           ],
         ));
+  }
+}
+
+class FotoPerfil extends StatelessWidget {
+  const FotoPerfil({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 100.0, left: 30),
+        child: CircleAvatar(
+          backgroundImage: NetworkImage(
+            imageUrl,
+          ),
+          radius: 65,
+          backgroundColor: Colors.transparent,
+        ),
+      ),
+    );
+  }
+}
+
+class WallpaperFoto extends StatelessWidget {
+  const WallpaperFoto({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/marble.png"), // <-- BACKGROUND IMAGE
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 }
 
@@ -122,7 +143,7 @@ class LogOutClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top: 35.0, left: 300),
+        padding: const EdgeInsets.only(top: 35.0, left: 320),
         child: Column(
           children: <Widget>[
             IconButton(
