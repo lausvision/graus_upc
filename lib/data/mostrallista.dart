@@ -111,7 +111,8 @@ class _LlistaState extends State<Llista> {
                   document['loc'],
                   document['link'],
                   document['nota'].toString(),
-                  document['objectius']);
+                  document['objectius'],
+                  document['foto']);
               },
             ),
           );
