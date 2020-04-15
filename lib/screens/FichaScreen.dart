@@ -4,19 +4,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FichaScreen extends StatefulWidget {
-  String nom, descripcio, localitzacio, link, nota, objectiu,foto;
+  String nom, descripcio, localitzacio, link, nota, objectiu, foto;
   FichaScreen(this.nom, this.descripcio, this.localitzacio, this.link,
-      this.nota, this.objectiu,this.foto);
+      this.nota, this.objectiu, this.foto);
 
   @override
-  _FichaScreenState createState() =>
-      _FichaScreenState(nom, descripcio, localitzacio, link, nota, objectiu,foto);
+  _FichaScreenState createState() => _FichaScreenState(
+      nom, descripcio, localitzacio, link, nota, objectiu, foto);
 }
 
 class _FichaScreenState extends State<FichaScreen> {
-  String nom, descripcio, localitzacio, link, nota, objectiu,foto;
+  String nom, descripcio, localitzacio, link, nota, objectiu, foto;
   _FichaScreenState(this.nom, this.descripcio, this.localitzacio, this.link,
-      this.nota, this.objectiu,this.foto);
+      this.nota, this.objectiu, this.foto);
 
   @override
   Widget build(BuildContext context) {
@@ -46,23 +46,17 @@ class _FichaScreenState extends State<FichaScreen> {
           alignment: AlignmentDirectional.topCenter,
           children: <Widget>[
             SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 80.0),
-                  child: Container(
-                    margin: EdgeInsets.all(5),
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                      image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: NetworkImage(foto),
-                      ),
-                    ),
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(foto),
                   ),
                 ),
               ),
+            ),
             Titol(nom: nom, localitzacio: localitzacio),
             TextGeneral(descripcio: descripcio, objectiu: objectiu, link: link),
           ],
@@ -83,32 +77,34 @@ class Titol extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Column(
-        children: <Widget>[
-          Text(
-            nom,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.blue[50],
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(Icons.location_city, color: Colors.white),
-              Text(
-                localitzacio,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.blue[50],
-                  fontWeight: FontWeight.w700,
-                ),
+      child: Padding(
+        padding: const EdgeInsets.only(top:150),
+        child: Column(
+          children: <Widget>[
+            Text(
+              nom,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+                fontWeight: FontWeight.w700,
               ),
-              
-            ],
-          ),
-        ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.location_city, color: Colors.black),
+                Text(
+                  localitzacio,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -130,7 +126,7 @@ class TextGeneral extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top: 80.0),
+        padding: const EdgeInsets.only(top: 200.0),
         child: Container(
           margin: EdgeInsets.all(15),
           child: Column(
@@ -139,7 +135,7 @@ class TextGeneral extends StatelessWidget {
               Text(
                 'Descripció:',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
                   color: Colors.blue[50],
                   fontWeight: FontWeight.w700,
                 ),
@@ -147,14 +143,15 @@ class TextGeneral extends StatelessWidget {
               Text(
                 descripcio,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 10,
                   color: Colors.white,
                 ),
               ),
+              SizedBox(height:10),
               Text(
                 'Sortides professionals: ',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
                   color: Colors.blue[50],
                   fontWeight: FontWeight.w700,
                 ),
@@ -162,11 +159,12 @@ class TextGeneral extends StatelessWidget {
               Text(
                 objectiu,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 10,
                   color: Colors.white,
                 ),
               ),
-              Hyperlink(link, 'Web del Grau'),
+              SizedBox(height:10),
+              Center(child: Hyperlink(link, 'Web del Grau')),
             ],
           ),
         ),
