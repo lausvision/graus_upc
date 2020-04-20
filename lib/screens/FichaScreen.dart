@@ -42,8 +42,8 @@ class _FichaScreenState extends State<FichaScreen> {
                 color: Colors.black,
                 onPressed: () {
                   final RenderBox box = context.findRenderObject();
-                  Share.share('my link',
-                      subject: 'hola',
+                  Share.share(nom + ' de la universitat ' + localitzacio + ' amb la nota de tall: '+ nota,
+                      subject: 'He trobat aquest grau per tu amb la app GrausUPC!',
                       sharePositionOrigin:
                           box.localToGlobal(Offset.zero) & box.size);
 
