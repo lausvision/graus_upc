@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share/share.dart';
 
 class FichaScreen extends StatefulWidget {
   String nom, descripcio, localitzacio, link, nota, objectiu, foto;
@@ -39,7 +40,15 @@ class _FichaScreenState extends State<FichaScreen> {
                 icon: Icon(Icons.share),
                 tooltip: 'Share',
                 color: Colors.black,
-                onPressed: () {}),
+                onPressed: () {
+                  final RenderBox box = context.findRenderObject();
+                  Share.share('my link',
+                      subject: 'hola',
+                      sharePositionOrigin:
+                          box.localToGlobal(Offset.zero) & box.size);
+
+                  // Share.share('', subject: 'He trobat aquest grau per tu *-*' );
+                }),
           ],
         ),
         body: Stack(
@@ -254,9 +263,8 @@ class Hyperlink extends StatelessWidget {
       //children: Widget Icon(Icons.web),
       child: Text(
         _text,
-        style:
-            TextStyle(
-              decoration: TextDecoration.underline, 
+        style: TextStyle(
+            decoration: TextDecoration.underline,
             color: Colors.blue,
             fontSize: 16),
       ),

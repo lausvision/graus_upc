@@ -34,6 +34,9 @@ dependencies:
   flappy_search_bar: ^1.4.1
   floating_search_bar: ^0.3.0
 
+  share: ^0.6.3+6
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
