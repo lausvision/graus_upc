@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FichaScreen extends StatefulWidget {
   String nom, descripcio, localitzacio, link, nota, objectiu, foto;
@@ -22,44 +21,50 @@ class _FichaScreenState extends State<FichaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          leading: BackButton(color: Colors.black),
-          title: Text("Sample"),
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          actions: <Widget>[
-            IconButton(
-                padding: const EdgeInsets.only(right: 35.0),
-                icon: Icon(Icons.favorite_border),
-                tooltip: 'Favorite',
-                color: Colors.black,
-                onPressed: () {}),
-            IconButton(
-                padding: const EdgeInsets.only(right: 20.0),
-                icon: Icon(Icons.share),
-                tooltip: 'Share',
-                color: Colors.black,
-                onPressed: () {
-                  final RenderBox box = context.findRenderObject();
-                  Share.share(nom + ' de la universitat ' + localitzacio + ' amb la nota de tall: '+ nota,
-                      subject: 'He trobat aquest grau per tu amb la app GrausUPC!',
-                      sharePositionOrigin:
-                          box.localToGlobal(Offset.zero) & box.size);
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        leading: BackButton(color: Colors.black),
+        title: Text("Sample"),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite_border),
+            tooltip: 'Favorite',
+            color: Colors.black,
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.share),
+            tooltip: 'Share',
+            color: Colors.black,
+            onPressed: () {
+              final RenderBox box = context.findRenderObject();
+              Share.share(
+                  nom +
+                      ' de la universitat ' +
+                      localitzacio +
+                      ' amb la nota de tall: ' +
+                      nota,
+                  subject: 'He trobat aquest grau per tu amb la app GrausUPC!',
+                  sharePositionOrigin:
+                      box.localToGlobal(Offset.zero) & box.size);
 
-                  // Share.share('', subject: 'He trobat aquest grau per tu *-*' );
-                }),
-          ],
-        ),
-        body: Stack(
-          alignment: AlignmentDirectional.topCenter,
-          children: <Widget>[
-            Foton(foto: foto),
-            NotaDeTall(nota: nota),
-            Titol(nom: nom, localitzacio: localitzacio),
-            TextGeneral(descripcio: descripcio, objectiu: objectiu, link: link),
-          ],
-        ));
+              // Share.share('', subject: 'He trobat aquest grau per tu *-*' );
+            },
+          ),
+        ],
+      ),
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        children: <Widget>[
+          Foton(foto: foto),
+          NotaDeTall(nota: nota),
+          Titol(nom: nom, localitzacio: localitzacio),
+          TextGeneral(descripcio: descripcio, objectiu: objectiu, link: link),
+        ],
+      ),
+    );
   }
 }
 
@@ -75,35 +80,36 @@ class NotaDeTall extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-          padding: const EdgeInsets.only(top: 180, left: 270),
-          child: Column(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 2,
-                  ),
-                ),
-                child: Text(
-                  nota,
-                  textAlign: TextAlign.end,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+        padding: const EdgeInsets.only(top: 180, left: 270),
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.black,
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2,
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
-                'Nota del tall',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                ),
-              )
-            ],
-          )),
+              child: Text(
+                nota,
+                textAlign: TextAlign.end,
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+            SizedBox(height: 5),
+            Text(
+              'Nota del tall',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
