@@ -27,11 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
         temp = [];
       });
     }
+    
     var capital = val.substring(0, 1).toUpperCase() + val.substring(1);
     if (result.length == 0 && val.length == 1) {
       Busqueda().nombre(val).then((QuerySnapshot docs) {
         for (int i = 0; i < docs.documents.length; i++) {
-          result.add(docs.documents[i].data);
+          temp.add(docs.documents[i].data);
+          result=temp;
         }
       });
     } else {
