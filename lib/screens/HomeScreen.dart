@@ -27,13 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
         temp = [];
       });
     }
-    
+
     var capital = val.substring(0, 1).toUpperCase() + val.substring(1);
     if (result.length == 0 && val.length == 1) {
       Busqueda().nombre(val).then((QuerySnapshot docs) {
         for (int i = 0; i < docs.documents.length; i++) {
           temp.add(docs.documents[i].data);
-          result=temp;
+          result = temp;
         }
       });
     } else {
@@ -98,39 +98,38 @@ class _HomeScreenState extends State<HomeScreen> {
           selectedItemColor: Colors.black,
           onTap: _onItemTapped,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 15,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: TextField(
-                  onChanged: (value) {
-                    initiateSearch(value);
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Search",
-                    suffixIcon: Icon(Icons.menu),
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextField(
+                    onChanged: (value) {
+                      initiateSearch(value);
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Search",
+                      suffixIcon: Icon(Icons.menu),
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(child: Llista()),
-              SizedBox(height: 10),
-              ListView(
-                  padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                  primary: false,
-                  shrinkWrap: true,
-                  children: temp.map((element) {
-                    return card(element);
-                  }).toList())
-            ],
+                Expanded(child: Llista()),
+                SizedBox(height: 10),
+                ListView(
+                    padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                    primary: false,
+                    shrinkWrap: true,
+                    children: temp.map((element) {
+                      return card(element);
+                    }).toList())
+              ],
+            ),
           ),
         ));
   }
