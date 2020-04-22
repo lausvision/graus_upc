@@ -1035,7 +1035,6 @@ class Grau {
   }
 
   factory Grau.fromJson(Map<String, dynamic> json) {
-    //double nota = double.parse(json['nota']);
     return new Grau(
       json['nom'] as String,
       json['branca'] as String,
@@ -1116,7 +1115,6 @@ class _DataState extends State<Data> {
                   color: Colors.blue[500],
                   onPressed: () {
                     List<Grau> graus = loadGraus();
-                    //graus.forEach((grau) => grau.toPrint());
                     db.generalGraus(graus);
                   }),
               Text(

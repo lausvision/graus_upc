@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-//import 'package:graus_upc/data/mostrallista.dart';
-import 'package:graus_upc/data/busqueda.dart';
-import 'package:graus_upc/data/mostrallista.dart';
+import 'package:graus_upc/data/llista.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
@@ -18,37 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController editingController = TextEditingController();
 
   String _searchString;
-
-  var result = [];
-  var temp = [];
-
-  initiateSearch(val) {
-    if (val.length == 0) {
-      setState(() {
-        result = [];
-        temp = [];
-      });
-    }
-
-    var capital = val.substring(0, 1).toUpperCase() + val.substring(1);
-    if (result.length == 0 && val.length == 1) {
-      Busqueda().nombre(val).then((QuerySnapshot docs) {
-        for (int i = 0; i < docs.documents.length; i++) {
-          temp.add(docs.documents[i].data);
-          result = temp;
-        }
-      });
-    } else {
-      temp = [];
-      result.forEach((element) {
-        if (element['nom'].startsWith(capital)) {
-          setState(() {
-            temp.add(element);
-          });
-        }
-      });
-    }
-  }
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -74,123 +41,60 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          selectedFontSize: 13,
-          unselectedLabelStyle: TextStyle(fontSize: 11, color: Colors.red),
-          unselectedIconTheme: IconThemeData(size: 12, color: Colors.grey[600]),
-          backgroundColor: Colors.white,
-          iconSize: 24,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              title: Text("CALENDAR"),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 13,
+        unselectedLabelStyle: TextStyle(fontSize: 11, color: Colors.red),
+        unselectedIconTheme: IconThemeData(size: 12, color: Colors.grey[600]),
+        backgroundColor: Colors.white,
+        iconSize: 24,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            title: Text("CALENDAR"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
-              title: Text("HOME"),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text("PROFILE"),
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.black,
-          onTap: _onItemTapped,
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: TextField(
-                    onChanged: (value) {
-                      // initiateSearch(value);
-                      setState(() {
-                        _searchString = value;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      hintText: "Search",
-                      suffixIcon: Icon(Icons.menu),
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      ),
+            title: Text("HOME"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text("PROFILE"),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        onTap: _onItemTapped,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _searchString = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Search",
+                    suffixIcon: Icon(Icons.menu),
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
                     ),
                   ),
                 ),
-                Expanded(child: Llista(_searchString)),
-                SizedBox(height: 10),
-                ListView(
-                    padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                    primary: false,
-                    shrinkWrap: true,
-                    children: temp.map((element) {
-                      return card(element);
-                    }).toList())
-              ],
-            ),
+              ),
+              Expanded(child: Llista(_searchString)),
+            ],
           ),
-        ));
-  }
-}
-
-Widget card(document) {
-  return Card(
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    document['nom'],
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black),
-                    child: Text(
-                      document['nota'].toString(),
-                      textAlign: TextAlign.end,
-                      style: TextStyle(fontSize: 16, color: Colors.white),
-                    ),
-                  ),
-                ]),
-            SizedBox(height: 10),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    document['loc'],
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    child: Text(
-                      document['branca'],
-                      textAlign: TextAlign.end,
-                      style: TextStyle(fontSize: 14),
-                      overflow: TextOverflow.fade,
-                    ),
-                  ),
-                ]),
-          ],
         ),
       ),
-    ),
-  );
+    );
+  }
 }
