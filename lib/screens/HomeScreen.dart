@@ -17,6 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 1;
   TextEditingController editingController = TextEditingController();
 
+  String _searchString;
+
   var result = [];
   var temp = [];
 
@@ -107,7 +109,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(5.0),
                   child: TextField(
                     onChanged: (value) {
-                      initiateSearch(value);
+                      // initiateSearch(value);
+                      setState(() {
+                        _searchString = value;
+                      });
                     },
                     decoration: InputDecoration(
                       hintText: "Search",
@@ -119,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                Expanded(child: Llista()),
+                Expanded(child: Llista(_searchString)),
                 SizedBox(height: 10),
                 ListView(
                     padding: EdgeInsets.only(left: 10.0, right: 10.0),

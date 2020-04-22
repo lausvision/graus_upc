@@ -348,7 +348,8 @@ loadfile() {
           "Donar a conèixer en profunditat, a més de les disciplines comunes a l'enginyeria industrial, les màquines elèctriques, les instal·lacions d'alta, de mitjana i de baixa tensió, la regulació i el control de dispositius elèctrics, l'electrònica per a aquest control, tant si és per a baixa com per a alta potència, centrals elèctriques, energies renovables, sistemes hidràulics i tèrmics i electrotècnia.",
       "ambit":
           "Empreses dedicades a l'elaboració de projectes tècnics, mesuraments, taxacions, valoracions, peritatges, estudis i informes en l'àmbit de l'enginyeria elèctrica, la consultoria i els serveis, la construcció i les obres públiques, la distribució d'aigua, gas i electricitat, la instal·lació i el manteniment electromecànic, la fabricació de maquinària elèctrica, electrònica i mecànica, els productes químics, els automòbils i accessoris, la siderometal·lúrgia, la matriceria i la caldereria, disseny i direcció d'obra d'instal·lacions domèstiques i industrials, gestió energètica i mediambiental, manteniment de qualsevol tipus d'indústries, producció d'una gran varietat de productes industrials i centrals elèctriques.",
-      "link": "http://universitats.gencat.cat/ca/detalls/oferta/1570-Enginyeria-Electrica",
+      "link":
+          "http://universitats.gencat.cat/ca/detalls/oferta/1570-Enginyeria-Electrica",
       "foto":
           "https://www.upc.edu/ca/media/la-upc/galeriaimatges-1/biblioteca-campus-baix-llobregat.jpg/@@images/image.jpeg"
     },
@@ -451,7 +452,8 @@ loadfile() {
           "Formar professionals amb uns coneixements profunds dels fonaments dels processos de transformació de matèria i energia, amb i sense reacció química, de la concepció, el càlcul, el disseny, la construcció i l'operació d'instal·lacions o equips en els quals la matèria experimenta un canvi d'estat, de contingut d'energia o de composició. Aportar a l'estudiantat els coneixements tècnics i les competències necessàries per organitzar, dissenyar i controlar la producció de plantes químiques, i per gestionar i desenvolupar plans de control de qualitat i de gestió mediambiental, propis de la indústria química i sectors relacionats, com el farmacèutic, biotecnològic, alimentari o mediambiental.",
       "ambit":
           "Indústria farmacèutica, paperera, petroquímica, alimentària, metal·lúrgica i energètica, laboratoris d'anàlisi química, d'assajos i de control de qualitat, empreses consultores i assessories.",
-      "link": "http://universitats.gencat.cat/ca/detalls/oferta/4091-Enginyeria-Quimica",
+      "link":
+          "http://universitats.gencat.cat/ca/detalls/oferta/4091-Enginyeria-Quimica",
       "foto":
           "https://www.upc.edu/ca/media/la-upc/galeriaimatges-1/biblioteca-campus-baix-llobregat.jpg/@@images/image.jpeg"
     },
@@ -955,7 +957,8 @@ loadfile() {
   return result;
 }
 
-class Graus {
+class Grau {
+  String id;
   String nom,
       branca,
       modalitat,
@@ -968,19 +971,34 @@ class Graus {
   double nota;
   List<double> notes;
 
-  Graus(
-      this.nom,
-      this.branca,
-      this.modalitat,
-      this.localitzacio,
-      this.loc,
-      this.objectius,
-      this.ambit,
-      this.link,
-      this.foto,
-      this.nota,
-      List<dynamic> notes) {
+  Grau(
+    this.nom,
+    this.branca,
+    this.modalitat,
+    this.localitzacio,
+    this.loc,
+    this.objectius,
+    this.ambit,
+    this.link,
+    this.foto,
+    this.nota,
+    List<dynamic> notes,
+  ) {
     this.notes = notes.cast<double>();
+  }
+
+  Grau.fromFirestore(DocumentSnapshot doc) {
+    this.id = doc.documentID;
+    this.nom = doc.data['nom'];
+    this.branca = doc.data['branca'];
+    this.modalitat = doc.data['modalitat'];
+    this.localitzacio = doc.data['localitzacio'];
+    this.loc = doc.data['loc'];
+    this.objectius = doc.data['objectius'];
+    this.ambit = doc.data['ambit'];
+    this.link = doc.data['link'];
+    this.foto = doc.data['foto'];
+    this.nota = doc.data['nota'];
   }
 
   toDocument() {
@@ -1016,9 +1034,9 @@ class Graus {
         'Notes: [${this.notes[0]},${this.notes[1]},${this.notes[2]},${this.notes[3]},${this.notes[4]}]');
   }
 
-  factory Graus.fromJson(Map<String, dynamic> json) {
+  factory Grau.fromJson(Map<String, dynamic> json) {
     //double nota = double.parse(json['nota']);
-    return new Graus(
+    return new Grau(
       json['nom'] as String,
       json['branca'] as String,
       json['modalitat'] as String,
@@ -1032,8 +1050,8 @@ class Graus {
       json['notes'] as List<dynamic>,
     );
   }
-  static Graus fromSnapshot(DocumentSnapshot snap) {
-    return new Graus(
+  static Grau fromSnapshot(DocumentSnapshot snap) {
+    return new Grau(
         snap['nom'] as String,
         snap['branca'] as String,
         snap['modalitat'] as String,
@@ -1050,9 +1068,9 @@ class Graus {
 
 loadGraus() {
   List jsonObjects = loadfile();
-  List<Graus> result = [];
+  List<Grau> result = [];
   for (var json in jsonObjects) {
-    result.add(new Graus.fromJson(json));
+    result.add(new Grau.fromJson(json));
   }
   return result;
 }
@@ -1060,7 +1078,7 @@ loadGraus() {
 class Firebase {
   final colGraus = Firestore.instance.collection('Graus');
 
-  Future<void> afegeixGrau(Graus item) async {
+  Future<void> afegeixGrau(Grau item) async {
     try {
       await colGraus.add(item.toDocument());
       print('Grau afegit');
@@ -1069,7 +1087,7 @@ class Firebase {
     }
   }
 
-  Future<void> generalGraus(List<Graus> items) async {
+  Future<void> generalGraus(List<Grau> items) async {
     items.forEach((item) => afegeixGrau(item));
   }
 }
@@ -1083,7 +1101,7 @@ class Data extends StatefulWidget {
 
 class _DataState extends State<Data> {
   var db = new Firebase();
-  List<Graus> graus = [];
+  List<Grau> graus = [];
 
   @override
   Widget build(BuildContext context) {
@@ -1097,7 +1115,7 @@ class _DataState extends State<Data> {
                   icon: Icon(Icons.add),
                   color: Colors.blue[500],
                   onPressed: () {
-                    List<Graus> graus = loadGraus();
+                    List<Grau> graus = loadGraus();
                     //graus.forEach((grau) => grau.toPrint());
                     db.generalGraus(graus);
                   }),

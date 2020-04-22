@@ -1,57 +1,58 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:floating_search_bar/floating_search_bar.dart';
+import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
+import 'package:graus_upc/data/llegeix.dart';
 
 class Llista extends StatefulWidget {
-  const Llista({
-    Key key,
-  }) : super(key: key);
+  final String searchString;
+  const Llista(this.searchString);
 
   @override
   _LlistaState createState() => _LlistaState();
 }
 
 class _LlistaState extends State<Llista> {
-
-
-    Future<List<DocumentSnapshot>> _onSearch(String value) =>
-    Firestore.instance
-      .collection('graus')
-      .orderBy('nom')
-      .startAt([value])
-      .endAt([value + '\uf8ff'])
-      .getDocuments()
-      .then((snapshot) {
-        for (var i = 0; i < snapshot.documents.length; i++) {
-          _product(context, snapshot.documents[i]);
-        }
-        
-       // return snapshot.documents;
-      });
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-          stream:
-              Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) return const Text('Loading...');
-            return ListView.builder(
-              itemExtent: 100,
-              itemCount: snapshot.data.documents.length,
-              itemBuilder: (context, index) =>
-                  _product(context, snapshot.data.documents[index]),
-            );
-          }),
+        stream:
+            Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return const Text('Loading...');
+
+          List<DocumentSnapshot> documents = snapshot.data.documents;
+          List<Grau> graus =
+              documents.map((doc) => Grau.fromFirestore(doc)).toList();
+
+          List<Grau> grausFiltrats = [];
+          if (widget.searchString == null) {
+            grausFiltrats = graus;
+          } else {
+            for (int i = 0; i < graus.length; i++) {
+              final String nomMinuscules = graus[i].nom.toLowerCase();
+              final String filtreMinuscules = widget.searchString.toLowerCase();
+              if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
+                grausFiltrats.add(graus[i]);
+              }
+              if (graus[i].branca.toLowerCase().indexOf(filtreMinuscules) != -1) {
+                grausFiltrats.add(graus[i]);
+              }
+            }
+          }
+
+          return ListView.builder(
+            itemExtent: 100,
+            itemCount: grausFiltrats.length,
+            itemBuilder: (context, index) =>
+                _product(context, grausFiltrats[index]),
+          );
+        },
+      ),
     );
   }
 
-  Widget _product(BuildContext context, DocumentSnapshot document) {
+  Widget _product(BuildContext context, Grau grau) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -64,7 +65,7 @@ class _LlistaState extends State<Llista> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      document['nom'],
+                      grau.nom,
                       style: TextStyle(fontSize: 16),
                     ),
                     Expanded(child: Container()),
@@ -74,7 +75,7 @@ class _LlistaState extends State<Llista> {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.black),
                       child: Text(
-                        document['nota'].toString(),
+                        grau.nota.toString(),
                         textAlign: TextAlign.end,
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
@@ -82,44 +83,45 @@ class _LlistaState extends State<Llista> {
                   ]),
               SizedBox(height: 10),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      document['loc'],
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    grau.loc,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Expanded(child: Container()),
+                  Container(
+                    child: Text(
+                      grau.branca,
+                      textAlign: TextAlign.end,
                       style: TextStyle(fontSize: 14),
+                      overflow: TextOverflow.fade,
                     ),
-                    Expanded(child: Container()),
-                    Container(
-                      child: Text(
-                        document['branca'],
-                        textAlign: TextAlign.end,
-                        style: TextStyle(fontSize: 14),
-                        overflow: TextOverflow.fade,
-                      ),
-                    ),
-                  ]),
+                  ),
+                ],
+              ),
             ],
           ),
-          onTap:(){
-                Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return FichaScreen(
-                  document['nom'],
-                  document['ambit'],
-                  document['loc'],
-                  document['link'],
-                  document['nota'].toString(),
-                  document['objectius'],
-                  document['foto']);
-              },
-            ),
-          );
-              } , 
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return FichaScreen(
+                    grau.nom,
+                    grau.ambit,
+                    grau.loc,
+                    grau.link,
+                    grau.nota.toString(),
+                    grau.objectius,
+                    grau.foto,
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
-      
     );
   }
 }
