@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graus_upc/data/llista.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
+import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -82,7 +83,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   decoration: InputDecoration(
                     hintText: "Search",
-                    suffixIcon: Icon(Icons.menu),
+                    suffixIcon: IconButton(
+                        icon: Icon(Icons.menu),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return Filtre();
+                              },
+                            ),
+                          );
+                        }),
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),

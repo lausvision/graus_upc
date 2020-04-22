@@ -45,14 +45,14 @@ class _LlistaState extends State<Llista> {
             itemExtent: 100,
             itemCount: grausFiltrats.length,
             itemBuilder: (context, index) =>
-                _product(context, grausFiltrats[index]),
+                _grau(context, grausFiltrats[index]),
           );
         },
       ),
     );
   }
 
-  Widget _product(BuildContext context, Grau grau) {
+  Widget _grau(BuildContext context, Grau grau) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
