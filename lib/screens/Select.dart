@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/Select.dart';
+import 'package:graus_upc/screens/FiltreScreen.dart';
+
 //import 'package:graus_upc/data/llegeix.dart';
 //import 'package:graus_upc/data/llista.dart';
 
-class Filtre extends StatefulWidget {
+class Select extends StatefulWidget {
   @override
-  _FiltreState createState() => _FiltreState();
+  _SelectState createState() => _SelectState();
 }
 
-class _FiltreState extends State<Filtre> {
+class _SelectState extends State<Select> {
   int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
@@ -76,15 +76,7 @@ class _FiltreState extends State<Filtre> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black38,
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return HomeScreen();
-                },
-              ),
-            );
-          },
+          onPressed: () => Navigator.pop(context, false),
         ),
       ),
       body: SafeArea(
@@ -93,18 +85,15 @@ class _FiltreState extends State<Filtre> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _filter(context, 'tecnologic'),
-                  _filter(context, '<10.0'),
-                ],
+              Text(
+                'Branca de coneixement',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _camp(context, 'Branca de coneixement'),
-              _camp(context, 'Modalitat'),
-              _camp(context, 'Localització'),
-              _camp(context, 'Nota de tall'),
+              _camp(context, 'Enginyeria i Arquitectura'),
+              _camp(context, 'Ciències'),
+              _camp(context, 'Ciències de la Salut'),
+              _camp(context, 'Arts i Humanitats'),
+              _camp(context, 'Ciències Socials i Jurídiques'),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -115,7 +104,7 @@ class _FiltreState extends State<Filtre> {
                       vertical: 8.0,
                     ),
                     child: Text(
-                      'FILTRAR',
+                      'Afegeix',
                       style:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
@@ -127,7 +116,7 @@ class _FiltreState extends State<Filtre> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return HomeScreen();
+                          return Filtre();
                         },
                       ),
                     );
@@ -142,83 +131,30 @@ class _FiltreState extends State<Filtre> {
   }
 
   Widget _camp(BuildContext context, String valor) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: InkWell(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            border: Border.all(
-              color: Colors.black,
-              width: 2,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black54,
-                offset: Offset(5, 5),
-                blurRadius: 5,
-              ),
-            ],
-          ),
-          child: Row(
+    return InkWell(
+      child: Column(
+        children: <Widget>[
+          Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                padding: EdgeInsets.only(left: 10.0),
                 child: Text(
                   valor,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 24, color: Colors.black54),
                 ),
               ),
-              IconButton(
-                icon: Icon(Icons.play_arrow),
-                iconSize: 30.0,
-                alignment: Alignment.centerRight,
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Select();
-                      },
-                    ),
-                  );
-                },
-              ),
+              Expanded(
+                child: Icon(
+                  Icons.fiber_manual_record,
+                  color: Colors.blue,
+                ),
+              )
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _filter(BuildContext context, String filtre) {
-    return InkWell(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(right: 5.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100), color: Colors.black),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(left: 15.0),
-                  child: Text(
-                    filtre,
-                    style: TextStyle(fontSize: 24, color: Colors.white70),
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.clear),
-                  color: Colors.white70,
-                  onPressed: () {},
-                ),
-              ],
-            ),
+          Divider(
+            color: Colors.black87,
+            thickness: 1.5,
           ),
         ],
       ),

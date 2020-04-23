@@ -13,10 +13,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   _HomeScreenState();
 
-  int _selectedIndex = 1;
   TextEditingController editingController = TextEditingController();
-
-  String _searchString;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -37,37 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  String _searchString;
   final db = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 13,
-        unselectedLabelStyle: TextStyle(fontSize: 11, color: Colors.red),
-        unselectedIconTheme: IconThemeData(size: 12, color: Colors.grey[600]),
-        backgroundColor: Colors.white,
-        iconSize: 24,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            title: Text("CALENDAR"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            title: Text("HOME"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text("PROFILE"),
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(5.0),
@@ -84,16 +57,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: InputDecoration(
                     hintText: "Search",
                     suffixIcon: IconButton(
-                        icon: Icon(Icons.menu),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return Filtre();
-                              },
-                            ),
-                          );
-                        }),
+                      icon: Icon(Icons.menu),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Filtre();
+                            },
+                          ),
+                        );
+                      },
+                    ),
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -106,6 +80,36 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: _menu(context),
+    );
+  }
+
+  Widget _menu(BuildContext context) {
+    return BottomNavigationBar(
+      selectedFontSize: 13,
+      unselectedLabelStyle: TextStyle(fontSize: 11, color: Colors.red),
+      unselectedIconTheme: IconThemeData(size: 12, color: Colors.grey[600]),
+      backgroundColor: Colors.white,
+      iconSize: 24,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.calendar_today),
+          title: Text("CALENDAR"),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+          ),
+          title: Text("HOME"),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          title: Text("PROFILE"),
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: Colors.black,
+      onTap: _onItemTapped,
     );
   }
 }

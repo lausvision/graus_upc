@@ -61,7 +61,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
-      
       body: LoginPage(),
     );
   }
