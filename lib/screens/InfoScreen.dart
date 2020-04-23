@@ -113,7 +113,7 @@ class _InfoScreenState extends State<InfoScreen> {
                     margin: const EdgeInsets.all(4.0),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: Colors.deepOrange[100], //Theme.of(context).primaryColor,
+                        color: Colors.cyan[200], //Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10.0)),
                     child: Text(
                       date.day.toString(),
