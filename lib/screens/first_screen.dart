@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:graus_upc/screens/EditProfileScreen.dart';
-import 'package:graus_upc/screens/login_page.dart';
+import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/sign_in.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
+
 
 class FirstScreen extends StatefulWidget {
   @override
@@ -154,7 +153,7 @@ class LogOutClass extends StatelessWidget {
                 signOutGoogle();
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) {
-                  return LoginPage();
+                  return ProfileScreen();
                 }), ModalRoute.withName('/'));
               },
             ),
