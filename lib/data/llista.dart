@@ -63,6 +63,7 @@ class _LlistaState extends State<Llista> {
                 children: <Widget>[
                   Text(
                     grau.nom,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 16),
                   ),
                   Expanded(child: Container()),

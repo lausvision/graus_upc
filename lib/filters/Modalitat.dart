@@ -4,6 +4,8 @@ import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Modalitat extends StatefulWidget {
+  final String modalitat;
+  Modalitat(this.modalitat);
   @override
   _ModalitatState createState() => _ModalitatState();
 }

@@ -4,6 +4,8 @@ import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Nota extends StatefulWidget {
+  final String nota;
+  Nota(this.nota);
   @override
   _NotaState createState() => _NotaState();
 }

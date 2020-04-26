@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Branca extends StatefulWidget {
   final String camp;
-  const Branca(this.camp);
+  Branca(this.camp);
 
   @override
   _BrancaState createState() => _BrancaState();
@@ -13,7 +12,6 @@ class Branca extends StatefulWidget {
 
 class _BrancaState extends State<Branca> {
   int _selectedIndex = 1;
-  String camp = 'Enginyeria i Arquitectura';
   List<String> branca = [
     'Enginyeria i Arquitectura',
     'Ciències',
@@ -21,6 +19,14 @@ class _BrancaState extends State<Branca> {
     'Arts i Humanitats',
     'Ciències Socials i Jurídiques'
   ];
+
+  TextEditingController _controller;
+
+  @override
+  void initState() {
+    _controller = TextEditingController(text: widget.camp);
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -121,13 +127,7 @@ class _BrancaState extends State<Branca> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Filtre();
-                        },
-                      ),
-                    );
+                    Navigator.of(context).pop(_controller.text);
                   },
                 ),
               ),
@@ -210,11 +210,9 @@ class _BrancaState extends State<Branca> {
         ],
       ),
       onTap: () {
-        _campfora(context, camp);
-        print(camp);
-        camp = valor;
-        _campbo(context, camp);
-        print(camp);
+        _campfora(context, widget.camp);
+        print(widget.camp);
+        _campbo(context, valor);
       },
     );
   }

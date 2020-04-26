@@ -4,7 +4,7 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FichaScreen extends StatefulWidget {
-  String nom, descripcio, localitzacio, link, nota, objectiu, foto;
+  final String nom, descripcio, localitzacio, link, nota, objectiu, foto;
   FichaScreen(this.nom, this.descripcio, this.localitzacio, this.link,
       this.nota, this.objectiu, this.foto);
 

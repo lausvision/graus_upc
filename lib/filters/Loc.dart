@@ -4,6 +4,8 @@ import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Loc extends StatefulWidget {
+  final String loc;
+  Loc(this.loc);
   @override
   _LocState createState() => _LocState();
 }

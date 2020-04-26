@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:graus_upc/data/llegeix.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
@@ -16,7 +14,8 @@ class Filtre extends StatefulWidget {
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
-  String camp = 'Enginyeria i Arquitectura';
+  List<String> filtres = ['tecnologia', '<10'];
+  String camp,modalitat,loc,nota;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -101,8 +100,8 @@ class _FiltreState extends State<Filtre> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _filter(context, 'tecnologic'),
-                  _filter(context, '<10.0'),
+                  _filter(context, filtres[0]),
+                  _filter(context, filtres[1]),
                 ],
               ),
               _camp(context, 'Branca de coneixement'),
@@ -192,35 +191,32 @@ class _FiltreState extends State<Filtre> {
         ),
         onTap: () {
           if (valor == 'Branca de coneixement') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return Branca(camp);
-                },
-              ),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => Branca(camp),
+            ))
+                .then((result) {
+              setState(() {
+                camp = result;
+                filtres.add(result);
+              });
+            });
           } else if (valor == 'Modalitat') {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) {
-                  return Modalitat();
-                },
+               builder: (context) => Modalitat(modalitat),
               ),
             );
           } else if (valor == 'Localització') {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) {
-                  return Loc();
-                },
+              builder: (context) => Loc(loc),
               ),
             );
           } else if (valor == 'Nota de tall') {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) {
-                  return Nota();
-                },
+                builder: (context) => Nota(nota),
               ),
             );
           }
@@ -252,7 +248,9 @@ class _FiltreState extends State<Filtre> {
                 IconButton(
                   icon: Icon(Icons.clear),
                   color: Colors.white70,
-                  onPressed: () {},
+                  onPressed: () {
+                    filtres.remove(filtre);
+                  },
                 ),
               ],
             ),
@@ -261,40 +259,4 @@ class _FiltreState extends State<Filtre> {
       ),
     );
   }
-/*
-  Widget filtrat(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder(
-        stream:
-            Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) return const Text('Loading...');
-
-          List<DocumentSnapshot> documents = snapshot.data.documents;
-          List<Grau> graus =
-              documents.map((doc) => Grau.fromFirestore(doc)).toList();
-
-          List<Grau> grausFiltrats = [];
-
-          for (int i = 0; i < graus.length; i++) {
-            final String nomMinuscules = graus[i].nom.toLowerCase();
-            final String filtreMinuscules = widget.searchString.toLowerCase();
-            if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
-              grausFiltrats.add(graus[i]);
-            }
-            if (graus[i].branca.toLowerCase().indexOf(filtreMinuscules) != -1) {
-              grausFiltrats.add(graus[i]);
-            }
-          }
-
-          return ListView.builder(
-            itemExtent: 100,
-            itemCount: grausFiltrats.length,
-            itemBuilder: (context, index) =>
-                _grau(context, grausFiltrats[index]),
-          );
-        },
-      ),
-    );
-  }*/
 }
