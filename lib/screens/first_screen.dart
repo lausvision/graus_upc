@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/models/createUserCollection.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/sign_in.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
-
 
 class FirstScreen extends StatefulWidget {
   @override
@@ -78,16 +78,34 @@ class _FirstScreenState extends State<FirstScreen> {
             ),
             FotoPerfil(),
             Padding(
-                padding: const EdgeInsets.only(top: 150.0, left: 180),
+              padding: const EdgeInsets.only(top: 150.0, left: 180),
+              child: Text(
+                name,
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top:250,left: 25),
+              child: FlatButton(
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0)),
+                color: Colors.black,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                splashColor: Colors.blueAccent,
+                onPressed: () {
+                  createUserCollection(uid);
+                },
                 child: Text(
-                  name,
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                  "Llistat de Preferits",
+                  style: TextStyle(fontSize: 20.0),
                 ),
               ),
-           
+            )
           ],
         ));
   }

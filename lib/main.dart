@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:graus_upc/screens/AwaitScreen.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
-//import 'package:graus_upc/screens/versio.dart';
+
 
 void main() => runApp(MyApp());
 
