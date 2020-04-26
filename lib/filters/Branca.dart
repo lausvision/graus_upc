@@ -4,12 +4,23 @@ import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Branca extends StatefulWidget {
+  final String camp;
+  const Branca(this.camp);
+
   @override
   _BrancaState createState() => _BrancaState();
 }
 
 class _BrancaState extends State<Branca> {
   int _selectedIndex = 1;
+  String camp = 'Enginyeria i Arquitectura';
+  List<String> branca = [
+    'Enginyeria i Arquitectura',
+    'Ciències',
+    'Ciències de la Salut',
+    'Arts i Humanitats',
+    'Ciències Socials i Jurídiques'
+  ];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -86,11 +97,11 @@ class _BrancaState extends State<Branca> {
                 'Branca de coneixement',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _campfora(context, 'Enginyeria i Arquitectura'),
-              _campbo(context, 'Ciències'),
-              _campfora(context, 'Ciències de la Salut'),
-              _campfora(context, 'Arts i Humanitats'),
-              _campfora(context, 'Ciències Socials i Jurídiques'),
+              _campbo(context, branca[0]),
+              _campfora(context, branca[1]),
+              _campfora(context, branca[2]),
+              _campfora(context, branca[3]),
+              _campfora(context, branca[4]),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -142,9 +153,15 @@ class _BrancaState extends State<Branca> {
                 ),
               ),
               Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.blue,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.fiber_manual_record,
+                      color: Colors.blue[300],
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -173,9 +190,15 @@ class _BrancaState extends State<Branca> {
                 ),
               ),
               Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.transparent,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.fiber_manual_record,
+                      color: Colors.transparent,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -186,6 +209,13 @@ class _BrancaState extends State<Branca> {
           ),
         ],
       ),
+      onTap: () {
+        _campfora(context, camp);
+        print(camp);
+        camp = valor;
+        _campbo(context, camp);
+        print(camp);
+      },
     );
   }
 }

@@ -10,6 +10,8 @@ class Nota extends StatefulWidget {
 
 class _NotaState extends State<Nota> {
   int _selectedIndex = 1;
+  String nota = '5';
+  String operador = '=';
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -86,11 +88,7 @@ class _NotaState extends State<Nota> {
                 'Nota de tall',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _campfora(context, 'Enginyeria i Arquitectura'),
-              _campbo(context, 'Ciències'),
-              _campfora(context, 'Ciències de la Salut'),
-              _campfora(context, 'Arts i Humanitats'),
-              _campfora(context, 'Ciències Socials i Jurídiques'),
+              _camp(context),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -127,65 +125,95 @@ class _NotaState extends State<Nota> {
     );
   }
 
-  Widget _campbo(BuildContext context, String valor) {
+  Widget _camp(BuildContext context) {
     return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
+      child: Padding(
+        padding: const EdgeInsets.all(40.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2,
                 ),
               ),
-              Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.blue,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  popup(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Text(
+                      operador,
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 15.0),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        nota = value;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Escriu un valor",
+                    ),
+                  ),
                 ),
               ),
-            ],
-          ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _campfora(BuildContext context, String valor) {
-    return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
-                ),
-              ),
-              Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.transparent,
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
+  Widget popup() {
+    return PopupMenuButton<String>(
+      icon: Icon(
+        Icons.arrow_drop_down,
+        size: 50.0,
       ),
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+        PopupMenuItem<String>(
+            value: "<",
+            child: Text(
+              "<",
+              style: TextStyle(fontSize: 30),
+            )),
+        PopupMenuItem<String>(
+            value: "=",
+            child: Text(
+              "=",
+              style: TextStyle(fontSize: 30),
+            )),
+        PopupMenuItem<String>(
+            value: ">",
+            child: Text(
+              ">",
+              style: TextStyle(fontSize: 30),
+            )),
+      ],
     );
   }
 }

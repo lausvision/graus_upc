@@ -10,6 +10,7 @@ class Loc extends StatefulWidget {
 
 class _LocState extends State<Loc> {
   int _selectedIndex = 1;
+  String valor;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -86,11 +87,7 @@ class _LocState extends State<Loc> {
                 'Localització',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _campfora(context, 'Enginyeria i Arquitectura'),
-              _campbo(context, 'Ciències'),
-              _campfora(context, 'Ciències de la Salut'),
-              _campfora(context, 'Arts i Humanitats'),
-              _campfora(context, 'Ciències Socials i Jurídiques'),
+              _camp(context),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -127,64 +124,22 @@ class _LocState extends State<Loc> {
     );
   }
 
-  Widget _campbo(BuildContext context, String valor) {
-    return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
-                ),
-              ),
-              Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.blue,
-                ),
-              ),
-            ],
+  Widget _camp(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 10.0),
+      child: TextField(
+        onChanged: (value) {
+          setState(() {
+            valor = value;
+          });
+        },
+        decoration: InputDecoration(
+          hintText: "Search",
+          prefixIcon: Icon(Icons.search),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
           ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _campfora(BuildContext context, String valor) {
-    return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
-                ),
-              ),
-              Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.transparent,
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
+        ),
       ),
     );
   }

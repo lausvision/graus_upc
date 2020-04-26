@@ -10,6 +10,8 @@ class Modalitat extends StatefulWidget {
 
 class _ModalitatState extends State<Modalitat> {
   int _selectedIndex = 1;
+  String camp = 'Presecial';
+  List<String> branca = ['Presencial', 'No presencial'];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -86,11 +88,8 @@ class _ModalitatState extends State<Modalitat> {
                 'Modalitat',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _campfora(context, 'Enginyeria i Arquitectura'),
-              _campbo(context, 'Ciències'),
-              _campfora(context, 'Ciències de la Salut'),
-              _campfora(context, 'Arts i Humanitats'),
-              _campfora(context, 'Ciències Socials i Jurídiques'),
+              _campbo(context, branca[0]),
+              _campfora(context, branca[1]),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -142,9 +141,15 @@ class _ModalitatState extends State<Modalitat> {
                 ),
               ),
               Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.blue,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.fiber_manual_record,
+                      color: Colors.blue[300],
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -173,9 +178,15 @@ class _ModalitatState extends State<Modalitat> {
                 ),
               ),
               Expanded(
-                child: Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.transparent,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.fiber_manual_record,
+                      color: Colors.transparent,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -186,6 +197,9 @@ class _ModalitatState extends State<Modalitat> {
           ),
         ],
       ),
+      onTap: () {
+        camp = valor;
+      },
     );
   }
 }

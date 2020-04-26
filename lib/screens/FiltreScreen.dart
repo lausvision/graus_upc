@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:graus_upc/data/llegeix.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
@@ -7,7 +9,6 @@ import 'package:graus_upc/filters/Modalitat.dart';
 import 'package:graus_upc/filters/Loc.dart';
 import 'package:graus_upc/filters/Nota.dart';
 
-
 class Filtre extends StatefulWidget {
   @override
   _FiltreState createState() => _FiltreState();
@@ -15,6 +16,7 @@ class Filtre extends StatefulWidget {
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
+  String camp = 'Enginyeria i Arquitectura';
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -167,55 +169,62 @@ class _FiltreState extends State<Filtre> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Text(
                   valor,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
-              IconButton(
-                icon: Icon(Icons.play_arrow),
-                iconSize: 30.0,
-                alignment: Alignment.centerRight,
-                onPressed: () {
-                  if (valor == 'Branca de coneixement') {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Branca();
-                        },
-                      ),
-                    );
-                  } else if (valor == 'Modalitat') {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Modalitat();
-                        },
-                      ),
-                    );
-                  } else if (valor == 'Localització') {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Loc();
-                        },
-                      ),
-                    );
-                  } else if (valor == 'Nota de tall') {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Nota();
-                        },
-                      ),
-                    );
-                  }
-                },
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(right: 5.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.play_arrow,
+                      size: 40.0,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
         ),
+        onTap: () {
+          if (valor == 'Branca de coneixement') {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return Branca(camp);
+                },
+              ),
+            );
+          } else if (valor == 'Modalitat') {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return Modalitat();
+                },
+              ),
+            );
+          } else if (valor == 'Localització') {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return Loc();
+                },
+              ),
+            );
+          } else if (valor == 'Nota de tall') {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return Nota();
+                },
+              ),
+            );
+          }
+        },
       ),
     );
   }
@@ -252,4 +261,40 @@ class _FiltreState extends State<Filtre> {
       ),
     );
   }
+/*
+  Widget filtrat(BuildContext context) {
+    return Scaffold(
+      body: StreamBuilder(
+        stream:
+            Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return const Text('Loading...');
+
+          List<DocumentSnapshot> documents = snapshot.data.documents;
+          List<Grau> graus =
+              documents.map((doc) => Grau.fromFirestore(doc)).toList();
+
+          List<Grau> grausFiltrats = [];
+
+          for (int i = 0; i < graus.length; i++) {
+            final String nomMinuscules = graus[i].nom.toLowerCase();
+            final String filtreMinuscules = widget.searchString.toLowerCase();
+            if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
+              grausFiltrats.add(graus[i]);
+            }
+            if (graus[i].branca.toLowerCase().indexOf(filtreMinuscules) != -1) {
+              grausFiltrats.add(graus[i]);
+            }
+          }
+
+          return ListView.builder(
+            itemExtent: 100,
+            itemCount: grausFiltrats.length,
+            itemBuilder: (context, index) =>
+                _grau(context, grausFiltrats[index]),
+          );
+        },
+      ),
+    );
+  }*/
 }

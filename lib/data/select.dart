@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
 import 'package:graus_upc/data/llegeix.dart';
 
-class Llista extends StatefulWidget {
-  final String searchString;
-  const Llista(this.searchString);
+class Select extends StatefulWidget {
+  final String camp;
+  const Select(this.camp);
 
   @override
-  _LlistaState createState() => _LlistaState();
+  _SelectState createState() => _SelectState();
 }
 
-class _LlistaState extends State<Llista> {
+class _SelectState extends State<Select> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,15 +26,27 @@ class _LlistaState extends State<Llista> {
               documents.map((doc) => Grau.fromFirestore(doc)).toList();
 
           List<Grau> grausFiltrats = [];
-          if (widget.searchString == null) {
-            grausFiltrats = graus;
-          } else {
-            for (int i = 0; i < graus.length; i++) {
-              final String nomMinuscules = graus[i].nom.toLowerCase();
-              final String filtreMinuscules = widget.searchString.toLowerCase();
-              if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
-                grausFiltrats.add(graus[i]);
-              }
+
+          for (int i = 0; i < graus.length; i++) {
+            final String filtreMinuscules = widget.camp.toLowerCase();
+            if (graus[i].branca.toLowerCase().indexOf(filtreMinuscules) != -1) {
+              grausFiltrats.add(graus[i]);
+            } else if (graus[i]
+                    .modalitat
+                    .toLowerCase()
+                    .indexOf(filtreMinuscules) !=
+                -1) {
+              grausFiltrats.add(graus[i]);
+            } else if (graus[i].loc.toLowerCase().indexOf(filtreMinuscules) !=
+                -1) {
+              grausFiltrats.add(graus[i]);
+            } else if (graus[i]
+                    .nota
+                    .toString()
+                    .toLowerCase()
+                    .indexOf(filtreMinuscules) !=
+                -1) {
+              grausFiltrats.add(graus[i]);
             }
           }
 
