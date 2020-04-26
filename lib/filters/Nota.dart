@@ -177,6 +177,7 @@ class _NotaState extends State<Nota> {
                         nota = value;
                       });
                     },
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: "Escriu un valor",
                     ),
