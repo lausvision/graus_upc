@@ -15,7 +15,7 @@ class Filtre extends StatefulWidget {
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
   List<String> filtres = ['tecnologia', '<10'];
-  String camp,modalitat,loc,nota;
+  String camp, modalitat, loc, nota;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -196,21 +196,23 @@ class _FiltreState extends State<Filtre> {
               builder: (context) => Branca(camp),
             ))
                 .then((result) {
-              setState(() {
-                camp = result;
-                filtres.add(result);
-              });
+              if (result != null) {
+                setState(() {
+                  camp = result;
+                  filtres.add(result);
+                });
+              }
             });
           } else if (valor == 'Modalitat') {
             Navigator.of(context).push(
               MaterialPageRoute(
-               builder: (context) => Modalitat(modalitat),
+                builder: (context) => Modalitat(modalitat),
               ),
             );
           } else if (valor == 'Localització') {
             Navigator.of(context).push(
               MaterialPageRoute(
-              builder: (context) => Loc(loc),
+                builder: (context) => Loc(loc),
               ),
             );
           } else if (valor == 'Nota de tall') {
