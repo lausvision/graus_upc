@@ -15,6 +15,7 @@ class _LlistaState extends State<Llista> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: true,
       body: StreamBuilder(
         stream:
             Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
@@ -61,10 +62,14 @@ class _LlistaState extends State<Llista> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    grau.nom,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 16),
+                  Container(
+                    constraints: BoxConstraints(minWidth: 100, maxWidth: 270),
+                    child: Text(
+                      grau.nom,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 17),
+                      maxLines: 1,
+                    ),
                   ),
                   Expanded(child: Container()),
                   Container(
@@ -74,6 +79,7 @@ class _LlistaState extends State<Llista> {
                         color: Colors.black),
                     child: Text(
                       grau.nota.toString(),
+                      
                       textAlign: TextAlign.end,
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
