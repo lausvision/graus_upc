@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/Select.dart';
-//import 'package:graus_upc/data/llegeix.dart';
-//import 'package:graus_upc/data/llista.dart';
+import 'package:graus_upc/filters/Branca.dart';
+import 'package:graus_upc/filters/Modalitat.dart';
+import 'package:graus_upc/filters/Loc.dart';
+import 'package:graus_upc/filters/Nota.dart';
+
 
 class Filtre extends StatefulWidget {
   @override
@@ -176,13 +178,39 @@ class _FiltreState extends State<Filtre> {
                 iconSize: 30.0,
                 alignment: Alignment.centerRight,
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Select();
-                      },
-                    ),
-                  );
+                  if (valor == 'Branca de coneixement') {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Branca();
+                        },
+                      ),
+                    );
+                  } else if (valor == 'Modalitat') {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Modalitat();
+                        },
+                      ),
+                    );
+                  } else if (valor == 'Localització') {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Loc();
+                        },
+                      ),
+                    );
+                  } else if (valor == 'Nota de tall') {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Nota();
+                        },
+                      ),
+                    );
+                  }
                 },
               ),
             ],

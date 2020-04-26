@@ -3,15 +3,12 @@ import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/FiltreScreen.dart';
 
-//import 'package:graus_upc/data/llegeix.dart';
-//import 'package:graus_upc/data/llista.dart';
-
-class Select extends StatefulWidget {
+class Loc extends StatefulWidget {
   @override
-  _SelectState createState() => _SelectState();
+  _LocState createState() => _LocState();
 }
 
-class _SelectState extends State<Select> {
+class _LocState extends State<Loc> {
   int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
@@ -86,14 +83,14 @@ class _SelectState extends State<Select> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Text(
-                'Branca de coneixement',
+                'Localització',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _camp(context, 'Enginyeria i Arquitectura'),
-              _camp(context, 'Ciències'),
-              _camp(context, 'Ciències de la Salut'),
-              _camp(context, 'Arts i Humanitats'),
-              _camp(context, 'Ciències Socials i Jurídiques'),
+              _campfora(context, 'Enginyeria i Arquitectura'),
+              _campbo(context, 'Ciències'),
+              _campfora(context, 'Ciències de la Salut'),
+              _campfora(context, 'Arts i Humanitats'),
+              _campfora(context, 'Ciències Socials i Jurídiques'),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -130,7 +127,7 @@ class _SelectState extends State<Select> {
     );
   }
 
-  Widget _camp(BuildContext context, String valor) {
+  Widget _campbo(BuildContext context, String valor) {
     return InkWell(
       child: Column(
         children: <Widget>[
@@ -149,7 +146,38 @@ class _SelectState extends State<Select> {
                   Icons.fiber_manual_record,
                   color: Colors.blue,
                 ),
-              )
+              ),
+            ],
+          ),
+          Divider(
+            color: Colors.black87,
+            thickness: 1.5,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _campfora(BuildContext context, String valor) {
+    return InkWell(
+      child: Column(
+        children: <Widget>[
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: Text(
+                  valor,
+                  style: TextStyle(fontSize: 24, color: Colors.black54),
+                ),
+              ),
+              Expanded(
+                child: Icon(
+                  Icons.fiber_manual_record,
+                  color: Colors.transparent,
+                ),
+              ),
             ],
           ),
           Divider(
