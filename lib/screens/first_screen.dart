@@ -98,7 +98,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.blueAccent,
                 onPressed: () {
-                  createUserCollection(uid);
+                  createRecord();
                 },
                 child: Text(
                   "Llistat de Preferits",
@@ -143,7 +143,7 @@ class WallpaperFoto extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/marble.png"), // <-- BACKGROUND IMAGE
+          image: AssetImage("assets/marble_op.png"), // <-- BACKGROUND IMAGE
           fit: BoxFit.cover,
         ),
       ),

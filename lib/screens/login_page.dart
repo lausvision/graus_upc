@@ -16,11 +16,11 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [Colors.cyan[200], Colors.white])
-              ),
+          image: DecorationImage(
+            image: AssetImage("assets/marble_op.png"), // <-- BACKGROUND IMAGE
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _signInButton() {
     return OutlineButton(
-      splashColor: Colors.grey,
+      splashColor: Colors.grey[50],
       onPressed: () {
         signInWithGoogle().whenComplete(() {
           Navigator.of(context).push(
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
+      borderSide: BorderSide(color: Colors.black,width: 2),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Sign in with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.grey,
+                  color: Colors.black,
                 ),
               ),
             )
