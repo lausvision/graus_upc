@@ -12,6 +12,24 @@ class Llista extends StatefulWidget {
 }
 
 class _LlistaState extends State<Llista> {
+
+  filtraLlista(List<Grau> llistaOriginal) {
+    // TODO: Aplicar totes les condicions del filtre.
+    List<Grau> llistaFiltrada = [];
+    if (widget.searchString == null) {
+      llistaFiltrada = llistaOriginal;
+    } else {
+      for (int i = 0; i < llistaOriginal.length; i++) {
+        final String nomMinuscules = llistaOriginal[i].nom.toLowerCase();
+        final String filtreMinuscules = widget.searchString.toLowerCase();
+        if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
+          llistaFiltrada.add(llistaOriginal[i]);
+        }
+      }
+    }
+    return llistaFiltrada;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,18 +44,7 @@ class _LlistaState extends State<Llista> {
           List<Grau> graus =
               documents.map((doc) => Grau.fromFirestore(doc)).toList();
 
-          List<Grau> grausFiltrats = [];
-          if (widget.searchString == null) {
-            grausFiltrats = graus;
-          } else {
-            for (int i = 0; i < graus.length; i++) {
-              final String nomMinuscules = graus[i].nom.toLowerCase();
-              final String filtreMinuscules = widget.searchString.toLowerCase();
-              if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
-                grausFiltrats.add(graus[i]);
-              }
-            }
-          }
+          List<Grau> grausFiltrats = filtraLlista(graus);
 
           return ListView.builder(
             itemExtent: 100,
