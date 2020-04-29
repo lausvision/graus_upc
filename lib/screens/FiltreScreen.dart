@@ -127,13 +127,7 @@ class _FiltreState extends State<Filtre> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return HomeScreen();
-                        },
-                      ),
-                    );
+                    Navigator.of(context).pop(/* TODO: Retornar el filtre */);
                   },
                 ),
               ),
