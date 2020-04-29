@@ -14,6 +14,8 @@ class FichaScreen extends StatefulWidget {
 }
 
 class _FichaScreenState extends State<FichaScreen> {
+  bool favourite = false;
+
   String nom, descripcio, localitzacio, link, nota, objectiu, foto;
   _FichaScreenState(this.nom, this.descripcio, this.localitzacio, this.link,
       this.nota, this.objectiu, this.foto);
@@ -29,10 +31,15 @@ class _FichaScreenState extends State<FichaScreen> {
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(favourite ? Icons.favorite : Icons.favorite_border),
             tooltip: 'Favorite',
-            color: Colors.black,
-            onPressed: () {},
+            color: (favourite ? Colors.red : Colors.black),
+            onPressed: () {
+              // TODO: Usar provider para saber si estamos loggeados
+              setState(() {
+                favourite = !favourite;
+              });
+            },
           ),
           IconButton(
             icon: Icon(Icons.share),
