@@ -11,7 +11,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  _HomeScreenState();
+
+  // TODO: Fer una classe simple que agrupi tota la informació de filtrat
+  // TODO: Afegir estat per saber la informació del filtre (branca, ...)
+
 
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
@@ -65,7 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               return Filtre();
                             },
                           ),
-                        );
+                        ).then((filtre) => {
+                          // TODO: Rebre el filtre de la pantalla Filtre
+                          // fer setState amb això
+                        });
                       },
                     ),
                     prefixIcon: Icon(Icons.search),
