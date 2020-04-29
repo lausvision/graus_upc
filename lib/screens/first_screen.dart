@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/createUserCollection.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/sign_in.dart';
-import 'package:graus_upc/screens/HomeScreen.dart';
 
 class FirstScreen extends StatefulWidget {
   @override
@@ -98,7 +97,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.blueAccent,
                 onPressed: () {
-                  createRecord();
+                  // createRecord();
                 },
                 child: Text(
                   "Llistat de Preferits",
