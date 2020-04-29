@@ -103,7 +103,7 @@ class _BrancaState extends State<Branca> {
                 'Branca de coneixement',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _campbo(context, branca[0]),
+              _camp(context, branca[0], true),
               _campfora(context, branca[1]),
               _campfora(context, branca[2]),
               _campfora(context, branca[3]),
@@ -138,40 +138,42 @@ class _BrancaState extends State<Branca> {
     );
   }
 
-  Widget _campbo(BuildContext context, String valor) {
+  Widget _camp(BuildContext context, String valor, bool actiu) {
     return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.fiber_manual_record,
-                      color: Colors.blue[300],
-                    ),
-                  ),
-                ),
-              ),
-            ],
+      child: Container(
+        padding: EdgeInsets.only(bottom: 8.0),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Colors.black,
+              width: 1,
+            ),
           ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Text(
+                valor,
+                style: TextStyle(fontSize: 24, color: Colors.black54),
+              ),
+            ),
+            if (actiu) 
+              Icon(
+               Icons.fiber_manual_record,
+               color: Colors.blue[300],
+              ),
+          ],
+        ),
       ),
+      onTap: () {
+        _campfora(context, widget.camp);
+        print(widget.camp);
+        _camp(context, valor, false);
+      },
     );
   }
 
@@ -209,11 +211,7 @@ class _BrancaState extends State<Branca> {
           ),
         ],
       ),
-      onTap: () {
-        _campfora(context, widget.camp);
-        print(widget.camp);
-        _campbo(context, valor);
-      },
+      
     );
   }
 }
