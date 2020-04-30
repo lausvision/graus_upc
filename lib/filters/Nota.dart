@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Nota extends StatefulWidget {
-  final String nota;
-  Nota(this.nota);
+  final Filtrar filtre;
+  Nota(this.filtre);
   @override
   _NotaState createState() => _NotaState();
 }
@@ -110,13 +110,7 @@ class _NotaState extends State<Nota> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Filtre();
-                        },
-                      ),
-                    );
+                    Navigator.of(context).pop();
                   },
                 ),
               ),

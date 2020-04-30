@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Loc extends StatefulWidget {
-  final String loc;
-  Loc(this.loc);
+  final Filtrar filtre;
+  Loc(this.filtre);
   @override
   _LocState createState() => _LocState();
 }
@@ -109,13 +109,7 @@ class _LocState extends State<Loc> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Filtre();
-                        },
-                      ),
-                    );
+                    Navigator.of(context).pop();
                   },
                 ),
               ),

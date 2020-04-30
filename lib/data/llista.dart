@@ -12,9 +12,8 @@ class Llista extends StatefulWidget {
 }
 
 class _LlistaState extends State<Llista> {
-
   filtraLlista(List<Grau> llistaOriginal) {
-    // TODO: Aplicar totes les condicions del filtre.
+    // Aplicar totes les condicions del filtre.
     List<Grau> llistaFiltrada = [];
     if (widget.searchString == null) {
       llistaFiltrada = llistaOriginal;
@@ -79,18 +78,18 @@ class _LlistaState extends State<Llista> {
                     ),
                   ),
                   Expanded(child: Container()),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black),
-                    child: Text(
-                      grau.nota.toString(),
-                      
-                      textAlign: TextAlign.end,
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                  if (grau.nota != null)
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black),
+                      child: Text(
+                        grau.nota.toString(),
+                        textAlign: TextAlign.end,
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
                     ),
-                  ),
                 ],
               ),
               SizedBox(height: 10),

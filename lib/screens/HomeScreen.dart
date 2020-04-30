@@ -11,10 +11,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  // TODO: Fer una classe simple que agrupi tota la informació de filtrat
-  // TODO: Afegir estat per saber la informació del filtre (branca, ...)
-
+  Filtrar filtre;
+  // Fer una classe simple que agrupi tota la informació de filtrat
+  // Afegir estat per saber la informació del filtre (branca, ...)
 
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
@@ -65,13 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return Filtre();
+                              return Filtre(filtre);
                             },
                           ),
-                        ).then((filtre) => {
-                          // TODO: Rebre el filtre de la pantalla Filtre
-                          // fer setState amb això
-                        });
+                        ).then((result) => {
+                              // Rebre el filtre de la pantalla Filtre
+                              // fer setState amb això
+                            });
                       },
                     ),
                     prefixIcon: Icon(Icons.search),
@@ -118,4 +117,18 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: _onItemTapped,
     );
   }
+}
+
+class Filtrar {
+  int tipo, branca, modalitat;
+  String loc;
+  double nota;
+
+  Filtrar(
+    this.tipo,
+    this.branca,
+    this.modalitat,
+    this.loc,
+    this.nota,
+  );
 }

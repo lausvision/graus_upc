@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
 class Branca extends StatefulWidget {
-  final String camp;
-  Branca(this.camp);
+  final Filtrar filtre;
+  Branca(this.filtre);
 
   @override
   _BrancaState createState() => _BrancaState();
@@ -19,14 +20,7 @@ class _BrancaState extends State<Branca> {
     'Arts i Humanitats',
     'Ciències Socials i Jurídiques'
   ];
-
-  TextEditingController _controller;
-
-  @override
-  void initState() {
-    _controller = TextEditingController(text: widget.camp);
-    super.initState();
-  }
+  List<bool> actius = [true, false, false, false, false];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -103,11 +97,7 @@ class _BrancaState extends State<Branca> {
                 'Branca de coneixement',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _camp(context, branca[0], true),
-              _campfora(context, branca[1]),
-              _campfora(context, branca[2]),
-              _campfora(context, branca[3]),
-              _campfora(context, branca[4]),
+              for (int i = 0; i < 5; i++) _camp(context, branca[i], actius, i),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -127,7 +117,7 @@ class _BrancaState extends State<Branca> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(_controller.text);
+                    Navigator.of(context).pop(widget.filtre);
                   },
                 ),
               ),
@@ -138,7 +128,7 @@ class _BrancaState extends State<Branca> {
     );
   }
 
-  Widget _camp(BuildContext context, String valor, bool actiu) {
+  Widget _camp(BuildContext context, String valor, List<bool> actius, int i) {
     return InkWell(
       child: Container(
         padding: EdgeInsets.only(bottom: 8.0),
@@ -161,57 +151,23 @@ class _BrancaState extends State<Branca> {
                 style: TextStyle(fontSize: 24, color: Colors.black54),
               ),
             ),
-            if (actiu) 
+            if (actius[i])
               Icon(
-               Icons.fiber_manual_record,
-               color: Colors.blue[300],
+                Icons.fiber_manual_record,
+                color: Colors.blue[300],
               ),
           ],
         ),
       ),
       onTap: () {
-        _campfora(context, widget.camp);
-        print(widget.camp);
-        _camp(context, valor, false);
+        setState(() {
+          for (int j = 0; j < 5; j++)
+            if (j == i)
+              actius[j] = true;
+            else
+              actius[j] = false;
+        });
       },
-    );
-  }
-
-  Widget _campfora(BuildContext context, String valor) {
-    return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.fiber_manual_record,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
-      ),
-      
     );
   }
 }

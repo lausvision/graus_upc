@@ -8,6 +8,8 @@ import 'package:graus_upc/filters/Loc.dart';
 import 'package:graus_upc/filters/Nota.dart';
 
 class Filtre extends StatefulWidget {
+  final Filtrar filtre;
+  const Filtre(this.filtre);
   @override
   _FiltreState createState() => _FiltreState();
 }
@@ -15,7 +17,6 @@ class Filtre extends StatefulWidget {
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
   List<String> filtres = ['tecnologia', '<10'];
-  String camp, modalitat, loc, nota;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -127,7 +128,7 @@ class _FiltreState extends State<Filtre> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(/* TODO: Retornar el filtre */);
+                    Navigator.of(context).pop(widget.filtre);
                   },
                 ),
               ),
@@ -187,32 +188,27 @@ class _FiltreState extends State<Filtre> {
           if (valor == 'Branca de coneixement') {
             Navigator.of(context)
                 .push(MaterialPageRoute(
-              builder: (context) => Branca(camp),
+              builder: (context) => Branca(widget.filtre),
             ))
-                .then((result) {
-              if (result != null) {
-                setState(() {
-                  camp = result;
-                  filtres.add(result);
-                });
-              }
+                .then((filtre) {
+              setState(() {});
             });
           } else if (valor == 'Modalitat') {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Modalitat(modalitat),
+                builder: (context) => Modalitat(widget.filtre),
               ),
             );
           } else if (valor == 'Localització') {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Loc(loc),
+                builder: (context) => Loc(widget.filtre),
               ),
             );
           } else if (valor == 'Nota de tall') {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Nota(nota),
+                builder: (context) => Nota(widget.filtre),
               ),
             );
           }

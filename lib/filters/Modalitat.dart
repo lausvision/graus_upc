@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/FiltreScreen.dart';
 
 class Modalitat extends StatefulWidget {
-  final String modalitat;
-  Modalitat(this.modalitat);
+  final Filtrar filtre;
+  Modalitat(this.filtre);
   @override
   _ModalitatState createState() => _ModalitatState();
 }
 
 class _ModalitatState extends State<Modalitat> {
   int _selectedIndex = 1;
-  String camp = 'Presecial';
   List<String> branca = ['Presencial', 'No presencial'];
 
   void _onItemTapped(int index) {
@@ -90,8 +89,8 @@ class _ModalitatState extends State<Modalitat> {
                 'Modalitat',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _campbo(context, branca[0]),
-              _campfora(context, branca[1]),
+              _camp(context, branca[0], true),
+              _camp(context, branca[1], false),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -111,13 +110,7 @@ class _ModalitatState extends State<Modalitat> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Filtre();
-                        },
-                      ),
-                    );
+                    Navigator.of(context).pop();
                   },
                 ),
               ),
@@ -128,79 +121,40 @@ class _ModalitatState extends State<Modalitat> {
     );
   }
 
-  Widget _campbo(BuildContext context, String valor) {
+  Widget _camp(BuildContext context, String valor, bool actiu) {
     return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.fiber_manual_record,
-                      color: Colors.blue[300],
-                    ),
-                  ),
-                ),
-              ),
-            ],
+      child: Container(
+        padding: EdgeInsets.only(bottom: 8.0),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Colors.black,
+              width: 1,
+            ),
           ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _campfora(BuildContext context, String valor) {
-    return InkWell(
-      child: Column(
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  valor,
-                  style: TextStyle(fontSize: 24, color: Colors.black54),
-                ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Text(
+                valor,
+                style: TextStyle(fontSize: 24, color: Colors.black54),
               ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.fiber_manual_record,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                ),
+            ),
+            if (actiu)
+              Icon(
+                Icons.fiber_manual_record,
+                color: Colors.blue[300],
               ),
-            ],
-          ),
-          Divider(
-            color: Colors.black87,
-            thickness: 1.5,
-          ),
-        ],
+          ],
+        ),
       ),
       onTap: () {
-        camp = valor;
+        print(widget.filtre);
+        _camp(context, valor, false);
       },
     );
   }
