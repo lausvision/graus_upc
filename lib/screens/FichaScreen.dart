@@ -87,7 +87,7 @@ class NotaDeTall extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top: 180, left: 270),
+        padding: const EdgeInsets.only(top: 200, left: 270),
         child: Column(
           children: <Widget>[
             Container(
@@ -185,19 +185,25 @@ class Titol extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top: 165),
+        padding: const EdgeInsets.only(top: 165, left: 20),
         child: Column(
+         
           children: <Widget>[
-            Text(
-              nom,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  nom,
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  
+                ),
+              ],
+            ), SizedBox(height:5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Icon(Icons.location_city, color: Colors.white),
                 SizedBox(width:5),
@@ -234,7 +240,7 @@ class TextGeneral extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top: 220.0),
+        padding: const EdgeInsets.only(top: 250.0),
         child: Container(
           margin: EdgeInsets.all(15),
           child: Column(
