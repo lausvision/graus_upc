@@ -131,7 +131,9 @@ class Foton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Stack(
+      children: <Widget>[
+        SizedBox(
       child: Container(
         height: 200,
         decoration: BoxDecoration(
@@ -142,7 +144,30 @@ class Foton extends StatelessWidget {
           ),
         ),
       ),
+    ),
+    SizedBox(
+     child: Container(
+        height: 200,
+    decoration: BoxDecoration(
+              color: Colors.white,
+              gradient: LinearGradient(
+                  begin: FractionalOffset.topCenter,
+                  end: FractionalOffset.bottomCenter,
+                  colors: [
+                    Colors.grey.withOpacity(0.0),
+               
+                    Colors.black,
+                  ],
+                  stops: [
+                    0.0,
+                    0.99
+                  ])),
+      ),
+    )
+      ]
+      
     );
+    
   }
 }
 
@@ -160,26 +185,27 @@ class Titol extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.only(top: 150),
+        padding: const EdgeInsets.only(top: 165),
         child: Column(
           children: <Widget>[
             Text(
               nom,
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.black,
+                color: Colors.white,
                 fontWeight: FontWeight.w700,
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.location_city, color: Colors.black),
+                Icon(Icons.location_city, color: Colors.white),
+                SizedBox(width:5),
                 Text(
                   localitzacio,
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
