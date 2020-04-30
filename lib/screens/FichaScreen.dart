@@ -305,7 +305,7 @@ class _CollapsibleTextState extends State<CollapsibleText> {
       // padding: const EdgeInsets.only(left: 7.0),
       height: (_expanded ? null : 100),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
