@@ -68,8 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                           ),
                         ).then((result) => {
-                              // Rebre el filtre de la pantalla Filtre
-                              // fer setState amb això
+                              setState(() {
+                                filtre = result;
+                              })
                             });
                       },
                     ),
@@ -120,8 +121,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Filtrar {
-  int tipo, branca, modalitat;
-  String loc;
+  int tipo, modalitat;
+  String loc, branca;
   double nota;
 
   Filtrar(

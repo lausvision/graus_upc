@@ -190,8 +190,10 @@ class _FiltreState extends State<Filtre> {
                 .push(MaterialPageRoute(
               builder: (context) => Branca(widget.filtre),
             ))
-                .then((filtre) {
-              setState(() {});
+                .then((result) {
+              setState(() {
+                _filter(context, result.branca);
+              });
             });
           } else if (valor == 'Modalitat') {
             Navigator.of(context).push(

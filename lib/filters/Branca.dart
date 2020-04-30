@@ -167,6 +167,7 @@ class _BrancaState extends State<Branca> {
             else
               actius[j] = false;
         });
+        widget.filtre.branca = valor;
       },
     );
   }
