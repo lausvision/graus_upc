@@ -16,7 +16,7 @@ class Filtre extends StatefulWidget {
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
-  List<String> filtres = ['tecnologia', '<10'];
+  //List<String> filtres = ['tecnologia', '<10'];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -81,13 +81,7 @@ class _FiltreState extends State<Filtre> {
           icon: Icon(Icons.arrow_back),
           color: Colors.black38,
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return HomeScreen();
-                },
-              ),
-            );
+            Navigator.of(context).pop();
           },
         ),
       ),
@@ -101,8 +95,14 @@ class _FiltreState extends State<Filtre> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _filter(context, filtres[0]),
-                  _filter(context, filtres[1]),
+                  /*if (widget.filtre.branca != null)
+                    _filter(context, widget.filtre.branca),
+                  if (widget.filtre.modalitat != null)
+                    _filter(context, widget.filtre.modalitat),
+                  if (widget.filtre.loc != null)
+                    _filter(context, widget.filtre.loc),
+                  if (widget.filtre.nota != null)
+                    _filter(context, widget.filtre.nota.toString()),*/
                 ],
               ),
               _camp(context, 'Branca de coneixement'),
@@ -192,8 +192,9 @@ class _FiltreState extends State<Filtre> {
             ))
                 .then((result) {
               setState(() {
-                _filter(context, result.branca);
+                widget.filtre.branca = result.branca;
               });
+              print(widget.filtre.branca);
             });
           } else if (valor == 'Modalitat') {
             Navigator.of(context).push(
@@ -243,7 +244,7 @@ class _FiltreState extends State<Filtre> {
                   icon: Icon(Icons.clear),
                   color: Colors.white70,
                   onPressed: () {
-                    filtres.remove(filtre);
+                    //filtres.remove(filtre);
                   },
                 ),
               ],

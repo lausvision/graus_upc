@@ -17,7 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
-
+/*
+  @override
+  void initState() {
+    super.initState();
+    filtre = Filtrar(
+        filtre.tipo, filtre.loc, filtre.branca, filtre.modalitat, filtre.nota);
+  }
+*/
   void _onItemTapped(int index) {
     if (index == 0) {
       Navigator.of(context).push(
@@ -121,15 +128,15 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Filtrar {
-  int tipo, modalitat;
-  String loc, branca;
+  int tipo;
+  String loc, branca, modalitat;
   double nota;
 
   Filtrar(
     this.tipo,
+    this.loc,
     this.branca,
     this.modalitat,
-    this.loc,
     this.nota,
   );
 }
