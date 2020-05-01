@@ -92,8 +92,7 @@ class _FiltreState extends State<Filtre> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                //scrollDirection: Axis.horizontal,
                 children: <Widget>[
                   /*if (widget.filtre.branca != null)
                     _filter(context, widget.filtre.branca),
@@ -103,6 +102,7 @@ class _FiltreState extends State<Filtre> {
                     _filter(context, widget.filtre.loc),
                   if (widget.filtre.nota != null)
                     _filter(context, widget.filtre.nota),*/
+
                   for (int i = 0; i < filtres.length; i++)
                     _filter(context, filtres[i]),
                 ],
@@ -227,6 +227,7 @@ class _FiltreState extends State<Filtre> {
       child: Row(
         children: <Widget>[
           Container(
+            height: 35.0,
             margin: EdgeInsets.only(right: 5.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100), color: Colors.black),
@@ -234,15 +235,16 @@ class _FiltreState extends State<Filtre> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0),
+                  padding: EdgeInsets.only(left: 14.0),
                   child: Text(
                     filtre,
-                    style: TextStyle(fontSize: 20, color: Colors.white70),
+                    style: TextStyle(fontSize: 18, color: Colors.white70),
                   ),
                 ),
                 IconButton(
                   icon: Icon(Icons.clear),
                   color: Colors.white70,
+                  iconSize: 20.0,
                   onPressed: () {
                     setState(() {
                       filtres.remove(filtre);
