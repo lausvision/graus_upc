@@ -17,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
+  String index;
 /*
   @override
   void initState() {
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: TextField(
                   onChanged: (value) {
                     setState(() {
-                      filtre.nom = value;
+                      index = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Expanded(child: Llista(filtre)),
+              Expanded(child: Llista(index)),
             ],
           ),
         ),
