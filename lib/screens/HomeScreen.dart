@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  String _searchString;
+  String nom;
   final db = Firestore.instance;
 
   @override
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: TextField(
                   onChanged: (value) {
                     setState(() {
-                      _searchString = value;
+                      filtre.nom = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Expanded(child: Llista(_searchString)),
+              Expanded(child: Llista(filtre)),
             ],
           ),
         ),
@@ -128,12 +128,11 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Filtrar {
-  int tipo;
-  String loc, branca, modalitat;
+  String nom, loc, branca, modalitat;
   double nota;
 
   Filtrar(
-    this.tipo,
+    this.nom,
     this.loc,
     this.branca,
     this.modalitat,

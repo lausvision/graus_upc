@@ -12,7 +12,8 @@ class Modalitat extends StatefulWidget {
 
 class _ModalitatState extends State<Modalitat> {
   int _selectedIndex = 1;
-  List<String> branca = ['Presencial', 'No presencial'];
+  List<String> modalitat = ['Presencial', 'No presencial'];
+  List<bool> actius = [true, false];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -89,8 +90,8 @@ class _ModalitatState extends State<Modalitat> {
                 'Modalitat',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _camp(context, branca[0], true),
-              _camp(context, branca[1], false),
+              for (int i = 0; i < 2; i++)
+                _camp(context, modalitat[i], actius, i),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -110,7 +111,7 @@ class _ModalitatState extends State<Modalitat> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(widget.filtre);
                   },
                 ),
               ),
@@ -121,7 +122,7 @@ class _ModalitatState extends State<Modalitat> {
     );
   }
 
-  Widget _camp(BuildContext context, String valor, bool actiu) {
+  Widget _camp(BuildContext context, String valor, List<bool> actius, int i) {
     return InkWell(
       child: Container(
         padding: EdgeInsets.only(bottom: 8.0),
@@ -144,7 +145,7 @@ class _ModalitatState extends State<Modalitat> {
                 style: TextStyle(fontSize: 24, color: Colors.black54),
               ),
             ),
-            if (actiu)
+            if (actius[i])
               Icon(
                 Icons.fiber_manual_record,
                 color: Colors.blue[300],
@@ -153,8 +154,14 @@ class _ModalitatState extends State<Modalitat> {
         ),
       ),
       onTap: () {
-        print(widget.filtre);
-        _camp(context, valor, false);
+        setState(() {
+          for (int j = 0; j < 2; j++)
+            if (j == i)
+              actius[j] = true;
+            else
+              actius[j] = false;
+        });
+        widget.filtre.modalitat = valor;
       },
     );
   }

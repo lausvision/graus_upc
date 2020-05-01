@@ -1,32 +1,71 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
 import 'package:graus_upc/data/llegeix.dart';
 
 class Llista extends StatefulWidget {
-  final String searchString;
-  const Llista(this.searchString);
+  final Filtrar filtre;
+  const Llista(this.filtre);
 
   @override
   _LlistaState createState() => _LlistaState();
 }
 
 class _LlistaState extends State<Llista> {
-  filtraLlista(List<Grau> llistaOriginal) {
-    // Aplicar totes les condicions del filtre.
-    List<Grau> llistaFiltrada = [];
-    if (widget.searchString == null) {
-      llistaFiltrada = llistaOriginal;
+  filtraLlista(List<Grau> graus) {
+    List<Grau> grausFiltrats = [];
+    List<Grau> grausFinals = [];
+
+    if (widget.filtre.nom == null) {
+      grausFiltrats = graus;
     } else {
-      for (int i = 0; i < llistaOriginal.length; i++) {
-        final String nomMinuscules = llistaOriginal[i].nom.toLowerCase();
-        final String filtreMinuscules = widget.searchString.toLowerCase();
+      for (int j = 0; j < graus.length; j++) {
+        final String nomMinuscules = graus[j].nom.toLowerCase();
+        final String filtreMinuscules = widget.filtre.nom.toLowerCase();
         if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
-          llistaFiltrada.add(llistaOriginal[i]);
+          grausFiltrats.add(graus[j]);
         }
       }
     }
-    return llistaFiltrada;
+    for (int i = 0; i < grausFiltrats.length; i++) {
+      if (widget.filtre.branca != null) {
+        if (grausFiltrats[i]
+                .branca
+                .toLowerCase()
+                .indexOf(widget.filtre.branca) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+      if (widget.filtre.modalitat != null) {
+        if (grausFiltrats[i]
+                .modalitat
+                .toLowerCase()
+                .indexOf(widget.filtre.modalitat) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+      if (widget.filtre.loc != null) {
+        if (grausFiltrats[i].loc.toLowerCase().indexOf(widget.filtre.loc) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+      if (widget.filtre.nota != null) {
+        if (grausFiltrats[i]
+                .nota
+                .toString()
+                .toLowerCase()
+                .indexOf(widget.filtre.nota.toString()) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+    }
+    if (grausFinals == null) return grausFiltrats;
+    return grausFinals;
   }
 
   @override
