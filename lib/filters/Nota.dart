@@ -12,7 +12,6 @@ class Nota extends StatefulWidget {
 
 class _NotaState extends State<Nota> {
   int _selectedIndex = 1;
-  String nota = '5';
   String operador = '=';
 
   void _onItemTapped(int index) {
@@ -168,12 +167,12 @@ class _NotaState extends State<Nota> {
                   child: TextField(
                     onChanged: (value) {
                       setState(() {
-                        nota = value;
+                        widget.filtre.nota = value;
                       });
                     },
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: "Escriu un valor",
+                      hintText: "Escriu un valor.",
                     ),
                   ),
                 ),
@@ -211,6 +210,11 @@ class _NotaState extends State<Nota> {
               style: TextStyle(fontSize: 30),
             )),
       ],
+      onSelected: (result) {
+        setState(() {
+          operador = result;
+        });
+      },
     );
   }
 }

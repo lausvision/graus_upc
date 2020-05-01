@@ -97,7 +97,7 @@ class _BrancaState extends State<Branca> {
                 'Branca de coneixement',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              for (int i = 0; i < 5; i++) _camp(context, branca[i], actius, i),
+              for (int i = 0; i < branca.length; i++) _camp(context, branca[i], actius, i),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -161,7 +161,7 @@ class _BrancaState extends State<Branca> {
       ),
       onTap: () {
         setState(() {
-          for (int j = 0; j < 5; j++)
+          for (int j = 0; j < branca.length; j++)
             if (j == i)
               actius[j] = true;
             else

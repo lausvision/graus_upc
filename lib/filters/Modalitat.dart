@@ -90,7 +90,7 @@ class _ModalitatState extends State<Modalitat> {
                 'Modalitat',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              for (int i = 0; i < 2; i++)
+              for (int i = 0; i < modalitat.length; i++)
                 _camp(context, modalitat[i], actius, i),
               DecoratedBox(
                 decoration: ShapeDecoration(
@@ -155,7 +155,7 @@ class _ModalitatState extends State<Modalitat> {
       ),
       onTap: () {
         setState(() {
-          for (int j = 0; j < 2; j++)
+          for (int j = 0; j < modalitat.length; j++)
             if (j == i)
               actius[j] = true;
             else

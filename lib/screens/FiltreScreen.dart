@@ -16,7 +16,7 @@ class Filtre extends StatefulWidget {
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
-  //List<String> filtres = ['tecnologia', '<10'];
+  List<String> filtres = ['enginyeria', 'electronica', '=10', 'UPC'];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -102,7 +102,9 @@ class _FiltreState extends State<Filtre> {
                   if (widget.filtre.loc != null)
                     _filter(context, widget.filtre.loc),
                   if (widget.filtre.nota != null)
-                    _filter(context, widget.filtre.nota.toString()),*/
+                    _filter(context, widget.filtre.nota),*/
+                  for (int i = 0; i < filtres.length; i++)
+                    _filter(context, filtres[i]),
                 ],
               ),
               _camp(context, 'Branca de coneixement'),
@@ -223,8 +225,6 @@ class _FiltreState extends State<Filtre> {
   Widget _filter(BuildContext context, String filtre) {
     return InkWell(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(right: 5.0),
@@ -237,14 +237,16 @@ class _FiltreState extends State<Filtre> {
                   padding: EdgeInsets.only(left: 15.0),
                   child: Text(
                     filtre,
-                    style: TextStyle(fontSize: 24, color: Colors.white70),
+                    style: TextStyle(fontSize: 20, color: Colors.white70),
                   ),
                 ),
                 IconButton(
                   icon: Icon(Icons.clear),
                   color: Colors.white70,
                   onPressed: () {
-                    //filtres.remove(filtre);
+                    setState(() {
+                      filtres.remove(filtre);
+                    });
                   },
                 ),
               ],

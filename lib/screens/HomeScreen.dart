@@ -128,14 +128,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Filtrar {
-  String nom, loc, branca, modalitat;
-  double nota;
+  String nom, loc, branca, modalitat, nota, operador;
 
-  Filtrar(
-    this.nom,
-    this.loc,
-    this.branca,
-    this.modalitat,
-    this.nota,
-  );
+  Filtrar(this.nom, this.loc, this.branca, this.modalitat, this.nota,
+      this.operador);
 }

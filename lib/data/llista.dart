@@ -58,7 +58,7 @@ class _LlistaState extends State<Llista> {
                 .nota
                 .toString()
                 .toLowerCase()
-                .indexOf(widget.filtre.nota.toString()) !=
+                .indexOf(widget.filtre.nota) !=
             -1) {
           grausFinals.add(grausFiltrats[i]);
         }
