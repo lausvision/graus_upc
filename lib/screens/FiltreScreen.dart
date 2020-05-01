@@ -16,7 +16,7 @@ class Filtre extends StatefulWidget {
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
-  List<String> filtres = ['enginyeria', 'electronica', '=10', 'UPC'];
+  List<String> filtres = ['enginyeria', 'electronica', '=10', 'UPC','Presencial'];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -91,10 +91,12 @@ class _FiltreState extends State<Filtre> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Row(
-                //scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  /*if (widget.filtre.branca != null)
+              Container(
+                height: 35.0,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    /*if (widget.filtre.branca != null)
                     _filter(context, widget.filtre.branca),
                   if (widget.filtre.modalitat != null)
                     _filter(context, widget.filtre.modalitat),
@@ -103,9 +105,10 @@ class _FiltreState extends State<Filtre> {
                   if (widget.filtre.nota != null)
                     _filter(context, widget.filtre.nota),*/
 
-                  for (int i = 0; i < filtres.length; i++)
-                    _filter(context, filtres[i]),
-                ],
+                    for (int i = 0; i < filtres.length; i++)
+                      _filter(context, filtres[i]),
+                  ],
+                ),
               ),
               _camp(context, 'Branca de coneixement'),
               _camp(context, 'Modalitat'),
