@@ -97,7 +97,8 @@ class _BrancaState extends State<Branca> {
                 'Branca de coneixement',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              for (int i = 0; i < branca.length; i++) _camp(context, branca[i], actius, i),
+              for (int i = 0; i < branca.length; i++)
+                _camp(context, branca[i], actius, i),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -151,23 +152,30 @@ class _BrancaState extends State<Branca> {
                 style: TextStyle(fontSize: 24, color: Colors.black54),
               ),
             ),
-            if (actius[i])
-              Icon(
-                Icons.fiber_manual_record,
-                color: Colors.blue[300],
-              ),
+            if (widget.filtre.branca != null)
+              if (valor == widget.filtre.branca)
+                Icon(
+                  Icons.fiber_manual_record,
+                  color: Colors.blue[300],
+                ),
+            if (widget.filtre.branca == null)
+              if (actius[i])
+                Icon(
+                  Icons.fiber_manual_record,
+                  color: Colors.blue[300],
+                ),
           ],
         ),
       ),
       onTap: () {
         setState(() {
+          widget.filtre.branca = valor;
           for (int j = 0; j < branca.length; j++)
             if (j == i)
               actius[j] = true;
             else
               actius[j] = false;
         });
-        widget.filtre.branca = valor;
       },
     );
   }

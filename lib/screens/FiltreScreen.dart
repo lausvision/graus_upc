@@ -16,7 +16,7 @@ class Filtre extends StatefulWidget {
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
-  List<String> filtres = ['enginyeria', 'electronica', '=10', 'UPC','Presencial'];
+  List<String> filtres = [];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -96,15 +96,6 @@ class _FiltreState extends State<Filtre> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    /*if (widget.filtre.branca != null)
-                    _filter(context, widget.filtre.branca),
-                  if (widget.filtre.modalitat != null)
-                    _filter(context, widget.filtre.modalitat),
-                  if (widget.filtre.loc != null)
-                    _filter(context, widget.filtre.loc),
-                  if (widget.filtre.nota != null)
-                    _filter(context, widget.filtre.nota),*/
-
                     for (int i = 0; i < filtres.length; i++)
                       _filter(context, filtres[i]),
                   ],
@@ -198,27 +189,42 @@ class _FiltreState extends State<Filtre> {
                 .then((result) {
               setState(() {
                 widget.filtre.branca = result.branca;
+                filtres.add(widget.filtre.branca);
               });
-              print(widget.filtre.branca);
             });
           } else if (valor == 'Modalitat') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Modalitat(widget.filtre),
-              ),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => Modalitat(widget.filtre),
+            ))
+                .then((result) {
+              setState(() {
+                widget.filtre.modalitat = result.modalitat;
+                filtres.add(widget.filtre.modalitat);
+              });
+            });
           } else if (valor == 'Localització') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Loc(widget.filtre),
-              ),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => Loc(widget.filtre),
+            ))
+                .then((result) {
+              setState(() {
+                widget.filtre.loc = result.loc;
+                filtres.add(widget.filtre.loc);
+              });
+            });
           } else if (valor == 'Nota de tall') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Nota(widget.filtre),
-              ),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => Nota(widget.filtre),
+            ))
+                .then((result) {
+              setState(() {
+                widget.filtre.nota = result.nota;
+                filtres.add(widget.filtre.nota);
+              });
+            });
           }
         },
       ),
@@ -230,7 +236,7 @@ class _FiltreState extends State<Filtre> {
       child: Row(
         children: <Widget>[
           Container(
-            height: 35.0,
+            height: 40.0,
             margin: EdgeInsets.only(right: 5.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100), color: Colors.black),

@@ -11,21 +11,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Filtrar filtre;
+  Filtrar filtre = new Filtrar.def();
   // Fer una classe simple que agrupi tota la informació de filtrat
   // Afegir estat per saber la informació del filtre (branca, ...)
 
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
   String index;
-/*
-  @override
-  void initState() {
-    super.initState();
-    filtre = Filtrar(
-        filtre.tipo, filtre.loc, filtre.branca, filtre.modalitat, filtre.nota);
-  }
-*/
+
   void _onItemTapped(int index) {
     if (index == 0) {
       Navigator.of(context).push(
@@ -133,4 +126,13 @@ class Filtrar {
 
   Filtrar(this.nom, this.loc, this.branca, this.modalitat, this.nota,
       this.operador);
+
+  Filtrar.def() {
+    nom = '';
+    loc = '';
+    branca = '';
+    modalitat = '';
+    nota = '';
+    operador = '';
+  }
 }

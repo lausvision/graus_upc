@@ -145,23 +145,30 @@ class _ModalitatState extends State<Modalitat> {
                 style: TextStyle(fontSize: 24, color: Colors.black54),
               ),
             ),
-            if (actius[i])
-              Icon(
-                Icons.fiber_manual_record,
-                color: Colors.blue[300],
-              ),
+            if (widget.filtre.modalitat != null)
+              if (valor == widget.filtre.modalitat)
+                Icon(
+                  Icons.fiber_manual_record,
+                  color: Colors.blue[300],
+                ),
+            if (widget.filtre.modalitat == null)
+              if (actius[i])
+                Icon(
+                  Icons.fiber_manual_record,
+                  color: Colors.blue[300],
+                ),
           ],
         ),
       ),
       onTap: () {
         setState(() {
+          widget.filtre.modalitat = valor;
           for (int j = 0; j < modalitat.length; j++)
             if (j == i)
               actius[j] = true;
             else
               actius[j] = false;
         });
-        widget.filtre.modalitat = valor;
       },
     );
   }

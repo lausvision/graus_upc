@@ -109,7 +109,7 @@ class _NotaState extends State<Nota> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(widget.filtre);
                   },
                 ),
               ),
@@ -167,7 +167,7 @@ class _NotaState extends State<Nota> {
                   child: TextField(
                     onChanged: (value) {
                       setState(() {
-                        widget.filtre.nota = value;
+                        widget.filtre.nota = operador + value;
                       });
                     },
                     keyboardType: TextInputType.number,
