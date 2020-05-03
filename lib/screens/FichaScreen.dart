@@ -28,17 +28,20 @@ class _FichaScreenState extends State<FichaScreen> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Confirmacion'),
-          content: Text('Seguro que quieres borrar?'),
+          title: Text('Afegir grau a preferits'),
+          content: Text('Cal fer Sign in a la app, continuar?'),
           actions: <Widget>[
             FlatButton(
               child: Text('Cancelar'),
               onPressed: () {
+                setState(() {
+                favourite = !favourite;
+              });
                 Navigator.of(context).pop(false);
               },
             ),
             FlatButton(
-                child: Text('Borrar'),
+                child: Text('Continuar'),
                 onPressed: () {
                   Navigator.of(context).pop(true);
                 })
