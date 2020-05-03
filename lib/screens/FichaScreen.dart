@@ -24,6 +24,7 @@ class _FichaScreenState extends State<FichaScreen> {
 
   @override
   Widget build(BuildContext context) {
+final log = Provider.of<MyProvider>(context);
     _authChechked() {
       showDialog(
         context: context,
@@ -35,15 +36,19 @@ class _FichaScreenState extends State<FichaScreen> {
               child: Text('Cancelar'),
               onPressed: () {
                 setState(() {
-                favourite = !favourite;
-              });
+                  favourite = !favourite;
+                });
                 Navigator.of(context).pop(false);
               },
             ),
             FlatButton(
                 child: Text('Continuar'),
                 onPressed: () {
-                  Navigator.of(context).pop(true);
+                 // signInWithGoogle().whenComplete(() {
+                 //   log.dotrue();
+                   Navigator.of(context).pop(true);
+                //  });
+                  
                 })
           ],
         ),
@@ -54,7 +59,7 @@ class _FichaScreenState extends State<FichaScreen> {
       });
     }
 
-    final log = Provider.of<MyProvider>(context);
+    
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -286,7 +291,7 @@ class TextGeneral extends StatelessWidget {
                 ),
               ),
               //CollapsibleText(descripcio),
-           
+
               Text(
                 descripcio,
                 style: TextStyle(
@@ -294,7 +299,7 @@ class TextGeneral extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-                 SizedBox(height:10),
+              SizedBox(height: 10),
               Text(
                 'Sortides professionals: ',
                 style: TextStyle(
