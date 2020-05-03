@@ -8,14 +8,15 @@ import 'package:graus_upc/filters/Loc.dart';
 import 'package:graus_upc/filters/Nota.dart';
 
 class Filtre extends StatefulWidget {
+  final Filtrar filtre;
+  const Filtre(this.filtre);
   @override
   _FiltreState createState() => _FiltreState();
 }
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
-  List<String> filtres = ['tecnologia', '<10'];
-  String camp, modalitat, loc, nota;
+  List<String> filtres = [];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -80,13 +81,7 @@ class _FiltreState extends State<Filtre> {
           icon: Icon(Icons.arrow_back),
           color: Colors.black38,
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return HomeScreen();
-                },
-              ),
-            );
+            Navigator.of(context).pop();
           },
         ),
       ),
@@ -96,13 +91,15 @@ class _FiltreState extends State<Filtre> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _filter(context, filtres[0]),
-                  _filter(context, filtres[1]),
-                ],
+              Container(
+                height: 35.0,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    for (int i = 0; i < filtres.length; i++)
+                      _filter(context, filtres[i]),
+                  ],
+                ),
               ),
               _camp(context, 'Branca de coneixement'),
               _camp(context, 'Modalitat'),
@@ -127,7 +124,7 @@ class _FiltreState extends State<Filtre> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(/* TODO: Retornar el filtre */);
+                    Navigator.of(context).pop(widget.filtre);
                   },
                 ),
               ),
@@ -187,34 +184,47 @@ class _FiltreState extends State<Filtre> {
           if (valor == 'Branca de coneixement') {
             Navigator.of(context)
                 .push(MaterialPageRoute(
-              builder: (context) => Branca(camp),
+              builder: (context) => Branca(widget.filtre),
             ))
                 .then((result) {
-              if (result != null) {
-                setState(() {
-                  camp = result;
-                  filtres.add(result);
-                });
-              }
+              setState(() {
+                widget.filtre.branca = result.branca;
+                filtres.add(widget.filtre.branca);
+              });
             });
           } else if (valor == 'Modalitat') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Modalitat(modalitat),
-              ),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => Modalitat(widget.filtre),
+            ))
+                .then((result) {
+              setState(() {
+                widget.filtre.modalitat = result.modalitat;
+                filtres.add(widget.filtre.modalitat);
+              });
+            });
           } else if (valor == 'Localització') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Loc(loc),
-              ),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => Loc(widget.filtre),
+            ))
+                .then((result) {
+              setState(() {
+                widget.filtre.loc = result.loc;
+                filtres.add(widget.filtre.loc);
+              });
+            });
           } else if (valor == 'Nota de tall') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Nota(nota),
-              ),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context) => Nota(widget.filtre),
+            ))
+                .then((result) {
+              setState(() {
+                widget.filtre.nota = result.nota;
+                filtres.add(widget.filtre.nota);
+              });
+            });
           }
         },
       ),
@@ -224,10 +234,9 @@ class _FiltreState extends State<Filtre> {
   Widget _filter(BuildContext context, String filtre) {
     return InkWell(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
+            height: 40.0,
             margin: EdgeInsets.only(right: 5.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100), color: Colors.black),
@@ -235,17 +244,20 @@ class _FiltreState extends State<Filtre> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0),
+                  padding: EdgeInsets.only(left: 14.0),
                   child: Text(
                     filtre,
-                    style: TextStyle(fontSize: 24, color: Colors.white70),
+                    style: TextStyle(fontSize: 18, color: Colors.white70),
                   ),
                 ),
                 IconButton(
                   icon: Icon(Icons.clear),
                   color: Colors.white70,
+                  iconSize: 20.0,
                   onPressed: () {
-                    filtres.remove(filtre);
+                    setState(() {
+                      filtres.remove(filtre);
+                    });
                   },
                 ),
               ],

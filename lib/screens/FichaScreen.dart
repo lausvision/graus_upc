@@ -35,7 +35,7 @@ class _FichaScreenState extends State<FichaScreen> {
             tooltip: 'Favorite',
             color: (favourite ? Colors.red : Colors.black),
             onPressed: () {
-              // TODO: Usar provider para saber si estamos loggeados
+              // Usar provider para saber si estamos loggeados
               setState(() {
                 favourite = !favourite;
               });
@@ -131,43 +131,38 @@ class Foton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        SizedBox(
-      child: Container(
-        height: 200,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: NetworkImage(foto),
+    return Stack(children: <Widget>[
+      SizedBox(
+        child: Container(
+          height: 200,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(foto),
+            ),
           ),
         ),
       ),
-    ),
-    SizedBox(
-     child: Container(
-        height: 200,
-    decoration: BoxDecoration(
+      SizedBox(
+        child: Container(
+          height: 200,
+          decoration: BoxDecoration(
               color: Colors.white,
               gradient: LinearGradient(
                   begin: FractionalOffset.topCenter,
                   end: FractionalOffset.bottomCenter,
                   colors: [
                     Colors.grey.withOpacity(0.0),
-               
                     Colors.black,
                   ],
                   stops: [
                     0.0,
                     0.99
                   ])),
-      ),
-    )
-      ]
-      
-    );
-    
+        ),
+      )
+    ]);
   }
 }
 
@@ -187,7 +182,6 @@ class Titol extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 165, left: 20),
         child: Column(
-         
           children: <Widget>[
             Row(
               children: <Widget>[
@@ -198,15 +192,15 @@ class Titol extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                   ),
-                  
                 ),
               ],
-            ), SizedBox(height:5),
+            ),
+            SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Icon(Icons.location_city, color: Colors.white),
-                SizedBox(width:5),
+                SizedBox(width: 5),
                 Text(
                   localitzacio,
                   style: TextStyle(

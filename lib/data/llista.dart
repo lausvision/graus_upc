@@ -1,35 +1,86 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
 import 'package:graus_upc/data/llegeix.dart';
 
 class Llista extends StatefulWidget {
-  final String searchString;
-  const Llista(this.searchString);
+  final String filtre;
+  const Llista(this.filtre);
 
   @override
   _LlistaState createState() => _LlistaState();
 }
 
 class _LlistaState extends State<Llista> {
+  filtraLlista(List<Grau> graus) {
+    List<Grau> grausFiltrats = [];
+    //List<Grau> grausFinals = [];
 
-  filtraLlista(List<Grau> llistaOriginal) {
-    // TODO: Aplicar totes les condicions del filtre.
-    List<Grau> llistaFiltrada = [];
-    if (widget.searchString == null) {
-      llistaFiltrada = llistaOriginal;
+       if (widget.filtre == null) {
+      grausFiltrats = graus;
     } else {
-      for (int i = 0; i < llistaOriginal.length; i++) {
-        final String nomMinuscules = llistaOriginal[i].nom.toLowerCase();
-        final String filtreMinuscules = widget.searchString.toLowerCase();
+      for (int j = 0; j < graus.length; j++) {
+        final String nomMinuscules = graus[j].nom.toLowerCase();
+        final String filtreMinuscules = widget.filtre.toLowerCase();
         if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
-          llistaFiltrada.add(llistaOriginal[i]);
+          grausFiltrats.add(graus[j]);
+        }
+      }
+    }return grausFiltrats;
+    }
+/*
+    if (widget.filtre.nom == null) {
+      grausFiltrats = graus;
+    } else {
+      for (int j = 0; j < graus.length; j++) {
+        final String nomMinuscules = graus[j].nom.toLowerCase();
+        final String filtreMinuscules = widget.filtre.nom.toLowerCase();
+        if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
+          grausFiltrats.add(graus[j]);
         }
       }
     }
-    return llistaFiltrada;
+    for (int i = 0; i < grausFiltrats.length; i++) {
+      if (widget.filtre.branca != null) {
+        if (grausFiltrats[i]
+                .branca
+                .toLowerCase()
+                .indexOf(widget.filtre.branca) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+      if (widget.filtre.modalitat != null) {
+        if (grausFiltrats[i]
+                .modalitat
+                .toLowerCase()
+                .indexOf(widget.filtre.modalitat) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+      if (widget.filtre.loc != null) {
+        if (grausFiltrats[i].loc.toLowerCase().indexOf(widget.filtre.loc) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+      if (widget.filtre.nota != null) {
+        if (grausFiltrats[i]
+                .nota
+                .toString()
+                .toLowerCase()
+                .indexOf(widget.filtre.nota) !=
+            -1) {
+          grausFinals.add(grausFiltrats[i]);
+        }
+      }
+    }
+    if (grausFinals == null) return grausFiltrats;
+    return grausFinals;
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,18 +130,18 @@ class _LlistaState extends State<Llista> {
                     ),
                   ),
                   Expanded(child: Container()),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black),
-                    child: Text(
-                      grau.nota.toString(),
-                      
-                      textAlign: TextAlign.end,
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                  if (grau.nota != null)
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black),
+                      child: Text(
+                        grau.nota.toString(),
+                        textAlign: TextAlign.end,
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
                     ),
-                  ),
                 ],
               ),
               SizedBox(height: 10),

@@ -11,13 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  // TODO: Fer una classe simple que agrupi tota la informació de filtrat
-  // TODO: Afegir estat per saber la informació del filtre (branca, ...)
-
+  Filtrar filtre = new Filtrar.def();
+  // Fer una classe simple que agrupi tota la informació de filtrat
+  // Afegir estat per saber la informació del filtre (branca, ...)
 
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
+  String index;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  String _searchString;
+  String nom;
   final db = Firestore.instance;
 
   @override
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: TextField(
                   onChanged: (value) {
                     setState(() {
-                      _searchString = value;
+                      index = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -65,13 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return Filtre();
+                              return Filtre(filtre);
                             },
                           ),
-                        ).then((filtre) => {
-                          // TODO: Rebre el filtre de la pantalla Filtre
-                          // fer setState amb això
-                        });
+                        ).then((result) => {
+                              setState(() {
+                                filtre = result;
+                              })
+                            });
                       },
                     ),
                     prefixIcon: Icon(Icons.search),
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Expanded(child: Llista(_searchString)),
+              Expanded(child: Llista(index)),
             ],
           ),
         ),
@@ -117,5 +118,21 @@ class _HomeScreenState extends State<HomeScreen> {
       selectedItemColor: Colors.black,
       onTap: _onItemTapped,
     );
+  }
+}
+
+class Filtrar {
+  String nom, loc, branca, modalitat, nota, operador;
+
+  Filtrar(this.nom, this.loc, this.branca, this.modalitat, this.nota,
+      this.operador);
+
+  Filtrar.def() {
+    nom = '';
+    loc = '';
+    branca = '';
+    modalitat = '';
+    nota = '';
+    operador = '';
   }
 }
