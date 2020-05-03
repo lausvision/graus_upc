@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Expanded(child: Llista(index)),
+              Expanded(child: Llista(filtre)),
             ],
           ),
         ),

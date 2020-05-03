@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:graus_upc/screens/HomeScreen.dart';
+import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
 import 'package:graus_upc/data/llegeix.dart';
 
 class Llista extends StatefulWidget {
-  final String filtre;
+  final Filtrar filtre;
   const Llista(this.filtre);
 
   @override
@@ -15,8 +15,8 @@ class Llista extends StatefulWidget {
 class _LlistaState extends State<Llista> {
   filtraLlista(List<Grau> graus) {
     List<Grau> grausFiltrats = [];
-    //List<Grau> grausFinals = [];
-
+    List<Grau> grausFinals = [];
+/*
        if (widget.filtre == null) {
       grausFiltrats = graus;
     } else {
@@ -29,7 +29,7 @@ class _LlistaState extends State<Llista> {
       }
     }return grausFiltrats;
     }
-/*
+*/
     if (widget.filtre.nom == null) {
       grausFiltrats = graus;
     } else {
@@ -80,7 +80,7 @@ class _LlistaState extends State<Llista> {
     if (grausFinals == null) return grausFiltrats;
     return grausFinals;
   }
-*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
