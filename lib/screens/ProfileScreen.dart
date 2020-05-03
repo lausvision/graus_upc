@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/models/MyProvider.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
+import 'package:graus_upc/screens/first_screen.dart';
 import 'package:graus_upc/screens/login_page.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -34,6 +37,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
+    final log = Provider.of<MyProvider>(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
@@ -61,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
-      body: LoginPage(),
+      body:(log.check ? FirstScreen() : LoginPage() ) ,
     );
   }
 }
