@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/models/MyProvider.dart';
+import 'package:graus_upc/screens/ProfileScreen.dart';
 //import 'package:graus_upc/models/createUserCollection.dart';
 import 'package:graus_upc/screens/sign_in.dart';
+import 'package:provider/provider.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 
 import 'first_screen.dart';
@@ -37,14 +40,18 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _signInButton() {
+    
+    final log = Provider.of<MyProvider>(context);
     return OutlineButton(
       splashColor: Colors.grey[50],
-      onPressed: () {
+       onPressed: () {
+         
         signInWithGoogle().whenComplete(() {
+          log.dotrue();
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return FirstScreen();
+                return ProfileScreen();
               },
             ),
           );

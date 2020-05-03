@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/models/MyProvider.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/sign_in.dart';
+import 'package:provider/provider.dart';
 
 class FirstScreen extends StatefulWidget {
   @override
@@ -112,6 +114,8 @@ class LogOutClass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    final log = Provider.of<MyProvider>(context);
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.only(top: 35.0, left: 320),
@@ -122,7 +126,8 @@ class LogOutClass extends StatelessWidget {
               tooltip: 'Sign out',
               color: Colors.black,
               onPressed: () {
-                signOutGoogle();
+                log.dofalse();
+                
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) {
                   return ProfileScreen();
