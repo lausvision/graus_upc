@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:graus_upc/models/MyProvider.dart';
+import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,6 +24,35 @@ class _FichaScreenState extends State<FichaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _authChechked() {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Confirmacion'),
+          content: Text('Seguro que quieres borrar?'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+            FlatButton(
+                child: Text('Borrar'),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                })
+          ],
+        ),
+      ).then((salida) {
+        if (salida) {
+          setState(() {});
+        }
+      });
+    }
+
+    final log = Provider.of<MyProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -35,6 +66,8 @@ class _FichaScreenState extends State<FichaScreen> {
             tooltip: 'Favorite',
             color: (favourite ? Colors.red : Colors.black),
             onPressed: () {
+              log.doit();
+              log.check ? null : _authChechked();
               // Usar provider para saber si estamos loggeados
               setState(() {
                 favourite = !favourite;
@@ -187,8 +220,9 @@ class Titol extends StatelessWidget {
               children: <Widget>[
                 Text(
                   nom,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                   ),
@@ -204,7 +238,7 @@ class Titol extends StatelessWidget {
                 Text(
                   localitzacio,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                   ),
@@ -248,14 +282,16 @@ class TextGeneral extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              CollapsibleText(descripcio),
-              /*Text(
+              //CollapsibleText(descripcio),
+           
+              Text(
                 descripcio,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.white,
                 ),
-              )*/
+              ),
+                 SizedBox(height:10),
               Text(
                 'Sortides professionals: ',
                 style: TextStyle(
@@ -264,7 +300,7 @@ class TextGeneral extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 3),
               Text(
                 objectiu,
                 style: TextStyle(
