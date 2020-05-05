@@ -15,12 +15,12 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
-  
+  bool mostraLlista = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blue[100],
-        
         body: Stack(
           alignment: AlignmentDirectional.topStart,
           children: <Widget>[
@@ -30,9 +30,10 @@ class _FirstScreenState extends State<FirstScreen> {
             FotoPerfil(),
             Name(),
             Padding(
-              padding: const EdgeInsets.only(top:180,left: 175),
+              padding: const EdgeInsets.only(top: 180, left: 175),
               child: FlatButton(
-                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0)),
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0)),
                 color: Colors.black,
                 textColor: Colors.white,
                 disabledColor: Colors.grey,
@@ -40,7 +41,13 @@ class _FirstScreenState extends State<FirstScreen> {
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.blueAccent,
                 onPressed: () {
-                  
+                  (mostraLlista
+                      ? setState(() {
+                          mostraLlista = false;
+                        })
+                      : setState(() {
+                          mostraLlista = true;
+                        }));
                 },
                 child: Text(
                   "Llistat de Preferits",
@@ -49,36 +56,43 @@ class _FirstScreenState extends State<FirstScreen> {
               ),
             ),
             Text(uid),
-           StreamBuilder(
-                 stream:
-            Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) return const Text('Loading...');
+            (mostraLlista
+                ? StreamBuilder(
+                    stream: Firestore.instance
+                        .collection('Graus')
+                        .orderBy('nom')
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) return const Text('Loading...');
 
-          List<DocumentSnapshot> documents = snapshot.data.documents;
-          List<Grau> graus =
-              documents.map((doc) => Grau.fromFirestore(doc)).toList();
+                      List<DocumentSnapshot> documents =
+                          snapshot.data.documents;
+                      List<Grau> graus = documents
+                          .map((doc) => Grau.fromFirestore(doc))
+                          .toList();
 
-       //   List<Grau> grausFiltrats = filtraLlista(graus);
+                      //   List<Grau> grausFiltrats = filtraLlista(graus);
 
-          return Container(
-            padding: const EdgeInsets.only(top:225,left: 5,bottom: 10),
-            child: Scrollbar(
-                        child: ListView.builder(
-               // padding: const EdgeInsets.only(top:300,left: 5),
-                itemExtent: 100,
-                itemCount: graus.length,
-                itemBuilder: (context, index) =>
-                    _grau(context, graus[index]),
-              ),
-            ),
-          );
-        },
-            )
-           
+                      return Container(
+                        padding: const EdgeInsets.only(
+                            top: 225, left: 5, bottom: 10),
+                        child: Scrollbar(
+                          child: ListView.builder(
+                            // padding: const EdgeInsets.only(top:300,left: 5),
+                            itemExtent: 100,
+                            itemCount: graus.length,
+                            itemBuilder: (context, index) =>
+                                _grau(context, graus[index]),
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                : Container()),
           ],
         ));
   }
+
   Widget _grau(BuildContext context, Grau grau) {
     return Card(
       child: Padding(
@@ -160,8 +174,6 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 }
 
-
-
 class Name extends StatelessWidget {
   const Name({
     Key key,
@@ -174,9 +186,7 @@ class Name extends StatelessWidget {
       child: Text(
         name,
         style: TextStyle(
-            fontSize: 30,
-            color: Colors.black,
-            fontWeight: FontWeight.bold),
+            fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -194,9 +204,7 @@ class Email extends StatelessWidget {
       child: Text(
         email,
         style: TextStyle(
-            fontSize: 12,
-            color: Colors.black,
-            fontWeight: FontWeight.bold),
+            fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -249,7 +257,6 @@ class LogOutClass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final log = Provider.of<MyProvider>(context);
     return SizedBox(
       child: Padding(
@@ -262,17 +269,13 @@ class LogOutClass extends StatelessWidget {
               color: Colors.black,
               onPressed: () {
                 log.dofalse();
-                
+
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) {
                   return ProfileScreen();
                 }), ModalRoute.withName('/'));
               },
             ),
-            Text(
-              'Sortir',
-              style: TextStyle(fontSize: 15, color: Colors.black),
-            )
           ],
         ),
       ),
