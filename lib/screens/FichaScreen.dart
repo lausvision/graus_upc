@@ -75,7 +75,9 @@ final log = Provider.of<MyProvider>(context);
             color: (favourite ? Colors.red : Colors.black),
             onPressed: () {
               log.doit();
-              log.check ? null : _authChechked();
+              if (!log.check) {
+                _authChechked();
+              }
               // Usar provider para saber si estamos loggeados
               setState(() {
                 favourite = !favourite;
