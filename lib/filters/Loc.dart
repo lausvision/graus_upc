@@ -4,6 +4,16 @@ import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 
+/*
+List<String> loclist(List<DocumentSnapshot> doc) {
+  List<String> list = [];
+
+  for (var docu in doc) {
+    list.add(Grau(docu.data['loc']));
+  }
+  return list;
+}*/
+
 class Loc extends StatefulWidget {
   final Filtrar filtre;
   Loc(this.filtre);
@@ -14,10 +24,8 @@ class Loc extends StatefulWidget {
 class _LocState extends State<Loc> {
   int _selectedIndex = 1;
   String valor;
-  final db = Firestore.instance;
-
-
-
+  final info = Firestore.instance.collection('Graus').document('loc');
+  //List<String> locs=loclist(info);
   String index;
 
   void _onItemTapped(int index) {
