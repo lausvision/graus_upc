@@ -158,12 +158,6 @@ class _BrancaState extends State<Branca> {
                   Icons.fiber_manual_record,
                   color: Colors.blue[300],
                 ),
-            if (widget.filtre.branca == null)
-              if (actius[i])
-                Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.blue[300],
-                ),
           ],
         ),
       ),

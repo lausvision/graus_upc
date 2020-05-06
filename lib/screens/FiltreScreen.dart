@@ -16,7 +16,6 @@ class Filtre extends StatefulWidget {
 
 class _FiltreState extends State<Filtre> {
   int _selectedIndex = 1;
-  List<String> filtres = [];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -96,8 +95,8 @@ class _FiltreState extends State<Filtre> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    for (int i = 0; i < filtres.length; i++)
-                      _filter(context, filtres[i]),
+                    for (int i = 0; i < widget.filtre.filtres.length; i++)
+                      _filter(context, widget.filtre.filtres[i]),
                   ],
                 ),
               ),
@@ -189,7 +188,7 @@ class _FiltreState extends State<Filtre> {
                 .then((result) {
               setState(() {
                 widget.filtre.branca = result.branca;
-                filtres.add(widget.filtre.branca);
+                widget.filtre.filtres.add(result.branca);
               });
             });
           } else if (valor == 'Modalitat') {
@@ -200,7 +199,7 @@ class _FiltreState extends State<Filtre> {
                 .then((result) {
               setState(() {
                 widget.filtre.modalitat = result.modalitat;
-                filtres.add(widget.filtre.modalitat);
+                widget.filtre.filtres.add(result.modalitat);
               });
             });
           } else if (valor == 'Localització') {
@@ -211,7 +210,7 @@ class _FiltreState extends State<Filtre> {
                 .then((result) {
               setState(() {
                 widget.filtre.loc = result.loc;
-                filtres.add(widget.filtre.loc);
+                widget.filtre.filtres.add(result.loc);
               });
             });
           } else if (valor == 'Nota de tall') {
@@ -222,7 +221,7 @@ class _FiltreState extends State<Filtre> {
                 .then((result) {
               setState(() {
                 widget.filtre.nota = result.nota;
-                filtres.add(widget.filtre.nota);
+                widget.filtre.filtres.add(result.nota);
               });
             });
           }
@@ -256,7 +255,7 @@ class _FiltreState extends State<Filtre> {
                   iconSize: 20.0,
                   onPressed: () {
                     setState(() {
-                      filtres.remove(filtre);
+                      widget.filtre.filtres.remove(filtre);
                     });
                   },
                 ),

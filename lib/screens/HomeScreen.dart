@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/data/llista.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
@@ -38,9 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  String nom;
-  final db = Firestore.instance;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ).then((result) => {
                               setState(() {
                                 filtre = result;
+                                print(filtre);
                               })
                             });
                       },
@@ -123,9 +120,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class Filtrar {
   String nom, loc, branca, modalitat, nota, operador;
+  List<String> filtres = [];
 
   Filtrar(this.nom, this.loc, this.branca, this.modalitat, this.nota,
-      this.operador);
+      this.operador, this.filtres);
 
   Filtrar.def() {
     nom = '';
@@ -134,5 +132,6 @@ class Filtrar {
     modalitat = '';
     nota = '';
     operador = '';
+    filtres = [];
   }
 }
