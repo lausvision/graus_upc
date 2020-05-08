@@ -16,7 +16,7 @@ class UserAuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void dotrue() {
+  void dochecktrue() {
     check = true;
 
     notifyListeners();
