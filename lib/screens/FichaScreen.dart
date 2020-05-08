@@ -44,10 +44,9 @@ final log = Provider.of<UserAuthProvider>(context);
             FlatButton(
                 child: Text('Continuar'),
                 onPressed: () {
-                 // signInWithGoogle().whenComplete(() {
-                 //   log.dotrue();
-                   Navigator.of(context).pop(true);
-                //  });
+                  log.signIn();
+                  Navigator.of(context).pop(true);
+                
                   
                 })
           ],
@@ -74,7 +73,7 @@ final log = Provider.of<UserAuthProvider>(context);
             tooltip: 'Favorite',
             color: (favourite ? Colors.red : Colors.black),
             onPressed: () {
-              log.doit();
+              //log.doit();
               if (!log.check) {
                 _authChechked();
               }

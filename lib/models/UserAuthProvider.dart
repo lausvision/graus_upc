@@ -6,7 +6,7 @@ class UserAuthProvider with ChangeNotifier {
   String uidProvider;
 
 
-  void doit() {
+  void signIn() {
     signInWithGoogle().whenComplete(() {
       check = true;
       uidProvider= uid; 
