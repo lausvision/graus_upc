@@ -16,9 +16,15 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
   bool mostraLlista = false;
+  final databaseReference = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {
+    void createRecord() async {
+      await databaseReference.collection("Users").document("${uid}").setData(
+          {'Userid': '${uid}', 'description': 'Programming Guide for Dart'});
+    }
+
     return Scaffold(
         backgroundColor: Colors.blue[100],
         body: Stack(
@@ -48,6 +54,7 @@ class _FirstScreenState extends State<FirstScreen> {
                       : setState(() {
                           mostraLlista = true;
                         }));
+                  createRecord();
                 },
                 child: Text(
                   "Llistat de Preferits",
@@ -55,7 +62,6 @@ class _FirstScreenState extends State<FirstScreen> {
                 ),
               ),
             ),
-            Text(uid),
             (mostraLlista
                 ? StreamBuilder(
                     stream: Firestore.instance
