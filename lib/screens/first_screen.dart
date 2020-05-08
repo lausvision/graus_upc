@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/data/llegeix.dart';
-import 'package:graus_upc/models/MyProvider.dart';
+import 'package:graus_upc/models/UserAuthProvider.dart';
 
 import 'package:graus_upc/screens/FichaScreen.dart';
 
@@ -257,7 +257,7 @@ class LogOutClass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Provider.of<MyProvider>(context);
+    final log = Provider.of<UserAuthProvider>(context);
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.only(top: 35.0, left: 320),

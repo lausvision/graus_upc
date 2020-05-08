@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/MyProvider.dart';
+import 'package:graus_upc/models/UserAuthProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -24,7 +24,7 @@ class _FichaScreenState extends State<FichaScreen> {
 
   @override
   Widget build(BuildContext context) {
-final log = Provider.of<MyProvider>(context);
+final log = Provider.of<UserAuthProvider>(context);
     _authChechked() {
       showDialog(
         context: context,

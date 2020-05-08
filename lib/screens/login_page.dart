@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/MyProvider.dart';
+import 'package:graus_upc/models/UserAuthProvider.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 //import 'package:graus_upc/models/createUserCollection.dart';
 import 'package:graus_upc/screens/sign_in.dart';
@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _signInButton() {
     
-    final log = Provider.of<MyProvider>(context);
+    final log = Provider.of<UserAuthProvider>(context);
     return OutlineButton(
       splashColor: Colors.grey[50],
        onPressed: () {

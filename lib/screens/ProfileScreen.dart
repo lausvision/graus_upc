@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/MyProvider.dart';
+import 'package:graus_upc/models/UserAuthProvider.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/first_screen.dart';
@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     
-    final log = Provider.of<MyProvider>(context);
+    final log = Provider.of<UserAuthProvider>(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
