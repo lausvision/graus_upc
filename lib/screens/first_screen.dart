@@ -274,7 +274,7 @@ class LogOutClass extends StatelessWidget {
               tooltip: 'Sign out',
               color: Colors.black,
               onPressed: () {
-                log.dofalse();
+                log.signOut();
 
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) {

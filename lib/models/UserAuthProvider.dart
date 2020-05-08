@@ -22,7 +22,7 @@ class UserAuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void dofalse() {
+  void signOut() {
     signOutGoogle();
     check = false;
 
