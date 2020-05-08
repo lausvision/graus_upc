@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/data/llegeix.dart';
 import 'package:graus_upc/models/UserAuthProvider.dart';
-
 import 'package:graus_upc/screens/FichaScreen.dart';
-
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/sign_in.dart';
 import 'package:provider/provider.dart';
@@ -16,15 +14,9 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
   bool mostraLlista = false;
-  final databaseReference = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {
-    void createRecord() async {
-      await databaseReference.collection("Users").document("${uid}").setData(
-          {'Userid': '${uid}', 'description': 'Programming Guide for Dart'});
-    }
-
     return Scaffold(
         backgroundColor: Colors.blue[100],
         body: Stack(
@@ -54,7 +46,6 @@ class _FirstScreenState extends State<FirstScreen> {
                       : setState(() {
                           mostraLlista = true;
                         }));
-                  createRecord();
                 },
                 child: Text(
                   "Llistat de Preferits",

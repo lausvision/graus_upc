@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,7 +11,14 @@ String email;
 String imageUrl;
 String uid;
 
+ final databaseReference = Firestore.instance;
+   void createRecord() async {
+      await databaseReference.collection("Users").document("${uid}").setData(
+          {'Userid': '${uid}', 'description': 'Programming Guide for Dart'});
+    }
+
 Future<String> signInWithGoogle() async {
+  
   GoogleSignInAccount googleSignInAccount;
   try {
     googleSignInAccount = await googleSignIn.signIn();
@@ -48,6 +56,8 @@ Future<String> signInWithGoogle() async {
 
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
+
+  createRecord();
 
   return 'signInWithGoogle succeeded: $user';
 }
