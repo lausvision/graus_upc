@@ -11,14 +11,14 @@ String email;
 String imageUrl;
 String uid;
 
- final databaseReference = Firestore.instance;
-   void createRecord() async {
-      await databaseReference.collection("Users").document("${uid}").setData(
-          {'Userid': '${uid}', 'description': 'Programming Guide for Dart'});
-    }
+final databaseReference = Firestore.instance;
+void createRecord() async {
+  await databaseReference.collection("Users").document("${uid}").setData(
+      {'Userid': '${uid}', 
+      'preferits': []});
+}
 
 Future<String> signInWithGoogle() async {
-  
   GoogleSignInAccount googleSignInAccount;
   try {
     googleSignInAccount = await googleSignIn.signIn();
@@ -44,7 +44,7 @@ Future<String> signInWithGoogle() async {
   name = user.displayName;
   email = user.email;
   imageUrl = user.photoUrl;
-  uid= user.uid;
+  uid = user.uid;
 
   // Only taking the first part of the name, i.e., First Name
   if (name.contains(" ")) {
