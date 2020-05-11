@@ -178,6 +178,7 @@ class _LlistaState extends State<Llista> {
                     grau.nota.toString(),
                     grau.objectius,
                     grau.foto,
+                    grau.id
                   );
                 },
               ),

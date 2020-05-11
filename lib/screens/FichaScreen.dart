@@ -1,30 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/models/UserAuthProvider.dart';
+import 'package:graus_upc/screens/sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FichaScreen extends StatefulWidget {
-  final String nom, descripcio, localitzacio, link, nota, objectiu, foto;
+  final String nom, descripcio, localitzacio, link, nota, objectiu, foto,id;
   FichaScreen(this.nom, this.descripcio, this.localitzacio, this.link,
-      this.nota, this.objectiu, this.foto);
+      this.nota, this.objectiu, this.foto,this.id);
 
   @override
   _FichaScreenState createState() => _FichaScreenState(
-      nom, descripcio, localitzacio, link, nota, objectiu, foto);
+      nom, descripcio, localitzacio, link, nota, objectiu, foto,id);
 }
 
 class _FichaScreenState extends State<FichaScreen> {
   bool favourite = false;
 
-  String nom, descripcio, localitzacio, link, nota, objectiu, foto;
+  String nom, descripcio, localitzacio, link, nota, objectiu, foto,id;
   _FichaScreenState(this.nom, this.descripcio, this.localitzacio, this.link,
-      this.nota, this.objectiu, this.foto);
+      this.nota, this.objectiu, this.foto,this.id);
 
   @override
   Widget build(BuildContext context) {
-final log = Provider.of<UserAuthProvider>(context);
+    final log = Provider.of<UserAuthProvider>(context);
+
+    void addPreferitsArray(uid,grauid) async {
+      DocumentReference docRef = Firestore.instance.collection('Users').document(uid);
+
+      DocumentSnapshot doc = await docRef.get();
+
+      List preferits= doc.data['preferits'];
+
+      docRef.updateData({
+        'preferits':FieldValue.arrayUnion([grauid])
+      });
+    }
+
     _authChechked() {
       showDialog(
         context: context,
@@ -45,9 +60,9 @@ final log = Provider.of<UserAuthProvider>(context);
                 child: Text('Continuar'),
                 onPressed: () {
                   log.signIn();
+                  addPreferitsArray(log.uidProvider,id);
+
                   Navigator.of(context).pop(true);
-                
-                  
                 })
           ],
         ),
@@ -57,8 +72,6 @@ final log = Provider.of<UserAuthProvider>(context);
         }
       });
     }
-
-    
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -73,11 +86,12 @@ final log = Provider.of<UserAuthProvider>(context);
             tooltip: 'Favorite',
             color: (favourite ? Colors.red : Colors.black),
             onPressed: () {
-              //log.doit();
               if (!log.check) {
                 _authChechked();
+              } else {
+                addPreferitsArray(log.uidProvider,id);
               }
-              // Usar provider para saber si estamos loggeados
+              print(id); 
               setState(() {
                 favourite = !favourite;
               });

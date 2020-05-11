@@ -160,6 +160,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     grau.nota.toString(),
                     grau.objectius,
                     grau.foto,
+                    grau.id
                   );
                 },
               ),
