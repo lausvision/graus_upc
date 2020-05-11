@@ -8,36 +8,39 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FichaScreen extends StatefulWidget {
-  final String nom, descripcio, localitzacio, link, nota, objectiu, foto,id;
+  final String nom, descripcio, localitzacio, link, nota, objectiu, foto, id;
   FichaScreen(this.nom, this.descripcio, this.localitzacio, this.link,
-      this.nota, this.objectiu, this.foto,this.id);
+      this.nota, this.objectiu, this.foto, this.id);
 
   @override
   _FichaScreenState createState() => _FichaScreenState(
-      nom, descripcio, localitzacio, link, nota, objectiu, foto,id);
+      nom, descripcio, localitzacio, link, nota, objectiu, foto, id);
 }
 
 class _FichaScreenState extends State<FichaScreen> {
   bool favourite = false;
 
-  String nom, descripcio, localitzacio, link, nota, objectiu, foto,id;
+  String nom, descripcio, localitzacio, link, nota, objectiu, foto, id;
   _FichaScreenState(this.nom, this.descripcio, this.localitzacio, this.link,
-      this.nota, this.objectiu, this.foto,this.id);
+      this.nota, this.objectiu, this.foto, this.id);
 
   @override
   Widget build(BuildContext context) {
     final log = Provider.of<UserAuthProvider>(context);
 
-    void addPreferitsArray(uid,grauid) async {
-      DocumentReference docRef = Firestore.instance.collection('Users').document(uid);
+    void addPreferitsArray(uid, grauid, favIcon) async {
+      DocumentReference docRef =
+          Firestore.instance.collection('Users').document(uid);
 
-      DocumentSnapshot doc = await docRef.get();
-
-      List preferits= doc.data['preferits'];
-
-      docRef.updateData({
-        'preferits':FieldValue.arrayUnion([grauid])
-      });
+      if (favIcon == false) {
+        docRef.updateData({
+          'preferits': FieldValue.arrayUnion([grauid])
+        });
+      } else {
+        docRef.updateData({
+          'preferits': FieldValue.arrayRemove([grauid])
+        });
+      }
     }
 
     _authChechked() {
@@ -60,7 +63,7 @@ class _FichaScreenState extends State<FichaScreen> {
                 child: Text('Continuar'),
                 onPressed: () {
                   log.signIn();
-                  addPreferitsArray(log.uidProvider,id);
+                  addPreferitsArray(log.uidProvider, id, favourite);
 
                   Navigator.of(context).pop(true);
                 })
@@ -89,9 +92,9 @@ class _FichaScreenState extends State<FichaScreen> {
               if (!log.check) {
                 _authChechked();
               } else {
-                addPreferitsArray(log.uidProvider,id);
+                addPreferitsArray(log.uidProvider, id, favourite);
               }
-              print(id); 
+              print(id);
               setState(() {
                 favourite = !favourite;
               });
