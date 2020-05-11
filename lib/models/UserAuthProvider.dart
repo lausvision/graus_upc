@@ -5,26 +5,25 @@ class UserAuthProvider with ChangeNotifier {
   bool check = false;
   String uidProvider;
 
-
   void signIn() {
     signInWithGoogle().whenComplete(() {
       check = true;
-      uidProvider= uid; 
-      
+      uidProvider = uid;
     });
 
     notifyListeners();
   }
 
-  void dochecktrue() {
+  void dochecktrue(uid) {
     check = true;
-
+    uidProvider = uid;
     notifyListeners();
   }
 
   void signOut() {
     signOutGoogle();
     check = false;
+    uidProvider=null;
 
     notifyListeners();
   }

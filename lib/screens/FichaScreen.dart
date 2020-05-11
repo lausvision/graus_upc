@@ -95,6 +95,7 @@ class _FichaScreenState extends State<FichaScreen> {
                 addPreferitsArray(log.uidProvider, id, favourite);
               }
               print(id);
+              print(log.uidProvider);
               setState(() {
                 favourite = !favourite;
               });
