@@ -167,7 +167,7 @@ class _NotaState extends State<Nota> {
                   child: TextField(
                     onChanged: (value) {
                       setState(() {
-                        widget.filtre.nota = operador + value;
+                        widget.filtre.afegeixNota(operador, double.parse(value));
                       });
                     },
                     keyboardType: TextInputType.number,

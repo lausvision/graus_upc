@@ -13,9 +13,9 @@ class Llista extends StatefulWidget {
 }
 
 class _LlistaState extends State<Llista> {
+
+
   filtraLlista(List<Grau> graus) {
-    List<Grau> grausFiltrats = [];
-    List<Grau> grausFinals = [];
 /*
        if (widget.filtre == null) {
       grausFiltrats = graus;
@@ -30,6 +30,8 @@ class _LlistaState extends State<Llista> {
     }return grausFiltrats;
     }
 */
+    // Filtrem per nom si el nom és != null
+    List<Grau> grausFiltrats = [];
     if (widget.filtre.nom == null) {
       grausFiltrats = graus;
     } else {
@@ -41,43 +43,20 @@ class _LlistaState extends State<Llista> {
         }
       }
     }
+
+    // Filtre per conceptes
+    List<Grau> grausFinals = [];
     for (int i = 0; i < grausFiltrats.length; i++) {
-      if (widget.filtre.branca != null) {
-        if (grausFiltrats[i]
-                .branca
-                .toLowerCase()
-                .indexOf(widget.filtre.branca) !=
-            -1) {
-          grausFinals.add(grausFiltrats[i]);
-        }
-      }
-      if (widget.filtre.modalitat != null) {
-        if (grausFiltrats[i]
-                .modalitat
-                .toLowerCase()
-                .indexOf(widget.filtre.modalitat) !=
-            -1) {
-          grausFinals.add(grausFiltrats[i]);
-        }
-      }
-      if (widget.filtre.loc != null) {
-        if (grausFiltrats[i].loc.toLowerCase().indexOf(widget.filtre.loc) !=
-            -1) {
-          grausFinals.add(grausFiltrats[i]);
-        }
-      }
-      if (widget.filtre.nota != null) {
-        if (grausFiltrats[i]
-                .nota
-                .toString()
-                .toLowerCase()
-                .indexOf(widget.filtre.nota) !=
-            -1) {
-          grausFinals.add(grausFiltrats[i]);
-        }
+      final Filtrar F = widget.filtre;
+      final Grau G = grausFiltrats[i];
+      if (F.compleixBranca(G) &&
+          F.compleixLoc(G) &&
+          F.compleixModalitat(G) && 
+          F.compleixNota(G)) {
+        grausFinals.add(G);
       }
     }
-    if (grausFinals == null) return grausFiltrats;
+
     return grausFinals;
   }
 
@@ -170,16 +149,8 @@ class _LlistaState extends State<Llista> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return FichaScreen(
-                    grau.nom,
-                    grau.ambit,
-                    grau.loc,
-                    grau.link,
-                    grau.nota.toString(),
-                    grau.objectius,
-                    grau.foto,
-                    grau.id
-                  );
+                  return FichaScreen(grau.nom, grau.ambit, grau.loc, grau.link,
+                      grau.nota.toString(), grau.objectius, grau.foto, grau.id);
                 },
               ),
             );

@@ -92,11 +92,16 @@ class _FiltreState extends State<Filtre> {
             children: <Widget>[
               Container(
                 height: 35.0,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
+                child: Row(
                   children: <Widget>[
+                    Text(widget.filtre.branca.toString()),
+                    Text(widget.filtre.loc.toString()),
+                    Text(widget.filtre.nota.toString()),
+                    Text(widget.filtre.modalitat),
+                    /*
                     for (int i = 0; i < widget.filtre.filtres.length; i++)
                       _filter(context, widget.filtre.filtres[i]),
+                    */
                   ],
                 ),
               ),
@@ -187,8 +192,7 @@ class _FiltreState extends State<Filtre> {
             ))
                 .then((result) {
               setState(() {
-                widget.filtre.branca = result.branca;
-                widget.filtre.filtres.add(result.branca);
+                widget.filtre.afegeixBranca(result.branca);
               });
             });
           } else if (valor == 'Modalitat') {
@@ -199,7 +203,6 @@ class _FiltreState extends State<Filtre> {
                 .then((result) {
               setState(() {
                 widget.filtre.modalitat = result.modalitat;
-                widget.filtre.filtres.add(result.modalitat);
               });
             });
           } else if (valor == 'Localització') {
@@ -209,8 +212,7 @@ class _FiltreState extends State<Filtre> {
             ))
                 .then((result) {
               setState(() {
-                widget.filtre.loc = result.loc;
-                widget.filtre.filtres.add(result.loc);
+                // widget.filtre.afegeix('loc', result.loc);
               });
             });
           } else if (valor == 'Nota de tall') {
@@ -219,10 +221,9 @@ class _FiltreState extends State<Filtre> {
               builder: (context) => Nota(widget.filtre),
             ))
                 .then((result) {
-              setState(() {
-                widget.filtre.nota = result.nota;
-                widget.filtre.filtres.add(result.nota);
-              });
+                setState(() {
+                  widget.filtre.nota.add(result.nota[0]);
+                });
             });
           }
         },

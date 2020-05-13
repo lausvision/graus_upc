@@ -13,9 +13,10 @@ String uid;
 
 final databaseReference = Firestore.instance;
 void createRecord() async {
-  await databaseReference.collection("Users").document(uid).setData(
-      {'Userid': uid, 
-      'preferits': []});
+  await databaseReference
+      .collection("Users")
+      .document(uid)
+      .updateData({'preferits': FieldValue.arrayUnion([])});
 }
 
 Future<String> signInWithGoogle() async {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graus_upc/data/llegeix.dart';
 import 'package:graus_upc/data/llista.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
@@ -64,12 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               return Filtre(filtre);
                             },
                           ),
-                        ).then((result) => {
-                              setState(() {
-                                filtre = result;
-                                print(filtre);
-                              })
+                        ).then((result) {
+                          if (result != null) {
+                            setState(() {
+                              filtre = result;
+                              print(filtre);
                             });
+                          }
+                        });
                       },
                     ),
                     prefixIcon: Icon(Icons.search),
@@ -118,20 +121,90 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class Filtrar {
-  String nom, loc, branca, modalitat, nota, operador;
-  List<String> filtres = [];
 
-  Filtrar(this.nom, this.loc, this.branca, this.modalitat, this.nota,
-      this.operador, this.filtres);
+class ItemNota {
+  String operador;
+  double nota;
+  ItemNota(this.operador, this.nota);
+}
+
+class Filtrar {
+  // String nom, loc, branca, nota, operador;
+  String nom, modalitat;
+  List<String> branca;
+  List<String> loc;
+  List<ItemNota> nota;
 
   Filtrar.def() {
-    nom = '';
+    /* 
     loc = '';
     branca = '';
-    modalitat = '';
     nota = '';
-    operador = '';
-    filtres = [];
+    operador = ''; */
+    nom = '';
+    branca = [];
+    loc = [];
+    nota = [];
+    modalitat = '';
   }
+
+  get filtres {
+    List<String> f = [];
+    for (var b in branca) f.add(b);
+    for (var l in loc) f.add(l);
+    for (var n in nota) f.add("${n.operador}${n.nota}");
+    f.add(modalitat);
+    return f;
+  }
+
+  void afegeixBranca(String b) {
+    if (!branca.contains(b)) {
+      this.branca.add(b);
+    }
+  }
+
+  void afegeixNota(String op, double nota) {
+    this.nota.add(ItemNota(op, nota));
+  }
+
+  bool compleixBranca(Grau g) {
+    if (branca.length == 0) {
+      return true;
+    }
+    for (int i = 0; i < branca.length; i++) {
+      if (g.branca.toLowerCase().indexOf(branca[i].toLowerCase()) != -1) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool compleixLoc(Grau g) => true;
+
+  bool compleixModalitat(Grau g) => true;
+
+  bool compleixNota(Grau g) => true;
+
 }
+
+
+/*
+
+
+        if (F.modalitat != null &&
+          G.modalitat.toLowerCase().indexOf(F.modalitat) != -1) {
+          afegir = true;
+        } 
+
+      if (F.branca != null && G.branca.toLowerCase().indexOf(F.branca) != -1) {
+        afegir = true;
+      } else  else if (F.loc != null && G.loc.toLowerCase().indexOf(F.loc) != -1) {
+        afegir = true;
+      } else if (F.nota != null &&
+          G.nota.toString().toLowerCase().indexOf(F.nota) != -1) {
+        afegir = true;
+      }
+      if (afegir) {
+      }
+
+*/

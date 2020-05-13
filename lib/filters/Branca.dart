@@ -152,18 +152,17 @@ class _BrancaState extends State<Branca> {
                 style: TextStyle(fontSize: 24, color: Colors.black54),
               ),
             ),
-            if (widget.filtre.branca != null)
-              if (valor == widget.filtre.branca)
-                Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.blue[300],
-                ),
+            if (actius[i])
+              Icon(
+                Icons.fiber_manual_record,
+                color: Colors.blue[300],
+              ),
           ],
         ),
       ),
       onTap: () {
         setState(() {
-          widget.filtre.branca = valor;
+          widget.filtre.afegeixBranca(valor);
           for (int j = 0; j < branca.length; j++)
             if (j == i)
               actius[j] = true;
