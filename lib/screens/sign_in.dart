@@ -13,8 +13,8 @@ String uid;
 
 final databaseReference = Firestore.instance;
 void createRecord() async {
-  await databaseReference.collection("Users").document("${uid}").setData(
-      {'Userid': '${uid}', 
+  await databaseReference.collection("Users").document(uid).setData(
+      {'Userid': uid, 
       'preferits': []});
 }
 
