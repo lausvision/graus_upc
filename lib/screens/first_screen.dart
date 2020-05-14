@@ -15,6 +15,20 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   bool mostraLlista = false;
 
+  void getIdsxUid() {
+    databaseReference
+        .collection("Users")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      Map<String, dynamic> ids;
+      var listIds = [];
+      snapshot.documents.forEach((f) => ids = f.data);
+      ids.forEach((k, v) => listIds.add(v));
+      print(listIds);
+      print(ids);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +53,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.blueAccent,
                 onPressed: () {
+                   getIdsxUid();
                   (mostraLlista
                       ? setState(() {
                           mostraLlista = false;
@@ -68,7 +83,19 @@ class _FirstScreenState extends State<FirstScreen> {
                           .map((doc) => Grau.fromFirestore(doc))
                           .toList();
 
-                      //   List<Grau> grausFiltrats = filtraLlista(graus);
+                      List<Grau> grausFiltratsxId = [];
+
+                     
+
+                      List<String> idsPreferits = [];
+
+                      for (int y = 0; y < idsPreferits.length; y++) {
+                        for (int i = 0; i < graus.length; i++) {
+                          if (graus[i].id == idsPreferits[y]) {
+                            grausFiltratsxId[y] = graus[i];
+                          }
+                        }
+                      }
 
                       return Container(
                         padding: const EdgeInsets.only(
@@ -77,9 +104,9 @@ class _FirstScreenState extends State<FirstScreen> {
                           child: ListView.builder(
                             // padding: const EdgeInsets.only(top:300,left: 5),
                             itemExtent: 100,
-                            itemCount: graus.length,
+                            itemCount: grausFiltratsxId.length,
                             itemBuilder: (context, index) =>
-                                _grau(context, graus[index]),
+                                _grau(context, grausFiltratsxId[index]),
                           ),
                         ),
                       );
@@ -152,16 +179,8 @@ class _FirstScreenState extends State<FirstScreen> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return FichaScreen(
-                    grau.nom,
-                    grau.ambit,
-                    grau.loc,
-                    grau.link,
-                    grau.nota.toString(),
-                    grau.objectius,
-                    grau.foto,
-                    grau.id
-                  );
+                  return FichaScreen(grau.nom, grau.ambit, grau.loc, grau.link,
+                      grau.nota.toString(), grau.objectius, grau.foto, grau.id);
                 },
               ),
             );
