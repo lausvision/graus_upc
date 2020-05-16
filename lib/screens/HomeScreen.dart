@@ -143,6 +143,11 @@ class Filtrar with ChangeNotifier {
     return f;
   }
 
+  void modificaFiltres(String f) {
+    filtres.remove(f);
+    notifyListeners();
+  }
+
   void modificaNom(String n) {
     nom = n;
     notifyListeners();

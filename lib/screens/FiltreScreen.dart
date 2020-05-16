@@ -101,7 +101,7 @@ class _FiltreState extends State<Filtre> {
                     Text(filtre.modalitat),
                     */
                     for (int i = 0; i < filtre.filtres.length; i++)
-                      _filter(context, filtre.filtres[i], filtre),
+                      _filter(context, filtre.filtres[i],filtre),
                   ],
                 ),
               ),
@@ -231,9 +231,7 @@ class _FiltreState extends State<Filtre> {
                   color: Colors.white70,
                   iconSize: 20.0,
                   onPressed: () {
-                    setState(() {
-                      filtre.filtres.remove(filtre);
-                    });
+                   filtre.modificaFiltres(filter);
                   },
                 ),
               ],
