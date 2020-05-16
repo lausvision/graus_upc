@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:graus_upc/models/UserAuthProvider.dart';
+import 'package:graus_upc/models/UserAuthProvider.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:provider/provider.dart';
 
@@ -17,10 +17,13 @@ class MyApp extends StatelessWidget {
         home: Scaffold(body: HomeScreen()),
       ),
     );*/
-     return ChangeNotifierProvider<Filtrar>(
+    return ChangeNotifierProvider<Filtrar>(
       create: (context) => Filtrar(),
-      child: MaterialApp(
-        home: Scaffold(body: HomeScreen()),
+      child: ChangeNotifierProvider<UserAuthProvider>(
+        create: (context) => UserAuthProvider(),
+        child: MaterialApp(
+          home: Scaffold(body: HomeScreen()),
+        ),
       ),
     );
   }
