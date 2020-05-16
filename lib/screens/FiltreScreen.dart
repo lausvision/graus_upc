@@ -101,7 +101,7 @@ class _FiltreState extends State<Filtre> {
                     Text(filtre.modalitat),
                     */
                     for (int i = 0; i < filtre.filtres.length; i++)
-                      _filter(context, filtre.filtres[i],filtre),
+                      _filter(context, i, filtre),
                   ],
                 ),
               ),
@@ -207,7 +207,7 @@ class _FiltreState extends State<Filtre> {
     );
   }
 
-  Widget _filter(BuildContext context, String filter, Filtrar filtre) {
+  Widget _filter(BuildContext context, int i, Filtrar filtre) {
     return InkWell(
       child: Row(
         children: <Widget>[
@@ -222,7 +222,7 @@ class _FiltreState extends State<Filtre> {
                 Padding(
                   padding: EdgeInsets.only(left: 14.0),
                   child: Text(
-                    filter,
+                    filtre.filtres[i],
                     style: TextStyle(fontSize: 18, color: Colors.white70),
                   ),
                 ),
@@ -231,7 +231,7 @@ class _FiltreState extends State<Filtre> {
                   color: Colors.white70,
                   iconSize: 20.0,
                   onPressed: () {
-                   filtre.modificaFiltres(filter);
+                    filtre.modificaFiltres(filtre.filtres[i]);
                   },
                 ),
               ],

@@ -139,12 +139,24 @@ class Filtrar with ChangeNotifier {
     for (var b in branca) f.add(b);
     for (var l in loc) f.add(l);
     for (var n in nota) f.add("${n.operador}${n.nota}");
-    f.add(modalitat);
+    if (modalitat != '') f.add(modalitat);
     return f;
   }
 
   void modificaFiltres(String f) {
-    filtres.remove(f);
+    for (int i = 0; i < branca.length; i++) {
+      if (f == branca[i]) branca.remove(branca[i]);
+    }
+
+    if (f == modalitat) modalitat = '';
+
+    for (int i = 0; i < loc.length; i++) {
+      if (f == loc[i]) loc.remove(loc[i]);
+    }
+
+    for (int i = 0; i < nota.length; i++) {
+      if (f == "${nota[i].operador}${nota[i].nota}") nota.remove(nota[i]);
+    }
     notifyListeners();
   }
 
