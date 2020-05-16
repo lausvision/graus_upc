@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
-  String index;
+  String paraula;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -52,9 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(5.0),
                 child: TextField(
                   onChanged: (value) {
-                    setState(() {
-                      index = value;
-                    });
+                    filtre.modificaNom(value);
                   },
                   decoration: InputDecoration(
                     hintText: "Search",
@@ -67,15 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               return Filtre();
                             },
                           ),
-                        ) /*.then((result) {
-                          if (result != null) {
-                            setState(() {
-                              filtre = result;
-                              print(filtre);
-                            });
-                          }
-                        })*/
-                            ;
+                        );
                       },
                     ),
                     prefixIcon: Icon(Icons.search),
@@ -85,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Expanded(child: Llista(filtre)),
+              Expanded(child: Llista()),
             ],
           ),
         ),
@@ -131,18 +121,12 @@ class ItemNota {
 }
 
 class Filtrar with ChangeNotifier {
-  // String nom, loc, branca, nota, operador;
   String nom, modalitat;
   List<String> branca;
   List<String> loc;
   List<ItemNota> nota;
 
   Filtrar() {
-    /* 
-    loc = '';
-    branca = '';
-    nota = '';
-    operador = ''; */
     nom = '';
     branca = [];
     loc = [];
@@ -159,6 +143,11 @@ class Filtrar with ChangeNotifier {
     return f;
   }
 
+  void modificaNom(String n) {
+    nom = n;
+    notifyListeners();
+  }
+
   void afegeixBranca(String b) {
     if (!branca.contains(b)) {
       this.branca.add(b);
@@ -166,14 +155,14 @@ class Filtrar with ChangeNotifier {
     notifyListeners();
   }
 
-  void afegeixMod(String mod) {
-    modalitat=mod;
+  void modificaMod(String m) {
+    modalitat = m;
     notifyListeners();
   }
 
   void afegeixLoc(String b) {
-    if (!branca.contains(b)) {
-      this.branca.add(b);
+    if (!loc.contains(b)) {
+      this.loc.add(b);
     }
     notifyListeners();
   }
@@ -195,30 +184,38 @@ class Filtrar with ChangeNotifier {
     return false;
   }
 
-  bool compleixLoc(Grau g) => true;
+  bool compleixLoc(Grau g) {
+    if (loc.length == 0) {
+      return true;
+    }
+    for (int i = 0; i < loc.length; i++) {
+      if (g.loc.toLowerCase().indexOf(loc[i].toLowerCase()) != -1) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-  bool compleixModalitat(Grau g) => true;
+  bool compleixModalitat(Grau g) {
+    if (modalitat != null && modalitat.toLowerCase().indexOf(modalitat) != -1) {
+      return true;
+    }
+    return false;
+  }
 
-  bool compleixNota(Grau g) => true;
+  bool compleixNota(Grau g) {
+    if (nota.length == 0) {
+      return true;
+    }
+    for (int i = 0; i < nota.length; i++) {
+      if (g.nota
+              .toString()
+              .toLowerCase()
+              .indexOf(nota[i].toString().toLowerCase()) !=
+          -1) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
-
-/*
-
-
-        if (F.modalitat != null &&
-          G.modalitat.toLowerCase().indexOf(F.modalitat) != -1) {
-          afegir = true;
-        } 
-
-      if (F.branca != null && G.branca.toLowerCase().indexOf(F.branca) != -1) {
-        afegir = true;
-      } else  else if (F.loc != null && G.loc.toLowerCase().indexOf(F.loc) != -1) {
-        afegir = true;
-      } else if (F.nota != null &&
-          G.nota.toString().toLowerCase().indexOf(F.nota) != -1) {
-        afegir = true;
-      }
-      if (afegir) {
-      }
-
-*/

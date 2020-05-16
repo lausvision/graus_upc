@@ -3,41 +3,25 @@ import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
 import 'package:graus_upc/data/llegeix.dart';
+import 'package:provider/provider.dart';
 
 class Llista extends StatefulWidget {
-  final Filtrar filtre;
-  const Llista(this.filtre);
-
   @override
   _LlistaState createState() => _LlistaState();
 }
 
 class _LlistaState extends State<Llista> {
-
-
   filtraLlista(List<Grau> graus) {
-/*
-       if (widget.filtre == null) {
-      grausFiltrats = graus;
-    } else {
-      for (int j = 0; j < graus.length; j++) {
-        final String nomMinuscules = graus[j].nom.toLowerCase();
-        final String filtreMinuscules = widget.filtre.toLowerCase();
-        if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
-          grausFiltrats.add(graus[j]);
-        }
-      }
-    }return grausFiltrats;
-    }
-*/
+    final filtre = Provider.of<Filtrar>(context);
+
     // Filtrem per nom si el nom és != null
     List<Grau> grausFiltrats = [];
-    if (widget.filtre.nom == null) {
+    if (filtre.nom == null) {
       grausFiltrats = graus;
     } else {
       for (int j = 0; j < graus.length; j++) {
         final String nomMinuscules = graus[j].nom.toLowerCase();
-        final String filtreMinuscules = widget.filtre.nom.toLowerCase();
+        final String filtreMinuscules = filtre.nom.toLowerCase();
         if (nomMinuscules.indexOf(filtreMinuscules) != -1) {
           grausFiltrats.add(graus[j]);
         }
@@ -47,16 +31,15 @@ class _LlistaState extends State<Llista> {
     // Filtre per conceptes
     List<Grau> grausFinals = [];
     for (int i = 0; i < grausFiltrats.length; i++) {
-      final Filtrar F = widget.filtre;
+      final Filtrar F = filtre;
       final Grau G = grausFiltrats[i];
       if (F.compleixBranca(G) &&
           F.compleixLoc(G) &&
-          F.compleixModalitat(G) && 
+          F.compleixModalitat(G) &&
           F.compleixNota(G)) {
         grausFinals.add(G);
       }
     }
-
     return grausFinals;
   }
 

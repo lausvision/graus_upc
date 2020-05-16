@@ -163,7 +163,7 @@ class _ModalitatState extends State<Modalitat> {
         ),
       ),
       onTap: () {
-        filtre.afegeixMod(valor);
+        filtre.modificaMod(valor);
         setState(() {
           for (int j = 0; j < modalitat.length; j++)
             if (j == i)
