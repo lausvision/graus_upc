@@ -6,10 +6,9 @@ import 'package:graus_upc/filters/Branca.dart';
 import 'package:graus_upc/filters/Modalitat.dart';
 import 'package:graus_upc/filters/Loc.dart';
 import 'package:graus_upc/filters/Nota.dart';
+import 'package:provider/provider.dart';
 
 class Filtre extends StatefulWidget {
-  final Filtrar filtre;
-  const Filtre(this.filtre);
   @override
   _FiltreState createState() => _FiltreState();
 }
@@ -38,6 +37,8 @@ class _FiltreState extends State<Filtre> {
 
   @override
   Widget build(BuildContext context) {
+    final filtre = Provider.of<Filtrar>(context);
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
@@ -94,21 +95,20 @@ class _FiltreState extends State<Filtre> {
                 height: 35.0,
                 child: Row(
                   children: <Widget>[
-                    Text(widget.filtre.branca.toString()),
-                    Text(widget.filtre.loc.toString()),
-                    Text(widget.filtre.nota.toString()),
-                    Text(widget.filtre.modalitat),
-                    /*
-                    for (int i = 0; i < widget.filtre.filtres.length; i++)
-                      _filter(context, widget.filtre.filtres[i]),
+                    /* Text(filtre.branca.toString()),
+                    Text(filtre.loc.toString()),
+                    Text(filtre.nota.toString()),
+                    Text(filtre.modalitat),
                     */
+                    for (int i = 0; i < filtre.filtres.length; i++)
+                      _filter(context, filtre.filtres[i], filtre),
                   ],
                 ),
               ),
-              _camp(context, 'Branca de coneixement'),
-              _camp(context, 'Modalitat'),
-              _camp(context, 'Localització'),
-              _camp(context, 'Nota de tall'),
+              _camp(context, 'Branca de coneixement', filtre),
+              _camp(context, 'Modalitat', filtre),
+              _camp(context, 'Localització', filtre),
+              _camp(context, 'Nota de tall', filtre),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -128,7 +128,7 @@ class _FiltreState extends State<Filtre> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(widget.filtre);
+                    Navigator.of(context).pop();
                   },
                 ),
               ),
@@ -139,7 +139,7 @@ class _FiltreState extends State<Filtre> {
     );
   }
 
-  Widget _camp(BuildContext context, String valor) {
+  Widget _camp(BuildContext context, String valor, Filtrar filtre) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: InkWell(
@@ -186,52 +186,28 @@ class _FiltreState extends State<Filtre> {
         ),
         onTap: () {
           if (valor == 'Branca de coneixement') {
-            Navigator.of(context)
-                .push(MaterialPageRoute(
-              builder: (context) => Branca(widget.filtre),
-            ))
-                .then((result) {
-              setState(() {
-                widget.filtre.afegeixBranca(result.branca);
-              });
-            });
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Branca(),
+            ));
           } else if (valor == 'Modalitat') {
-            Navigator.of(context)
-                .push(MaterialPageRoute(
-              builder: (context) => Modalitat(widget.filtre),
-            ))
-                .then((result) {
-              setState(() {
-                widget.filtre.modalitat = result.modalitat;
-              });
-            });
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Modalitat(),
+            ));
           } else if (valor == 'Localització') {
-            Navigator.of(context)
-                .push(MaterialPageRoute(
-              builder: (context) => Loc(widget.filtre),
-            ))
-                .then((result) {
-              setState(() {
-                // widget.filtre.afegeix('loc', result.loc);
-              });
-            });
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Loc(),
+            ));
           } else if (valor == 'Nota de tall') {
-            Navigator.of(context)
-                .push(MaterialPageRoute(
-              builder: (context) => Nota(widget.filtre),
-            ))
-                .then((result) {
-                setState(() {
-                  widget.filtre.nota.add(result.nota[0]);
-                });
-            });
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Nota(),
+            ));
           }
         },
       ),
     );
   }
 
-  Widget _filter(BuildContext context, String filtre) {
+  Widget _filter(BuildContext context, String filter, Filtrar filtre) {
     return InkWell(
       child: Row(
         children: <Widget>[
@@ -246,7 +222,7 @@ class _FiltreState extends State<Filtre> {
                 Padding(
                   padding: EdgeInsets.only(left: 14.0),
                   child: Text(
-                    filtre,
+                    filter,
                     style: TextStyle(fontSize: 18, color: Colors.white70),
                   ),
                 ),
@@ -256,7 +232,7 @@ class _FiltreState extends State<Filtre> {
                   iconSize: 20.0,
                   onPressed: () {
                     setState(() {
-                      widget.filtre.filtres.remove(filtre);
+                      filtre.filtres.remove(filtre);
                     });
                   },
                 ),

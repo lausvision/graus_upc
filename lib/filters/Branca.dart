@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
+import 'package:provider/provider.dart';
 
 class Branca extends StatefulWidget {
-  final Filtrar filtre;
-  Branca(this.filtre);
-
   @override
   _BrancaState createState() => _BrancaState();
 }
@@ -43,6 +41,8 @@ class _BrancaState extends State<Branca> {
 
   @override
   Widget build(BuildContext context) {
+    final filtre = Provider.of<Filtrar>(context);
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
@@ -98,7 +98,7 @@ class _BrancaState extends State<Branca> {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               for (int i = 0; i < branca.length; i++)
-                _camp(context, branca[i], actius, i),
+                _camp(context, branca[i], actius, i, filtre),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -118,7 +118,7 @@ class _BrancaState extends State<Branca> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(widget.filtre);
+                    Navigator.of(context).pop();
                   },
                 ),
               ),
@@ -129,7 +129,8 @@ class _BrancaState extends State<Branca> {
     );
   }
 
-  Widget _camp(BuildContext context, String valor, List<bool> actius, int i) {
+  Widget _camp(BuildContext context, String valor, List<bool> actius, int i,
+      Filtrar filtre) {
     return InkWell(
       child: Container(
         padding: EdgeInsets.only(bottom: 8.0),
@@ -161,8 +162,8 @@ class _BrancaState extends State<Branca> {
         ),
       ),
       onTap: () {
+        filtre.afegeixBranca(valor);
         setState(() {
-          widget.filtre.afegeixBranca(valor);
           for (int j = 0; j < branca.length; j++)
             if (j == i)
               actius[j] = true;

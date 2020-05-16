@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
+import 'package:provider/provider.dart';
 
 class Nota extends StatefulWidget {
-  final Filtrar filtre;
-  Nota(this.filtre);
   @override
   _NotaState createState() => _NotaState();
 }
@@ -35,6 +34,8 @@ class _NotaState extends State<Nota> {
 
   @override
   Widget build(BuildContext context) {
+    final filtre = Provider.of<Filtrar>(context);
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
@@ -89,7 +90,7 @@ class _NotaState extends State<Nota> {
                 'Nota de tall',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _camp(context),
+              _camp(context, filtre),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -109,7 +110,7 @@ class _NotaState extends State<Nota> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(widget.filtre);
+                    Navigator.of(context).pop();
                   },
                 ),
               ),
@@ -120,7 +121,7 @@ class _NotaState extends State<Nota> {
     );
   }
 
-  Widget _camp(BuildContext context) {
+  Widget _camp(BuildContext context, Filtrar filtre) {
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.all(40.0),
@@ -166,9 +167,7 @@ class _NotaState extends State<Nota> {
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: TextField(
                     onChanged: (value) {
-                      setState(() {
-                        widget.filtre.afegeixNota(operador, double.parse(value));
-                      });
+                      filtre.afegeixNota(operador, double.parse(value));
                     },
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(

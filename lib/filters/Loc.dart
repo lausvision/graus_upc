@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
+import 'package:provider/provider.dart';
 
 /*
 List<String> loclist(List<DocumentSnapshot> doc) {
@@ -15,15 +16,12 @@ List<String> loclist(List<DocumentSnapshot> doc) {
 }*/
 
 class Loc extends StatefulWidget {
-  final Filtrar filtre;
-  Loc(this.filtre);
   @override
   _LocState createState() => _LocState();
 }
 
 class _LocState extends State<Loc> {
   int _selectedIndex = 1;
-  String valor;
   final info = Firestore.instance.collection('Graus').document('loc');
   //List<String> locs=loclist(info);
   String index;
@@ -49,6 +47,8 @@ class _LocState extends State<Loc> {
 
   @override
   Widget build(BuildContext context) {
+    final filtre = Provider.of<Filtrar>(context);
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
@@ -103,7 +103,7 @@ class _LocState extends State<Loc> {
                 'Localització',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _camp(context),
+              _camp(context, filtre),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -134,14 +134,12 @@ class _LocState extends State<Loc> {
     );
   }
 
-  Widget _camp(BuildContext context) {
+  Widget _camp(BuildContext context, Filtrar filtre) {
     return Padding(
       padding: EdgeInsets.only(left: 10.0),
       child: TextField(
-        onChanged: (value) {
-          setState(() {
-            valor = value;
-          });
+        onChanged: (valor) {
+          filtre.afegeixLoc(valor);
         },
         decoration: InputDecoration(
           hintText: "Escriu el nom del centre a buscar.",

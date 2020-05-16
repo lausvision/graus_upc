@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
+import 'package:provider/provider.dart';
 
 class Modalitat extends StatefulWidget {
-  final Filtrar filtre;
-  Modalitat(this.filtre);
   @override
   _ModalitatState createState() => _ModalitatState();
 }
@@ -36,6 +35,8 @@ class _ModalitatState extends State<Modalitat> {
 
   @override
   Widget build(BuildContext context) {
+    final filtre = Provider.of<Filtrar>(context);
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
@@ -91,7 +92,7 @@ class _ModalitatState extends State<Modalitat> {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               for (int i = 0; i < modalitat.length; i++)
-                _camp(context, modalitat[i], actius, i),
+                _camp(context, modalitat[i], actius, i, filtre),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -111,7 +112,7 @@ class _ModalitatState extends State<Modalitat> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(widget.filtre);
+                    Navigator.of(context).pop(filtre);
                   },
                 ),
               ),
@@ -122,7 +123,8 @@ class _ModalitatState extends State<Modalitat> {
     );
   }
 
-  Widget _camp(BuildContext context, String valor, List<bool> actius, int i) {
+  Widget _camp(BuildContext context, String valor, List<bool> actius, int i,
+      Filtrar filtre) {
     return InkWell(
       child: Container(
         padding: EdgeInsets.only(bottom: 8.0),
@@ -145,13 +147,13 @@ class _ModalitatState extends State<Modalitat> {
                 style: TextStyle(fontSize: 24, color: Colors.black54),
               ),
             ),
-            if (widget.filtre.modalitat != null)
-              if (valor == widget.filtre.modalitat)
+            if (filtre.modalitat != null)
+              if (valor == filtre.modalitat)
                 Icon(
                   Icons.fiber_manual_record,
                   color: Colors.blue[300],
                 ),
-            if (widget.filtre.modalitat == null)
+            if (filtre.modalitat == null)
               if (actius[i])
                 Icon(
                   Icons.fiber_manual_record,
@@ -161,8 +163,8 @@ class _ModalitatState extends State<Modalitat> {
         ),
       ),
       onTap: () {
+        filtre.afegeixMod(valor);
         setState(() {
-          widget.filtre.modalitat = valor;
           for (int j = 0; j < modalitat.length; j++)
             if (j == i)
               actius[j] = true;

@@ -4,6 +4,7 @@ import 'package:graus_upc/data/llista.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/FiltreScreen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Filtrar filtre = new Filtrar.def();
   // Fer una classe simple que agrupi tota la informació de filtrat
   // Afegir estat per saber la informació del filtre (branca, ...)
 
@@ -40,6 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final filtre = Provider.of<Filtrar>(context);
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -62,17 +64,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return Filtre(filtre);
+                              return Filtre();
                             },
                           ),
-                        ).then((result) {
+                        ) /*.then((result) {
                           if (result != null) {
                             setState(() {
                               filtre = result;
                               print(filtre);
                             });
                           }
-                        });
+                        })*/
+                            ;
                       },
                     ),
                     prefixIcon: Icon(Icons.search),
@@ -121,21 +124,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-
 class ItemNota {
   String operador;
   double nota;
   ItemNota(this.operador, this.nota);
 }
 
-class Filtrar {
+class Filtrar with ChangeNotifier {
   // String nom, loc, branca, nota, operador;
   String nom, modalitat;
   List<String> branca;
   List<String> loc;
   List<ItemNota> nota;
 
-  Filtrar.def() {
+  Filtrar() {
     /* 
     loc = '';
     branca = '';
@@ -161,10 +163,24 @@ class Filtrar {
     if (!branca.contains(b)) {
       this.branca.add(b);
     }
+    notifyListeners();
+  }
+
+  void afegeixMod(String mod) {
+    modalitat=mod;
+    notifyListeners();
+  }
+
+  void afegeixLoc(String b) {
+    if (!branca.contains(b)) {
+      this.branca.add(b);
+    }
+    notifyListeners();
   }
 
   void afegeixNota(String op, double nota) {
     this.nota.add(ItemNota(op, nota));
+    notifyListeners();
   }
 
   bool compleixBranca(Grau g) {
@@ -184,9 +200,7 @@ class Filtrar {
   bool compleixModalitat(Grau g) => true;
 
   bool compleixNota(Grau g) => true;
-
 }
-
 
 /*
 
