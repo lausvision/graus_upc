@@ -75,6 +75,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              Row(
+                children: <Widget>[
+                  for (int i = 0; i < filtre.filtres.length; i++)
+                    _filter(context, i, filtre),
+                ],
+              ),
               Expanded(child: Llista()),
             ],
           ),
@@ -110,6 +116,35 @@ class _HomeScreenState extends State<HomeScreen> {
       currentIndex: _selectedIndex,
       selectedItemColor: Colors.black,
       onTap: _onItemTapped,
+    );
+  }
+
+  Widget _filter(BuildContext context, int i, Filtrar filtre) {
+    return Container(
+      height: 40.0,
+      margin: EdgeInsets.only(right: 5.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100), color: Colors.black),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 14.0),
+            child: Text(
+              filtre.filtres[i],
+              style: TextStyle(fontSize: 16, color: Colors.white70),
+            ),
+          ),
+          IconButton(
+            icon: Icon(Icons.clear),
+            color: Colors.white70,
+            iconSize: 18.0,
+            onPressed: () {
+              filtre.modificaFiltres(filtre.filtres[i]);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
@@ -194,6 +229,9 @@ class Filtrar with ChangeNotifier {
       return true;
     }
     for (int i = 0; i < branca.length; i++) {
+      if (branca[i] == 'Ciències' &&
+          (g.branca == 'Ciències socials i jurídiques' ||
+              g.branca == 'Ciències de la salut')) return false;
       if (g.branca.toLowerCase().indexOf(branca[i].toLowerCase()) != -1) {
         return true;
       }

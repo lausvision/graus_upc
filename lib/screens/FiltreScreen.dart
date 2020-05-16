@@ -91,19 +91,11 @@ class _FiltreState extends State<Filtre> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Container(
-                height: 35.0,
-                child: Row(
-                  children: <Widget>[
-                    /* Text(filtre.branca.toString()),
-                    Text(filtre.loc.toString()),
-                    Text(filtre.nota.toString()),
-                    Text(filtre.modalitat),
-                    */
-                    for (int i = 0; i < filtre.filtres.length; i++)
-                      _filter(context, i, filtre),
-                  ],
-                ),
+              Row(
+                children: <Widget>[
+                  for (int i = 0; i < filtre.filtres.length; i++)
+                    _filter(context, i, filtre),
+                ],
               ),
               _camp(context, 'Branca de coneixement', filtre),
               _camp(context, 'Modalitat', filtre),
@@ -208,34 +200,28 @@ class _FiltreState extends State<Filtre> {
   }
 
   Widget _filter(BuildContext context, int i, Filtrar filtre) {
-    return InkWell(
+    return Container(
+      height: 40.0,
+      margin: EdgeInsets.only(right: 5.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100), color: Colors.black),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            height: 40.0,
-            margin: EdgeInsets.only(right: 5.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100), color: Colors.black),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(left: 14.0),
-                  child: Text(
-                    filtre.filtres[i],
-                    style: TextStyle(fontSize: 18, color: Colors.white70),
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.clear),
-                  color: Colors.white70,
-                  iconSize: 20.0,
-                  onPressed: () {
-                    filtre.modificaFiltres(filtre.filtres[i]);
-                  },
-                ),
-              ],
+          Padding(
+            padding: EdgeInsets.only(left: 14.0),
+            child: Text(
+              filtre.filtres[i],
+              style: TextStyle(fontSize: 16, color: Colors.white70),
             ),
+          ),
+          IconButton(
+            icon: Icon(Icons.clear),
+            color: Colors.white70,
+            iconSize: 18.0,
+            onPressed: () {
+              filtre.modificaFiltres(filtre.filtres[i]);
+            },
           ),
         ],
       ),

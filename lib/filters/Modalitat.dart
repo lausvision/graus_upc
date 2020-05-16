@@ -153,24 +153,11 @@ class _ModalitatState extends State<Modalitat> {
                   Icons.fiber_manual_record,
                   color: Colors.blue[300],
                 ),
-            if (filtre.modalitat == null)
-              if (actius[i])
-                Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.blue[300],
-                ),
           ],
         ),
       ),
       onTap: () {
         filtre.modificaMod(valor);
-        setState(() {
-          for (int j = 0; j < modalitat.length; j++)
-            if (j == i)
-              actius[j] = true;
-            else
-              actius[j] = false;
-        });
       },
     );
   }

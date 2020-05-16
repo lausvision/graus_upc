@@ -11,6 +11,7 @@ class Branca extends StatefulWidget {
 
 class _BrancaState extends State<Branca> {
   int _selectedIndex = 1;
+  List<bool> actius = [false, false, false, false, false];
   List<String> branca = [
     'Enginyeria i Arquitectura',
     'Ciències',
@@ -18,7 +19,6 @@ class _BrancaState extends State<Branca> {
     'Arts i Humanitats',
     'Ciències Socials i Jurídiques'
   ];
-  List<bool> actius = [true, false, false, false, false];
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -98,7 +98,7 @@ class _BrancaState extends State<Branca> {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               for (int i = 0; i < branca.length; i++)
-                _camp(context, branca[i], actius, i, filtre),
+                _camp(context, branca[i], i, actius, filtre),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -129,7 +129,7 @@ class _BrancaState extends State<Branca> {
     );
   }
 
-  Widget _camp(BuildContext context, String valor, List<bool> actius, int i,
+  Widget _camp(BuildContext context, String valor, int i, List<bool> actius,
       Filtrar filtre) {
     return InkWell(
       child: Container(
