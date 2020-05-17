@@ -103,7 +103,34 @@ class _LocState extends State<Loc> {
                 'Localització',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              _camp(context, filtre),
+              Container(
+                height: 40.0,
+                width: 280.0,
+                child: OutlineButton(
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.search),
+                      SizedBox(width: 8.0),
+                      Text(
+                        'Busca la localització a cercar.',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                    ],
+                  ),
+                  borderSide: BorderSide(color: Colors.black, width: 2.0),
+                  shape: StadiumBorder(),
+                  highlightColor: Colors.blueAccent,
+                  onPressed: () {
+                    showSearch(context: context, delegate: Search());
+                  },
+                ),
+              ),
+              Row(
+                children: <Widget>[
+                  for (int i = 0; i < filtre.filtres.length; i++)
+                    _camp(context, i, filtre),
+                ],
+              ),
               DecoratedBox(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(), color: Colors.blue[200]),
@@ -134,21 +161,96 @@ class _LocState extends State<Loc> {
     );
   }
 
-  Widget _camp(BuildContext context, Filtrar filtre) {
-    return Padding(
-      padding: EdgeInsets.only(left: 10.0),
-      child: TextField(
-        onChanged: (valor) {
-          filtre.afegeixLoc(valor);
+  Widget _camp(BuildContext context, int i, Filtrar filtre) {
+    return Container(
+      height: 40.0,
+      margin: EdgeInsets.only(right: 5.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100), color: Colors.black),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 14.0),
+            child: Text(
+              filtre.filtres[i],
+              style: TextStyle(fontSize: 16, color: Colors.white70),
+            ),
+          ),
+          IconButton(
+            icon: Icon(Icons.clear),
+            color: Colors.white70,
+            iconSize: 18.0,
+            onPressed: () {
+              filtre.modificaFiltres(filtre.filtres[i]);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Search extends SearchDelegate<String> {
+  final List<String> locs = ['EME', 'ESEIAAT', 'EFEN'];
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = '';
         },
-        decoration: InputDecoration(
-          hintText: "Escriu el nom del centre a buscar.",
-          prefixIcon: Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+      ),
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        progress: transitionAnimation,
+      ),
+      onPressed: () {
+        close(context, null);
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return null;
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final filtre = Provider.of<Filtrar>(context);
+    final suggestionList = query.isEmpty
+        ? locs
+        : locs.where((p) => p.startsWith(query.toUpperCase())).toList();
+    return ListView.builder(
+      itemBuilder: (context, index) => ListTile(
+        onTap: () {
+          filtre.afegeixLoc(suggestionList[index]);
+          close(context, null);
+        },
+        leading: Icon(Icons.location_city),
+        title: RichText(
+          text: TextSpan(
+            text: suggestionList[index].substring(0, query.length),
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            children: [
+              TextSpan(
+                text: suggestionList[index].substring(query.length),
+                style: TextStyle(color: Colors.grey),
+              ),
+            ],
           ),
         ),
       ),
+      itemCount: suggestionList.length,
     );
   }
 }
