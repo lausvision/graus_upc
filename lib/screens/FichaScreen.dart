@@ -36,9 +36,13 @@ class _FichaScreenState extends State<FichaScreen> {
           'preferits': FieldValue.arrayUnion([grauid])
         });
       } else {
-        docRef.updateData({
-          'preferits': FieldValue.arrayRemove([grauid])
-        });
+        try {
+          docRef.updateData({
+            'preferits': FieldValue.arrayRemove([grauid])
+          });
+        } catch (e) {
+          print("PlatformException Error: ${e.toString()}");
+        }
       }
     }
 
