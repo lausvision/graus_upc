@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/data/llegeix.dart';
 import 'package:graus_upc/data/llista.dart';
@@ -176,6 +177,9 @@ class Filtrar with ChangeNotifier {
     for (var n in nota) f.add("${n.operador}${n.nota}");
     if (modalitat != '') f.add(modalitat);
     return f;
+  }
+  Filtrar.fromFirestore(DocumentSnapshot doc) {
+    this.loc = doc.data['loc'];
   }
 
   void modificaFiltres(String f) {

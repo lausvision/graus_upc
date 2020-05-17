@@ -192,7 +192,12 @@ class _LocState extends State<Loc> {
 }
 
 class Search extends SearchDelegate<String> {
-  final List<String> locs = ['EME', 'ESEIAAT', 'EFEN'];
+  final List<String> locs = [
+    'FOOT, Terrassa',
+    'ESEIAAT, Terrassa',
+    'Camins, Barcelona',
+    'FNB, Barcelona'
+  ];
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -230,6 +235,7 @@ class Search extends SearchDelegate<String> {
     final suggestionList = query.isEmpty
         ? locs
         : locs.where((p) => p.startsWith(query.toUpperCase())).toList();
+
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
         onTap: () {
@@ -252,5 +258,47 @@ class Search extends SearchDelegate<String> {
       ),
       itemCount: suggestionList.length,
     );
+
+    /*
+    return Scaffold(
+      resizeToAvoidBottomPadding: true,
+      body: StreamBuilder(
+        stream:
+            Firestore.instance.collection('Graus').orderBy('nom').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return const Text('Loading...');
+
+          List<DocumentSnapshot> documents = snapshot.data.documents;
+          List<Filtrar> locs =
+              documents.map((doc) => Filtrar.fromFirestore(doc)).toList();
+
+          return ListView.builder(
+            itemExtent: 100,
+            itemCount: locs.length,
+            itemBuilder: (context, index) => ListTile(
+              onTap: () {
+                filtre.afegeixLoc(locs[index].loc[index]);
+                close(context, null);
+              },
+              leading: Icon(Icons.location_city),
+              title: RichText(
+                text: TextSpan(
+                  text: locs[index].loc[index].substring(0, query.length),
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                  children: [
+                    TextSpan(
+                      text: locs[index].loc[index].substring(query.length),
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+    */
   }
 }

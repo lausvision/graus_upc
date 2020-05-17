@@ -40,6 +40,7 @@ class _FiltreState extends State<Filtre> {
     final filtre = Provider.of<Filtrar>(context);
 
     return Scaffold(
+      resizeToAvoidBottomPadding: true,
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
         unselectedLabelStyle: TextStyle(fontSize: 11, color: Colors.red),
