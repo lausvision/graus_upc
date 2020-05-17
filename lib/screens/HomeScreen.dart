@@ -268,15 +268,26 @@ class Filtrar with ChangeNotifier {
     if (nota.length == 0) {
       return true;
     }
-    for (int i = 0; i < nota.length; i++) {
-      if (g.nota
-              .toString()
-              .toLowerCase()
-              .indexOf(nota[i].toString().toLowerCase()) !=
-          -1) {
-        return false;
+    if (nota[0].nota != 0)
+      for (int i = 0; i < nota.length; i++) {
+        if (nota[i].operador == '=') {
+          if (g.nota
+                  .toString()
+                  .toLowerCase()
+                  .indexOf(nota[i].nota.toString().toLowerCase()) ==
+              -1) {
+            return false;
+          }
+        } else if (nota[i].operador == '<') {
+          if (g.nota >= nota[i].nota) {
+            return false;
+          }
+        } else if (nota[i].operador == '>') {
+          if (g.nota <= nota[i].nota) {
+            return false;
+          }
+        }
       }
-    }
     return true;
   }
 }
