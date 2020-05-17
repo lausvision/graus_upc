@@ -315,7 +315,7 @@ class TextGeneral extends StatelessWidget {
               //CollapsibleText(descripcio),
 
               Text(
-                descripcio,
+                objectiu,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.white,
@@ -332,7 +332,7 @@ class TextGeneral extends StatelessWidget {
               ),
               SizedBox(height: 3),
               Text(
-                objectiu,
+                descripcio,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.white,
