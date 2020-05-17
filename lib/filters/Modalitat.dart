@@ -112,7 +112,24 @@ class _ModalitatState extends State<Modalitat> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop(filtre);
+                    //if (filtre.modalitat != null) {
+                    Navigator.of(context).pop();
+                    /* } else {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text('Selecciona un filtre per afegir.'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Ok'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    }*/
                   },
                 ),
               ),

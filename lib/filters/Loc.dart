@@ -1,19 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:provider/provider.dart';
-
-/*
-List<String> loclist(List<DocumentSnapshot> doc) {
-  List<String> list = [];
-
-  for (var docu in doc) {
-    list.add(Grau(docu.data['loc']));
-  }
-  return list;
-}*/
 
 class Loc extends StatefulWidget {
   @override
@@ -22,8 +12,6 @@ class Loc extends StatefulWidget {
 
 class _LocState extends State<Loc> {
   int _selectedIndex = 1;
-  final info = Firestore.instance.collection('Graus').document('loc');
-  //List<String> locs=loclist(info);
   String index;
 
   void _onItemTapped(int index) {
@@ -150,7 +138,24 @@ class _LocState extends State<Loc> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    if (filtre.loc[0] != null) {
+                      Navigator.of(context).pop();
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text('Selecciona un filtre per afegir.'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Ok'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   },
                 ),
               ),

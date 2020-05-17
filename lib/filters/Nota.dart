@@ -110,7 +110,24 @@ class _NotaState extends State<Nota> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    if (filtre.nota[0] != null) {
+                      Navigator.of(context).pop();
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text('Selecciona un filtre per afegir.'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('Ok'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   },
                 ),
               ),

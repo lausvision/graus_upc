@@ -178,6 +178,7 @@ class Filtrar with ChangeNotifier {
     if (modalitat != '') f.add(modalitat);
     return f;
   }
+
   Filtrar.fromFirestore(DocumentSnapshot doc) {
     this.loc = doc.data['loc'];
   }
@@ -256,7 +257,8 @@ class Filtrar with ChangeNotifier {
   }
 
   bool compleixModalitat(Grau g) {
-    if (modalitat != null && modalitat.toLowerCase().indexOf(modalitat) != -1) {
+    if (modalitat != null &&
+        g.modalitat.toLowerCase().indexOf(modalitat.toLowerCase()) != -1) {
       return true;
     }
     return false;
