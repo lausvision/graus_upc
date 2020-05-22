@@ -91,7 +91,6 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
       DateTime(2020, 7, 23): [
         'Sol·licitud revisió exàmens',
       ],
-    
     };
 
     _selectedEvents = _events[_selectedDay] ?? [];
@@ -346,6 +345,10 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
       children: _selectedEvents
           .map((event) => Container(
                 decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [Colors.cyan[50], Colors.blueGrey]),
                   border: Border.all(width: 0.8),
                   borderRadius: BorderRadius.circular(12.0),
                 ),
