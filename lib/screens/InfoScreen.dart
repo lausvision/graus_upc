@@ -52,55 +52,46 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
     final _selectedDay = DateTime.now();
 
     _events = {
-      DateTime(2020, 6, 16): [
-        'woooooow',
+      DateTime(2020, 2, 18): [
+        'Prematrícula a la prova INICI',
       ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event gupo'],
-      _selectedDay.subtract(Duration(days: 19)): [
-        'Event A2',
-        'Event B2',
-        'Event C2',
-        'Event D2'
+      DateTime(2020, 3, 2): [
+        'Prematrícula a la prova FI',
       ],
-      _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
-      _selectedDay.subtract(Duration(days: 10)): [
-        'Event A4',
-        'Event B4',
-        'Event C4'
+      DateTime(2020, 5, 15): [
+        'Matrícula a la prova INICI',
+        'Matrícula lliure INICI',
       ],
-      _selectedDay.subtract(Duration(days: 4)): [
-        'Event A5',
-        'Event B5',
-        'Event C5'
+      DateTime(2020, 6, 15): [
+        'Matrícula a la prova FI',
+        'Matrícula lliure FI',
       ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
-      _selectedDay.add(Duration(days: 1)): [
-        'Event A8',
-        'Event B8',
-        'Event C8',
-        'Event D8'
+      DateTime(2020, 7, 3): [
+        'Consulta tribunal',
       ],
-      _selectedDay.add(Duration(days: 3)):
-          Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
-      _selectedDay.add(Duration(days: 7)): [
-        'Event A10',
-        'Event B10',
-        'Event C10'
+      DateTime(2020, 7, 7): [
+        'PROVA',
       ],
-      _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
-      _selectedDay.add(Duration(days: 17)): [
-        'Event A12',
-        'Event B12',
-        'Event C12',
-        'Event D12'
+      DateTime(2020, 7, 8): [
+        'PROVA',
       ],
-      _selectedDay.add(Duration(days: 22)): ['Event A13', 'Event B13'],
-      _selectedDay.add(Duration(days: 26)): [
-        'Event A14',
-        'Event B14',
-        'Event C14'
+      DateTime(2020, 7, 9): [
+        'PROVA',
       ],
+      DateTime(2020, 7, 10): [
+        'PROVA',
+      ],
+      DateTime(2020, 7, 21): [
+        'RESULTATS PROVA',
+        'Sol·licitud revisió exàmens',
+      ],
+      DateTime(2020, 7, 22): [
+        'Sol·licitud revisió exàmens',
+      ],
+      DateTime(2020, 7, 23): [
+        'Sol·licitud revisió exàmens',
+      ],
+    
     };
 
     _selectedEvents = _events[_selectedDay] ?? [];
