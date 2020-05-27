@@ -2,29 +2,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:graus_upc/models/User.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
-String name;
-String email;
-String imageUrl;
-String uid;
-
 final databaseReference = Firestore.instance;
-void createRecord() async {
+
+void createRecord(String uid) async {
   await databaseReference
       .collection("Users")
       .document(uid)
       .updateData({'preferits': FieldValue.arrayUnion([])});
 }
 
-Future<String> signInWithGoogle() async {
+Future<User> signInWithGoogle() async {
   GoogleSignInAccount googleSignInAccount;
   try {
     googleSignInAccount = await googleSignIn.signIn();
   } on PlatformException catch (e) {
-    return "PlatformException Error: ${e.toString()}";
+    print("PlatformException Error: ${e.toString()}");
+    return null;
   }
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
@@ -40,17 +38,13 @@ Future<String> signInWithGoogle() async {
   // Checking if email and name is null
   assert(user.email != null);
   assert(user.displayName != null);
-  assert(user.photoUrl != null);
 
-  name = user.displayName;
-  email = user.email;
-  imageUrl = user.photoUrl;
-  uid = user.uid;
-
-  // Only taking the first part of the name, i.e., First Name
-  if (name.contains(" ")) {
-    name = name.substring(0, name.indexOf(" "));
-  }
+  final myuser = User(
+    user.uid,
+    user.displayName,
+    user.email,
+    user.photoUrl,
+  );
 
   assert(!user.isAnonymous);
   assert(await user.getIdToken() != null);
@@ -58,9 +52,9 @@ Future<String> signInWithGoogle() async {
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
 
-  createRecord();
+  createRecord(myuser.uid);
 
-  return 'signInWithGoogle succeeded: $user';
+  return myuser;
 }
 
 void signOutGoogle() async {

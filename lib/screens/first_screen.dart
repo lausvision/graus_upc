@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:graus_upc/data/llegeix.dart';
-import 'package:graus_upc/models/UserAuthProvider.dart';
+import 'package:graus_upc/models/User.dart';
+import 'package:graus_upc/models/UserAuthState.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
 import 'package:graus_upc/screens/sign_in.dart';
@@ -15,22 +16,20 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   bool mostraLlista = false;
 
-  void getIdsxUid() {
+  void getIdsxUid(String uid) {
     databaseReference
         .collection("Users")
-        .getDocuments()
-        .then((QuerySnapshot snapshot) {
-      Map<String, dynamic> ids;
-      var listIds = [];
-      snapshot.documents.forEach((f) => ids = f.data);
-      ids.forEach((k, v) => listIds.add(v));
-      print(listIds);
-      print(ids);
+        .document(uid)
+        .get()
+        .then((DocumentSnapshot doc) {
+      print(doc.documentID);
+      print(doc.data);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final authState = Provider.of<UserAuthState>(context);
     return Scaffold(
         backgroundColor: Colors.blue[100],
         body: Stack(
@@ -53,14 +52,10 @@ class _FirstScreenState extends State<FirstScreen> {
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.blueAccent,
                 onPressed: () {
-                   getIdsxUid();
-                  (mostraLlista
-                      ? setState(() {
-                          mostraLlista = false;
-                        })
-                      : setState(() {
-                          mostraLlista = true;
-                        }));
+                  getIdsxUid(authState.user.uid);
+                  setState(() {
+                    mostraLlista = !mostraLlista;
+                  });                
                 },
                 child: Text(
                   "Llistat de Preferits",
@@ -84,8 +79,6 @@ class _FirstScreenState extends State<FirstScreen> {
                           .toList();
 
                       List<Grau> grausFiltratsxId = [];
-
-                     
 
                       List<String> idsPreferits = [];
 
@@ -192,16 +185,13 @@ class _FirstScreenState extends State<FirstScreen> {
 }
 
 class Name extends StatelessWidget {
-  const Name({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final User user = Provider.of<UserAuthState>(context).user;
     return Padding(
       padding: const EdgeInsets.only(top: 80.0, left: 175),
       child: Text(
-        name,
+        user.name,
         style: TextStyle(
             fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
       ),
@@ -216,10 +206,11 @@ class Email extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = Provider.of<UserAuthState>(context).user;
     return Padding(
       padding: const EdgeInsets.only(top: 120.0, left: 170),
       child: Text(
-        email,
+        user.email,
         style: TextStyle(
             fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
       ),
@@ -234,12 +225,13 @@ class FotoPerfil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = Provider.of<UserAuthState>(context).user;
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.only(top: 50.0, left: 20),
         child: CircleAvatar(
           backgroundImage: NetworkImage(
-            imageUrl,
+            user.imageUrl,
           ),
           radius: 70,
           backgroundColor: Colors.transparent,
@@ -274,7 +266,7 @@ class LogOutClass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Provider.of<UserAuthProvider>(context);
+    final authState = Provider.of<UserAuthState>(context);
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.only(top: 35.0, left: 320),
@@ -285,7 +277,7 @@ class LogOutClass extends StatelessWidget {
               tooltip: 'Sign out',
               color: Colors.black,
               onPressed: () {
-                log.signOut();
+                authState.signOut();
 
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) {

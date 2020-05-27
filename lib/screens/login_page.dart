@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/UserAuthProvider.dart';
+import 'package:graus_upc/models/UserAuthState.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-//import 'package:graus_upc/models/createUserCollection.dart';
-import 'package:graus_upc/screens/sign_in.dart';
 import 'package:provider/provider.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
-
 
 class LoginPage extends StatefulWidget {
   @override
@@ -39,14 +36,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _signInButton() {
-    
-    final log = Provider.of<UserAuthProvider>(context);
+    final log = Provider.of<UserAuthState>(context);
     return OutlineButton(
       splashColor: Colors.grey[50],
-       onPressed: () {
-         
-        signInWithGoogle().whenComplete(() {
-          log.dochecktrue(uid);
+      onPressed: () {
+        log.signIn(() {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
@@ -58,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.black,width: 2),
+      borderSide: BorderSide(color: Colors.black, width: 2),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(

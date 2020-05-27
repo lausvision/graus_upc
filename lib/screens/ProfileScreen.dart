@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/UserAuthProvider.dart';
+import 'package:graus_upc/models/UserAuthState.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/first_screen.dart';
@@ -37,8 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
-    final log = Provider.of<UserAuthProvider>(context);
+    final authState = Provider.of<UserAuthState>(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13,
@@ -66,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
-      body:(log.check ? FirstScreen() : LoginPage() ) ,
+      body:(authState.check ? FirstScreen() : LoginPage() ) ,
     );
   }
 }

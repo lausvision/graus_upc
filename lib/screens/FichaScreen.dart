@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graus_upc/models/UserAuthProvider.dart';
+import 'package:graus_upc/models/UserAuthState.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,7 +25,7 @@ class _FichaScreenState extends State<FichaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final log = Provider.of<UserAuthProvider>(context);
+    final authState = Provider.of<UserAuthState>(context);
 
     void addPreferitsArray(uid, grauid, favIcon) async {
       DocumentReference docRef =
@@ -65,9 +65,8 @@ class _FichaScreenState extends State<FichaScreen> {
             FlatButton(
                 child: Text('Continuar'),
                 onPressed: () {
-                  log.signIn();
-                  addPreferitsArray(log.uidProvider, id, favourite);
-
+                  authState.signIn();
+                  addPreferitsArray(authState.user.uid, id, favourite);
                   Navigator.of(context).pop(true);
                 })
           ],
@@ -92,13 +91,13 @@ class _FichaScreenState extends State<FichaScreen> {
             tooltip: 'Favorite',
             color: (favourite ? Colors.red : Colors.black),
             onPressed: () {
-              if (!log.check) {
+              if (!authState.check) {
                 _authChechked();
               } else {
-                addPreferitsArray(log.uidProvider, id, favourite);
+                addPreferitsArray(authState.user.uid, id, favourite);
               }
               print(id);
-              print(log.uidProvider);
+              print(authState.user.uid);
               setState(() {
                 favourite = !favourite;
               });
