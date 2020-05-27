@@ -90,9 +90,12 @@ class _FiltreState extends State<Filtre> {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Row(
+              Wrap(
+                alignment: WrapAlignment.start,
+                runSpacing: 6,
                 children: <Widget>[
                   for (int i = 0; i < filtre.filtres.length; i++)
                     _filter(context, i, filtre),
@@ -102,45 +105,50 @@ class _FiltreState extends State<Filtre> {
               _camp(context, 'Modalitat', filtre),
               _camp(context, 'Localització', filtre),
               _camp(context, 'Nota de tall', filtre),
-              DecoratedBox(
-                decoration: ShapeDecoration(
-                    shape: StadiumBorder(), color: Colors.blue[200]),
-                child: OutlineButton(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14.0,
-                      vertical: 8.0,
-                    ),
-                    child: Text(
-                      'FILTRAR',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  DecoratedBox(
+                    decoration: ShapeDecoration(
+                        shape: StadiumBorder(), color: Colors.blue[200]),
+                    child: OutlineButton(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14.0,
+                          vertical: 8.0,
+                        ),
+                        child: Text(
+                          'FILTRAR',
+                          style:
+                              TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      borderSide: BorderSide(color: Colors.black, width: 2.0),
+                      color: Colors.blue[200],
+                      shape: StadiumBorder(),
+                      onPressed: () {
+                        if (filtre.filtres[0] != null) {
+                          Navigator.of(context).pop();
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              content: Text('Selecciona un filtre per afegir.'),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('Ok'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      },
                     ),
                   ),
-                  borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  color: Colors.blue[200],
-                  shape: StadiumBorder(),
-                  onPressed: () {
-                    if (filtre.filtres[0] != null) {
-                      Navigator.of(context).pop();
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: Text('Selecciona un filtre per afegir.'),
-                          actions: <Widget>[
-                            FlatButton(
-                              child: Text('Ok'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                  },
-                ),
+                ],
               ),
             ],
           ),
@@ -224,6 +232,7 @@ class _FiltreState extends State<Filtre> {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100), color: Colors.black),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
