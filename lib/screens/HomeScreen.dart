@@ -268,6 +268,11 @@ class Filtrar with ChangeNotifier {
     if (nota.length == 0) {
       return true;
     }
+    if (g.nota == null) {
+      // Afegim als resultats els graus que no tenen nota de tall...
+      // Pensar si cal canviar-ho
+      return true;
+    }
     if (nota[0].nota != 0)
       for (int i = 0; i < nota.length; i++) {
         if (nota[i].operador == '=') {
