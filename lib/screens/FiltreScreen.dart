@@ -119,32 +119,15 @@ class _FiltreState extends State<Filtre> {
                         ),
                         child: Text(
                           'FILTRAR',
-                          style:
-                              TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                       ),
                       borderSide: BorderSide(color: Colors.black, width: 2.0),
                       color: Colors.blue[200],
                       shape: StadiumBorder(),
                       onPressed: () {
-                        if (filtre.filtres[0] != null) {
-                          Navigator.of(context).pop();
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              content: Text('Selecciona un filtre per afegir.'),
-                              actions: <Widget>[
-                                FlatButton(
-                                  child: Text('Ok'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            ),
-                          );
-                        }
+                        Navigator.of(context).pop();
                       },
                     ),
                   ),

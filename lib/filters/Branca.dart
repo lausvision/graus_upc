@@ -99,46 +99,6 @@ class _BrancaState extends State<Branca> {
               ),
               for (int i = 0; i < branca.length; i++)
                 _camp(context, branca[i], i, actius, filtre),
-              DecoratedBox(
-                decoration: ShapeDecoration(
-                    shape: StadiumBorder(), color: Colors.blue[200]),
-                child: OutlineButton(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14.0,
-                      vertical: 8.0,
-                    ),
-                    child: Text(
-                      'Afegeix',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  color: Colors.blue[200],
-                  shape: StadiumBorder(),
-                  onPressed: () {
-                    if (filtre.branca[0] != null) {
-                      Navigator.of(context).pop();
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: Text('Selecciona un filtre per afegir.'),
-                          actions: <Widget>[
-                            FlatButton(
-                              child: Text('Ok'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                  },
-                ),
-              ),
             ],
           ),
         ),
@@ -187,6 +147,7 @@ class _BrancaState extends State<Branca> {
             else
               actius[j] = false;
         });
+        Navigator.of(context).pop();
       },
     );
   }

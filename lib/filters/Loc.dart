@@ -84,116 +84,104 @@ class _LocState extends State<Loc> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                'Localització',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              Container(
-                height: 40.0,
-                width: 280.0,
-                child: OutlineButton(
-                  child: Row(
-                    children: <Widget>[
-                      Icon(Icons.search),
-                      SizedBox(width: 8.0),
-                      Text(
-                        'Busca la localització a cercar.',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                    ],
-                  ),
-                  borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  shape: StadiumBorder(),
-                  highlightColor: Colors.blueAccent,
-                  onPressed: () {
-                    showSearch(context: context, delegate: Search());
-                  },
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  'Localització',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Row(
-                children: <Widget>[
-                  for (int i = 0; i < filtre.filtres.length; i++)
-                    _camp(context, i, filtre),
-                ],
-              ),
-              DecoratedBox(
-                decoration: ShapeDecoration(
-                    shape: StadiumBorder(), color: Colors.blue[200]),
-                child: OutlineButton(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14.0,
-                      vertical: 8.0,
-                    ),
-                    child: Text(
-                      'Afegeix',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  color: Colors.blue[200],
-                  shape: StadiumBorder(),
-                  onPressed: () {
-                    if (filtre.loc[0] != null) {
-                      Navigator.of(context).pop();
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: Text('Selecciona un filtre per afegir.'),
-                          actions: <Widget>[
-                            FlatButton(
-                              child: Text('Ok'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
+                Container(
+                  height: 40.0,
+                  width: 280.0,
+                  child: OutlineButton(
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.search),
+                        SizedBox(width: 8.0),
+                        Text(
+                          'Busca la localització a cercar.',
+                          style: TextStyle(fontSize: 16.0),
                         ),
-                      );
-                    }
-                  },
+                      ],
+                    ),
+                    borderSide: BorderSide(color: Colors.black, width: 2.0),
+                    shape: StadiumBorder(),
+                    highlightColor: Colors.blueAccent,
+                    onPressed: () {
+                      showSearch(context: context, delegate: Search());
+                    },
+                  ),
                 ),
-              ),
-            ],
+                Wrap(
+                  alignment: WrapAlignment.start,
+                  runSpacing: 6,
+                  children: <Widget>[
+                    for (int i = 0; i < filtre.filtres.length; i++)
+                      _filter(context, i, filtre),
+                  ],
+                ),
+                DecoratedBox(
+                  decoration: ShapeDecoration(
+                      shape: StadiumBorder(), color: Colors.blue[200]),
+                  child: OutlineButton(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14.0,
+                        vertical: 8.0,
+                      ),
+                      child: Text(
+                        'Afegeix',
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    borderSide: BorderSide(color: Colors.black, width: 2.0),
+                    color: Colors.blue[200],
+                    shape: StadiumBorder(),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+}
 
-  Widget _camp(BuildContext context, int i, Filtrar filtre) {
-    return Container(
-      height: 40.0,
-      margin: EdgeInsets.only(right: 5.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100), color: Colors.black),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(left: 14.0),
-            child: Text(
-              filtre.filtres[i],
-              style: TextStyle(fontSize: 16, color: Colors.white70),
-            ),
+Widget _filter(BuildContext context, int i, Filtrar filtre) {
+  return Container(
+    height: 40.0,
+    margin: EdgeInsets.only(right: 5.0),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100), color: Colors.black),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(left: 14.0),
+          child: Text(
+            filtre.filtres[i],
+            style: TextStyle(fontSize: 16, color: Colors.white70),
           ),
-          IconButton(
-            icon: Icon(Icons.clear),
-            color: Colors.white70,
-            iconSize: 18.0,
-            onPressed: () {
-              filtre.modificaFiltres(filtre.filtres[i]);
-            },
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+        IconButton(
+          icon: Icon(Icons.clear),
+          color: Colors.white70,
+          iconSize: 18.0,
+          onPressed: () {
+            filtre.modificaFiltres(filtre.filtres[i]);
+          },
+        ),
+      ],
+    ),
+  );
 }
 
 class Search extends SearchDelegate<String> {

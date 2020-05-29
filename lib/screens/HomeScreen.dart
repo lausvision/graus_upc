@@ -13,9 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Fer una classe simple que agrupi tota la informació de filtrat
-  // Afegir estat per saber la informació del filtre (branca, ...)
-
   TextEditingController editingController = TextEditingController();
   int _selectedIndex = 1;
   String paraula;
@@ -48,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -76,7 +74,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Row(
+              Wrap(
+                alignment: WrapAlignment.start,
+                runSpacing: 6,
                 children: <Widget>[
                   for (int i = 0; i < filtre.filtres.length; i++)
                     _filter(context, i, filtre),
@@ -127,6 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100), color: Colors.black),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
