@@ -93,6 +93,13 @@ class _FiltreState extends State<Filtre> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text(
+                  'Filtres aplicats:',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
               Wrap(
                 alignment: WrapAlignment.start,
                 runSpacing: 6,
