@@ -12,6 +12,7 @@ class Nota extends StatefulWidget {
 class _NotaState extends State<Nota> {
   int _selectedIndex = 1;
   String operador = '=';
+  String valor;
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -110,6 +111,9 @@ class _NotaState extends State<Nota> {
                   color: Colors.blue[200],
                   shape: StadiumBorder(),
                   onPressed: () {
+                    if (valor != null)
+                      filtre.afegeixNota(operador, double.parse(valor));
+
                     Navigator.of(context).pop();
                   },
                 ),
@@ -167,7 +171,9 @@ class _NotaState extends State<Nota> {
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: TextField(
                     onChanged: (value) {
-                      filtre.afegeixNota(operador, double.parse(value));
+                      setState(() {
+                        valor = value;
+                      });
                     },
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
