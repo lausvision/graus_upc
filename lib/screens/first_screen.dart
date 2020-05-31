@@ -16,98 +16,107 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   bool mostraLlista = false;
 
-  void getIdsxUid(String uid) {
-    databaseReference
-        .collection("Users")
-        .document(uid)
-        .get()
-        .then((DocumentSnapshot doc) {
-      print(doc.documentID);
-      print(doc.data);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     final authState = Provider.of<UserAuthState>(context);
-    return Scaffold(
-        backgroundColor: Colors.blue[100],
-        body: Stack(
-          alignment: AlignmentDirectional.topStart,
-          children: <Widget>[
-            WallpaperFoto(),
-            LogOutClass(),
-            Email(),
-            FotoPerfil(),
-            Name(),
-            Padding(
-              padding: const EdgeInsets.only(top: 180, left: 175),
-              child: FlatButton(
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0)),
-                color: Colors.black,
-                textColor: Colors.white,
-                disabledColor: Colors.grey,
-                disabledTextColor: Colors.black,
-                padding: EdgeInsets.all(8.0),
-                splashColor: Colors.blueAccent,
-                onPressed: () {
-                  getIdsxUid(authState.user.uid);
-                  setState(() {
-                    mostraLlista = !mostraLlista;
-                  });                
-                },
-                child: Text(
-                  "Llistat de Preferits",
-                  style: TextStyle(fontSize: 18.0),
-                ),
-              ),
-            ),
-            (mostraLlista
-                ? StreamBuilder(
-                    stream: Firestore.instance
-                        .collection('Graus')
-                        .orderBy('nom')
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) return const Text('Loading...');
+    return StreamBuilder(
+        stream: Firestore.instance
+            .collection('Users')
+            .document(authState.user.uid)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return const Text('Loading...');
 
-                      List<DocumentSnapshot> documents =
-                          snapshot.data.documents;
-                      List<Grau> graus = documents
-                          .map((doc) => Grau.fromFirestore(doc))
-                          .toList();
+          Map idsGraus = snapshot.data.data;
 
-                      List<Grau> grausFiltratsxId = [];
+          var listIds = [];
 
-                      List<String> idsPreferits = [];
+          idsGraus.forEach((k, v) => listIds.add(v));
+          print(listIds);
+          
 
-                      for (int y = 0; y < idsPreferits.length; y++) {
-                        for (int i = 0; i < graus.length; i++) {
-                          if (graus[i].id == idsPreferits[y]) {
-                            grausFiltratsxId[y] = graus[i];
-                          }
-                        }
-                      }
+          return Scaffold(
+              backgroundColor: Colors.blue[100],
+              body: Stack(
+                alignment: AlignmentDirectional.topStart,
+                children: <Widget>[
+                  WallpaperFoto(),
+                  LogOutClass(),
+                  Email(),
+                  FotoPerfil(),
+                  Name(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 180, left: 175),
+                    child: FlatButton(
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0)),
+                      color: Colors.black,
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(8.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: () {
+                        setState(() {
+                          mostraLlista = !mostraLlista;
+                        });
+                      },
+                      child: Text(
+                        "Llistat de Preferits",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ),
+                  ),
+                  /*(mostraLlista
+                      ? */StreamBuilder(
+                          stream: Firestore.instance
+                              .collection('Graus')
+                              .orderBy('nom')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData)
+                              return const Text('Loading...');
 
-                      return Container(
-                        padding: const EdgeInsets.only(
-                            top: 225, left: 5, bottom: 10),
-                        child: Scrollbar(
-                          child: ListView.builder(
-                            // padding: const EdgeInsets.only(top:300,left: 5),
-                            itemExtent: 100,
-                            itemCount: grausFiltratsxId.length,
-                            itemBuilder: (context, index) =>
-                                _grau(context, grausFiltratsxId[index]),
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                : Container()),
-          ],
-        ));
+                            List<DocumentSnapshot> documents =
+                                snapshot.data.documents;
+                            List<Grau> graus = documents
+                                .map((doc) => Grau.fromFirestore(doc))
+                                .toList();
+
+                            print(documents);
+
+                            List<Grau> grausFiltratsxId = [];
+
+                            List<String> idsPreferits = [];
+
+                            for (int y = 0; y < idsPreferits.length; y++) {
+                              for (int i = 0; i < graus.length; i++) {
+                                if (graus[i].id == idsPreferits[y]) {
+                                  grausFiltratsxId[y] = graus[i];
+                                }
+                              }
+                            }
+
+                            return Container(
+                              padding: const EdgeInsets.only(
+                                  top: 225, left: 5, bottom: 10),
+                              child: Scrollbar(
+                                child: ListView.builder(
+                                  // padding: const EdgeInsets.only(top:300,left: 5),
+                                  itemExtent: 100,
+                                  itemCount: grausFiltratsxId.length,
+                                  itemBuilder: (context, index) =>
+                                      _grau(context, grausFiltratsxId[index]),
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      //: Container()),
+                ],
+              ));
+        });
   }
 
   Widget _grau(BuildContext context, Grau grau) {
