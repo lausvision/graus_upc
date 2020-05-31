@@ -5,7 +5,6 @@ import 'package:graus_upc/models/User.dart';
 import 'package:graus_upc/models/UserAuthState.dart';
 import 'package:graus_upc/screens/FichaScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/sign_in.dart';
 import 'package:provider/provider.dart';
 
 class FirstScreen extends StatefulWidget {
