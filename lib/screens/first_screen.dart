@@ -72,8 +72,8 @@ class _FirstScreenState extends State<FirstScreen> {
                       ),
                     ),
                   ),
-                  /*(mostraLlista
-                      ? */StreamBuilder(
+                  (mostraLlista
+                      ? StreamBuilder(
                           stream: Firestore.instance
                               .collection('Graus')
                               .orderBy('nom')
@@ -122,7 +122,7 @@ class _FirstScreenState extends State<FirstScreen> {
                             );
                           },
                         )
-                      //: Container()),
+                      : Container()),
                 ],
               ));
         });
