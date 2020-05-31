@@ -16,6 +16,8 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   bool mostraLlista = false;
 
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +32,12 @@ class _FirstScreenState extends State<FirstScreen> {
 
           Map idsGraus = snapshot.data.data;
 
-          var listIds = [];
+          List<dynamic> listIds= [];
 
           idsGraus.forEach((k, v) => listIds.add(v));
-          print(listIds);
+          
+          //print(listIds[0].length);
+          //print(listIds[0][0]);
           
 
           return Scaffold(
@@ -84,19 +88,24 @@ class _FirstScreenState extends State<FirstScreen> {
                                 .map((doc) => Grau.fromFirestore(doc))
                                 .toList();
 
-                            print(documents);
+                            
+                            List<Grau> grausFiltratsxId=[];
 
-                            List<Grau> grausFiltratsxId = [];
+                            //listIds
 
-                            List<String> idsPreferits = [];
-
-                            for (int y = 0; y < idsPreferits.length; y++) {
-                              for (int i = 0; i < graus.length; i++) {
-                                if (graus[i].id == idsPreferits[y]) {
-                                  grausFiltratsxId[y] = graus[i];
+                           
+                            for (int y = 0; y < graus.length; y++) {
+           
+                              for (int i = 0; i < listIds[0].length; i++) {
+                                
+                                //print('hola ${listIds[i]}');
+                                if (graus[y].id == listIds[0][i]) {
+                                  grausFiltratsxId.add(graus[y]);
                                 }
                               }
                             }
+
+                           
 
                             return Container(
                               padding: const EdgeInsets.only(
