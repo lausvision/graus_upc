@@ -70,7 +70,9 @@ class _FichaScreenState extends State<FichaScreen> {
           ],
         ),
       ).then((salida) {
-        if (salida) {
+        //intent d'arreglar en encalle
+        if (salida & favourite) {
+          Navigator.of(context).pop(false);
           setState(() {});
         }
       });
