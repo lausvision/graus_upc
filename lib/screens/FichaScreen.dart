@@ -17,8 +17,6 @@ class FichaScreen extends StatefulWidget {
 }
 
 class _FichaScreenState extends State<FichaScreen> {
-  bool favourite = false;
-
   String nom, descripcio, localitzacio, link, nota, objectiu, foto, id;
   _FichaScreenState(this.nom, this.descripcio, this.localitzacio, this.link,
       this.nota, this.objectiu, this.foto, this.id);
@@ -46,7 +44,7 @@ class _FichaScreenState extends State<FichaScreen> {
       }
     }
 
-    _authChechked() {
+    _authChechked(favourite) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -78,62 +76,92 @@ class _FichaScreenState extends State<FichaScreen> {
       });
     }
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        leading: BackButton(color: Colors.black),
-        title: Text("Sample"),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(favourite ? Icons.favorite : Icons.favorite_border),
-            tooltip: 'Favorite',
-            color: (favourite ? Colors.red : Colors.black),
-            onPressed: () {
-              if (!authState.check) {
-                _authChechked();
-              } else {
-                addPreferitsArray(authState.user.uid, id, favourite);
-              }
-              print(id);
-              print(authState.user.uid);
-              setState(() {
-                favourite = !favourite;
-              });
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.share),
-            tooltip: 'Share',
-            color: Colors.black,
-            onPressed: () {
-              final RenderBox box = context.findRenderObject();
-              Share.share(
-                  nom +
-                      ' de la universitat ' +
-                      localitzacio +
-                      ' amb la nota de tall: ' +
-                      nota,
-                  subject: 'He trobat aquest grau per tu amb la app GrausUPC!',
-                  sharePositionOrigin:
-                      box.localToGlobal(Offset.zero) & box.size);
+    return StreamBuilder(
+        stream: Firestore.instance
+            .collection('Users')
+            .document(authState.user.uid)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return const Text('Loading...');
 
-              // Share.share('', subject: 'He trobat aquest grau per tu *-*' );
-            },
-          ),
-        ],
-      ),
-      body: Stack(
-        alignment: AlignmentDirectional.topCenter,
-        children: <Widget>[
-          Foton(foto: foto),
-          NotaDeTall(nota: nota),
-          Titol(nom: nom, localitzacio: localitzacio),
-          TextGeneral(descripcio: descripcio, objectiu: objectiu, link: link),
-        ],
-      ),
-    );
+          Map idsGraus = snapshot.data.data;
+
+          List<dynamic> listIds = [];
+
+          idsGraus.forEach((k, v) => listIds.add(v));
+
+          //print(listIds[0].length);
+          //print(listIds[0][0]);
+           bool favourite = false;
+
+          for (int i = 0; i < listIds[0].length; i++) {
+            //print('hola ${listIds[i]}');
+            if (id == listIds[0][i]) {
+              favourite=true;
+            }
+          }
+
+          
+          return Scaffold(
+            backgroundColor: Colors.black,
+            appBar: AppBar(
+              leading: BackButton(color: Colors.black),
+              title: Text("Sample"),
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              actions: <Widget>[
+                IconButton(
+                  icon:
+                      Icon(favourite ? Icons.favorite : Icons.favorite_border),
+                  tooltip: 'Favorite',
+                  color: (favourite ? Colors.red : Colors.black),
+                  onPressed: () {
+                    if (!authState.check) {
+                      _authChechked(favourite);
+                    } else {
+                      addPreferitsArray(authState.user.uid, id, favourite);
+                    }
+                    print(id);
+                    print(authState.user.uid);
+                    setState(() {
+                      favourite = !favourite;
+                    });
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.share),
+                  tooltip: 'Share',
+                  color: Colors.black,
+                  onPressed: () {
+                    final RenderBox box = context.findRenderObject();
+                    Share.share(
+                        nom +
+                            ' de la universitat ' +
+                            localitzacio +
+                            ' amb la nota de tall: ' +
+                            nota,
+                        subject:
+                            'He trobat aquest grau per tu amb la app GrausUPC!',
+                        sharePositionOrigin:
+                            box.localToGlobal(Offset.zero) & box.size);
+
+                    // Share.share('', subject: 'He trobat aquest grau per tu *-*' );
+                  },
+                ),
+              ],
+            ),
+            body: Stack(
+              alignment: AlignmentDirectional.topCenter,
+              children: <Widget>[
+                Foton(foto: foto),
+                NotaDeTall(nota: nota),
+                Titol(nom: nom, localitzacio: localitzacio),
+                TextGeneral(
+                    descripcio: descripcio, objectiu: objectiu, link: link),
+              ],
+            ),
+          );
+        });
   }
 }
 
@@ -248,7 +276,7 @@ class Titol extends StatelessWidget {
             Row(
               children: <Widget>[
                 Container(
-                  constraints: BoxConstraints(minWidth: 100, maxWidth:350 ),
+                  constraints: BoxConstraints(minWidth: 100, maxWidth: 350),
                   child: Text(
                     nom,
                     overflow: TextOverflow.ellipsis,
