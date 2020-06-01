@@ -79,7 +79,7 @@ class _FichaScreenState extends State<FichaScreen> {
     return StreamBuilder(
         stream: Firestore.instance
             .collection('Users')
-            .document(authState.user.uid)
+            .document((authState.check ? authState.user.uid : 'joker' ))
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return const Text('Loading...');
