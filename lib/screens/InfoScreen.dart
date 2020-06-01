@@ -215,7 +215,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
   }
 
   // More advanced TableCalendar configuration (using Builders & Styles)
-  Widget _buildTableCalendarWithBuilders() {
+  /*Widget _buildTableCalendarWithBuilders() {
     return TableCalendar(
       locale: 'pl_PL',
       calendarController: _calendarController,
@@ -304,8 +304,8 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
       onVisibleDaysChanged: _onVisibleDaysChanged,
       onCalendarCreated: _onCalendarCreated,
     );
-  }
-
+  }*/
+/*
   Widget _buildEventsMarker(DateTime date, List events) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
@@ -337,7 +337,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
       size: 20.0,
       color: Colors.blueGrey[800],
     );
-  }
+  }*/
 
   Widget _buildEventList() {
     return ListView(
