@@ -1,10 +1,11 @@
-/*import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'dart:async';
+//import 'dart:async';
 import 'package:http/http.dart';
 import 'package:html/parser.dart';
 import 'package:html/dom.dart';
 
+/*
 class Scraper extends StatefulWidget {
   @override
   _ScraperState createState() => _ScraperState();
@@ -33,14 +34,15 @@ class _ScraperState extends State<Scraper> {
     );
   }
 }
+*/
 
-Future initiate() async {
-  // Conectem amb la pàgina web de gencat
+Future scraper() async {
+  // Conectem amb la pàgina web
   var client = Client();
   Response response = await client.get('https://news.ycombinator.com/');
 
   var document = parse(response.body);
-  List<dynamic> links = document.querySelectorAll('td.title > a.storylink');
+  List<Element> links = document.querySelectorAll('td.title > a.storylink');
   List<Map<String, dynamic>> linkMap = [];
 
   for (var link in links) {
@@ -51,4 +53,4 @@ Future initiate() async {
   }
   print(linkMap);
   return json.encode(linkMap);
-}*/
+}
