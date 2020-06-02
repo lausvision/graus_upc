@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//import 'package:graus_upc/scraper/scraper.dart';
+
 import 'package:graus_upc/models/UserAuthState.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:provider/provider.dart';
@@ -19,3 +21,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+/*
+void main(){
+  runApp(MaterialApp(home: Scraper(),));
+}*/
