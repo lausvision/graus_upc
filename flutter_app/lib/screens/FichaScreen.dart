@@ -65,7 +65,10 @@ class _FichaScreenState extends State<FichaScreen> {
                 onPressed: () {
                   authState.signIn();
                   addPreferitsArray(authState.user.uid, id, favourite);
-                  Navigator.of(context).pop(true);
+                  Navigator.of(context).pop();
+                  setState(() {
+                  favourite = !favourite;
+                });
                 })
           ],
         ),
@@ -125,9 +128,9 @@ class _FichaScreenState extends State<FichaScreen> {
                     }
                     print(id);
                     print(authState.user.uid);
-                    setState(() {
+                    /*setState(() {
                       favourite = !favourite;
-                    });
+                    });*/
                   },
                 ),
                 IconButton(
