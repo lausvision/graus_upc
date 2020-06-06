@@ -195,8 +195,8 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
       holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.cyan,
-        todayColor: Colors.cyan[200],
+        selectedColor: Colors.pink,
+        todayColor: Colors.pink[100],
         markersColor: Colors.brown[700],
         outsideDaysVisible: false,
       ),
