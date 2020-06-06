@@ -83,7 +83,7 @@ class _LlistaState extends State<Llista> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    constraints: BoxConstraints(minWidth: 100, maxWidth: 280),
+                    constraints: BoxConstraints(minWidth: 100, maxWidth: 250),
                     child: Text(
                       grau.nom,
                       overflow: TextOverflow.ellipsis,
@@ -111,9 +111,13 @@ class _LlistaState extends State<Llista> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    grau.loc,
-                    style: TextStyle(fontSize: 14),
+                  Container(
+                    constraints: BoxConstraints(minWidth: 100, maxWidth: 150,maxHeight: 17),
+                    child: Text(
+                      grau.loc,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 14),
+                    ),
                   ),
                   Expanded(child: Container()),
                   Container(
