@@ -52,7 +52,10 @@ class _FichaScreenState extends State<FichaScreen> {
           content: Text('Cal fer Sign in a la app, continuar?'),
           actions: <Widget>[
             FlatButton(
-              child: Text('Cancelar'),
+              child: Text(
+                'Cancelar',
+                style: TextStyle(color: Colors.blueGrey),
+              ),
               onPressed: () {
                 setState(() {
                   favourite = !favourite;
@@ -61,14 +64,17 @@ class _FichaScreenState extends State<FichaScreen> {
               },
             ),
             FlatButton(
-                child: Text('Continuar'),
+                child: Text(
+                  'Continuar',
+                  style: TextStyle(color: Colors.blue, fontWeight:FontWeight.bold),
+                ),
                 onPressed: () {
                   authState.signIn();
                   addPreferitsArray(authState.user.uid, id, favourite);
                   Navigator.of(context).pop();
                   setState(() {
-                  favourite = !favourite;
-                });
+                    favourite = !favourite;
+                  });
                 })
           ],
         ),
@@ -84,7 +90,7 @@ class _FichaScreenState extends State<FichaScreen> {
     return StreamBuilder(
         stream: Firestore.instance
             .collection('Users')
-            .document((authState.check ? authState.user.uid : 'joker' ))
+            .document((authState.check ? authState.user.uid : 'joker'))
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return const Text('Loading...');
@@ -97,16 +103,15 @@ class _FichaScreenState extends State<FichaScreen> {
 
           //print(listIds[0].length);
           //print(listIds[0][0]);
-           bool favourite = false;
+          bool favourite = false;
 
           for (int i = 0; i < listIds[0].length; i++) {
             //print('hola ${listIds[i]}');
             if (id == listIds[0][i]) {
-              favourite=true;
+              favourite = true;
             }
           }
 
-          
           return Scaffold(
             backgroundColor: Colors.black,
             appBar: AppBar(
@@ -119,7 +124,7 @@ class _FichaScreenState extends State<FichaScreen> {
                   icon:
                       Icon(favourite ? Icons.favorite : Icons.favorite_border),
                   tooltip: 'Favorite',
-                  color: (favourite ? Colors.red : Colors.black),
+                  color: (favourite ? Colors.pink : Colors.black),
                   onPressed: () {
                     if (!authState.check) {
                       _authChechked(favourite);
@@ -343,7 +348,7 @@ class TextGeneral extends StatelessWidget {
                 'Descripció:',
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.blue[50],
+                  color: Colors.blueGrey,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -361,7 +366,7 @@ class TextGeneral extends StatelessWidget {
                 'Sortides professionals: ',
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.blue[50],
+                  color: Colors.blueGrey,
                   fontWeight: FontWeight.w700,
                 ),
               ),
