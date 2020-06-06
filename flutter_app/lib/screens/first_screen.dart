@@ -129,6 +129,7 @@ class _FirstScreenState extends State<FirstScreen> {
 
   Widget _grau(BuildContext context, Grau grau) {
     return Card(
+      color: Colors.white70.withOpacity(0.7),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: InkWell(
@@ -140,11 +141,11 @@ class _FirstScreenState extends State<FirstScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    constraints: BoxConstraints(minWidth: 100, maxWidth: 280),
+                    constraints: BoxConstraints(minWidth: 100, maxWidth: 250),
                     child: Text(
                       grau.nom,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 17),
+                      style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),
                       maxLines: 1,
                     ),
                   ),
@@ -168,16 +169,21 @@ class _FirstScreenState extends State<FirstScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    grau.loc,
-                    style: TextStyle(fontSize: 14),
+                  Container(
+                    constraints: BoxConstraints(
+                        minWidth: 100, maxWidth: 150, maxHeight: 17),
+                    child: Text(
+                      grau.loc,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 14,color: Colors.blueGrey[500]),
+                    ),
                   ),
                   Expanded(child: Container()),
                   Container(
                     child: Text(
                       grau.branca,
                       textAlign: TextAlign.end,
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: 14,color: Colors.pink[200]),
                       overflow: TextOverflow.fade,
                     ),
                   ),
