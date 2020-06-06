@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graus_upc/data/llegeix.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:graus_upc/main.dart';
 import 'package:graus_upc/screens/HomeScreen.dart';
 import 'package:graus_upc/screens/InfoScreen.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
@@ -186,7 +185,7 @@ Widget _filter(BuildContext context, int i, Filtrar filtre) {
 }
 
 class Search extends SearchDelegate<String> {
-  List<String> locs = [];
+List<String> locs=[];
 /*
   final List<String> locs = [
     'FOOT, Terrassa',
@@ -227,11 +226,13 @@ class Search extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+         //final locs = Provider.of<LocsList>(context);
+
     final filtre = Provider.of<Filtrar>(context);
     final suggestionList = query.isEmpty
         ? locs
         : locs.where((p) => p.startsWith(query.toUpperCase())).toList();
-/*
+
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
         onTap: () {
@@ -255,7 +256,7 @@ class Search extends SearchDelegate<String> {
       itemCount: suggestionList.length,
     );
 
-    */
+    /*
     return Scaffold(
       resizeToAvoidBottomPadding: true,
       body: StreamBuilder(
@@ -302,6 +303,6 @@ class Search extends SearchDelegate<String> {
           );
         },
       ),
-    );
+    );*/
   }
 }
