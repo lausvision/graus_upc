@@ -160,15 +160,17 @@ class _FichaScreenState extends State<FichaScreen> {
                 ),
               ],
             ),
-            body: Stack(
-              alignment: AlignmentDirectional.topCenter,
-              children: <Widget>[
-                Foton(foto: foto),
-                NotaDeTall(nota: nota),
-                Titol(nom: nom, localitzacio: localitzacio),
-                TextGeneral(
-                    descripcio: descripcio, objectiu: objectiu, link: link),
-              ],
+            body: SingleChildScrollView(
+                          child: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: <Widget>[
+                  Foton(foto: foto),
+                  NotaDeTall(nota: nota),
+                  Titol(nom: nom, localitzacio: localitzacio),
+                  TextGeneral(
+                      descripcio: descripcio, objectiu: objectiu, link: link),
+                ],
+              ),
             ),
           );
         });
