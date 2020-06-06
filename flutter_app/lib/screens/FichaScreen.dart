@@ -281,41 +281,41 @@ class Titol extends StatelessWidget {
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.only(top: 165, left: 20),
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  constraints: BoxConstraints(minWidth: 100, maxWidth: 350),
-                  child: Text(
-                    nom,
-                    overflow: TextOverflow.ellipsis,
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              
+                
+                  Text(
+                      nom,
+                      
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                
+                
+              
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Icon(Icons.location_city, color: Colors.white),
+                  SizedBox(width: 5),
+                  Text(
+                    localitzacio,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Icon(Icons.location_city, color: Colors.white),
-                SizedBox(width: 5),
-                Text(
-                  localitzacio,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
