@@ -59,7 +59,7 @@ class _FirstScreenState extends State<FirstScreen> {
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       padding: EdgeInsets.all(8.0),
-                      splashColor: Colors.blueAccent,
+                      splashColor: Colors.blueGrey,
                       onPressed: () {
                         setState(() {
                           mostraLlista = !mostraLlista;
