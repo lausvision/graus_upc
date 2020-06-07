@@ -157,7 +157,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
         onTap: _onItemTapped,
       ),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(35.0),
+        preferredSize: Size.fromHeight(45.0),
         child: AppBar(
           elevation: 0,
 
