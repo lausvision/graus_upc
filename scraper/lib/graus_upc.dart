@@ -13,18 +13,17 @@ Future initiate(BaseClient client) async {
   // Use html parser
   var document = parse(response.body);
   List<Element> links =
-      document.querySelectorAll('div.destacat_text_cont > div.link_resultats');
+      document.querySelectorAll('div.destacat_text_cont > a');
   List<Map<String, dynamic>> linkMap = [];
 
   for (var link in links) {
     linkMap.add({
-      'nom': link.text.substring(53, 86),
-      'loc': link.text.substring(140),
-      'href': link.attributes['href'],
+      'nom': link.text.trim(),
+      'href': "http://universitats.gencat.cat" + link.attributes['href'],
     });
   }
   /*document.getElementsByTagName('a').forEach((Element element){
     print(element.text);
   });*/
-  return json.encode(linkMap[0]);
+  return json.encode(linkMap);
 }
