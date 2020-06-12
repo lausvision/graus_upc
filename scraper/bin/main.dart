@@ -4,5 +4,5 @@ import 'package:http/http.dart';
 import 'package:hacker_news_scraper/graus_upc.dart' as graus;
 
 Future main(List<String> arguments) async {
-  print(await graus.initiate(Client()));
+  graus.initiate(Client());
 }
