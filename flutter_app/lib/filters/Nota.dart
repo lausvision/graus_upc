@@ -94,7 +94,7 @@ class _NotaState extends State<Nota> {
               _camp(context, filtre),
               DecoratedBox(
                 decoration: ShapeDecoration(
-                    shape: StadiumBorder(), color: Colors.blue[200]),
+                    shape: StadiumBorder(), color: Colors.blueGrey[200]),
                 child: OutlineButton(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -108,7 +108,7 @@ class _NotaState extends State<Nota> {
                     ),
                   ),
                   borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  color: Colors.blue[200],
+                  color: Colors.transparent,
                   shape: StadiumBorder(),
                   onPressed: () {
                     if (valor != null)
