@@ -86,65 +86,58 @@ class _FiltreState extends State<Filtre> {
           },
         ),
       ),
-      body: SingleChildScrollView(
-              child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
-                  child: Text(
-                    'Filtres aplicats:',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Wrap(
-                  alignment: WrapAlignment.start,
-                  runSpacing: 6,
-                  children: <Widget>[
-                    for (int i = 0; i < filtre.filtres.length; i++)
-                      _filter(context, i, filtre),
-                  ],
-                ),
-                _camp(context, 'Branca de coneixement', filtre),
-                _camp(context, 'Modalitat', filtre),
-                _camp(context, 'Localització', filtre),
-                _camp(context, 'Nota de tall', filtre),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    DecoratedBox(
-                      decoration: ShapeDecoration(
-                          shape: StadiumBorder(), color: Colors.blueGrey[200]),
-                      child: OutlineButton(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 14.0,
-                            vertical: 8.0,
-                          ),
-                          child: Text(
-                            'FILTRAR',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        borderSide: BorderSide(color: Colors.black, width: 2.0),
-                        color: Colors.transparent,
-                        shape: StadiumBorder(),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(left: 5.0),
+            child: Text(
+              'Filtres aplicats:',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
-        ),
+          Wrap(
+            alignment: WrapAlignment.start,
+            runSpacing: 6,
+            children: <Widget>[
+              for (int i = 0; i < filtre.filtres.length; i++)
+                _filter(context, i, filtre),
+            ],
+          ),
+          _camp(context, 'Branca de coneixement', filtre),
+          _camp(context, 'Modalitat', filtre),
+          _camp(context, 'Localització', filtre),
+          _camp(context, 'Nota de tall', filtre),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              DecoratedBox(
+                decoration: ShapeDecoration(
+                    shape: StadiumBorder(), color: Colors.blueGrey[200]),
+                child: OutlineButton(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14.0,
+                      vertical: 8.0,
+                    ),
+                    child: Text(
+                      'FILTRAR',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  borderSide: BorderSide(color: Colors.black, width: 2.0),
+                  color: Colors.transparent,
+                  shape: StadiumBorder(),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

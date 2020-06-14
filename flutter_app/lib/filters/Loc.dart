@@ -185,14 +185,28 @@ Widget _filter(BuildContext context, int i, Filtrar filtre) {
 }
 
 class Search extends SearchDelegate<String> {
-List<String> locs=[];
-/*
+//List<String> locs=[];
+
   final List<String> locs = [
     'FOOT, Terrassa',
     'ESEIAAT, Terrassa',
     'Camins, Barcelona',
-    'FNB, Barcelona'
-  ];*/
+    'FNB, Barcelona',
+    "ETSEIB, Barcelona",
+    "ESAB, Castelldefels",
+    "EUNCET, Terrassa",
+    "EAE, Barcelona",
+    "CITM, Terrassa",
+    "FME, Barcelona",
+    "EPSEB, Barcelona",
+    "EEBE, Barcelona",
+    "ETSETB, Barcelona",
+    "EPSEM, Manresa",
+    "ESAB, Castelldefels",
+    "EETAC, Castelldefels",
+    "EPSEVG, Vilanova i la Geltrú",
+    "FIB, Barcelona",
+  ];
 
   @override
   List<Widget> buildActions(BuildContext context) {

@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         child: ChangeNotifierProvider<UserAuthState>(
           create: (context) => UserAuthState(),
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: Scaffold(body: HomeScreen()),
           ),
         ),
