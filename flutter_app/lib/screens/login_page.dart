@@ -45,7 +45,11 @@ class _LoginPageState extends State<LoginPage> {
                     top: 10.0, bottom: 10, left: 100, right: 100),
                 splashColor: Colors.blue[100],
                 onPressed: () {
-                  setState(() {});
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return RootPage(auth:  Auth());
+                    },
+                  ));
                 },
                 child: Text(
                   "LOG IN",
