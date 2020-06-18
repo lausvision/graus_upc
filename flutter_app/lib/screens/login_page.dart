@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graus_upc/models/UserAuthState.dart';
+import 'package:graus_upc/screens/LoginSignupPage.dart';
 import 'package:graus_upc/screens/ProfileScreen.dart';
+import 'package:graus_upc/screens/root_page.dart';
+import 'package:graus_upc/services/authentification.dart';
 import 'package:provider/provider.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 
@@ -28,6 +31,44 @@ class _LoginPageState extends State<LoginPage> {
               Image(image: AssetImage("assets/logo.png"), height: 180.0),
               SizedBox(height: 50),
               _signInButton(),
+              SizedBox(height: 25),
+              Text("No tens compte google?",
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
+              FlatButton(
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0)),
+                color: Colors.white,
+                textColor: Colors.black,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                padding: EdgeInsets.only(
+                    top: 10.0, bottom: 10, left: 100, right: 100),
+                splashColor: Colors.blue[100],
+                onPressed: () {
+                  setState(() {});
+                },
+                child: Text(
+                  "LOG IN",
+                  style: TextStyle(fontSize: 18.0),
+                ),
+              ),
+              FlatButton(
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0)),
+                color: Colors.black,
+                textColor: Colors.white,
+                disabledTextColor: Colors.black,
+                padding:
+                    EdgeInsets.only(top: 10.0, bottom: 10, left: 88, right: 88),
+                splashColor: Colors.blueGrey,
+                onPressed: () {
+                  setState(() {});
+                },
+                child: Text(
+                  "REGISTER",
+                  style: TextStyle(fontSize: 18.0),
+                ),
+              ),
             ],
           ),
         ),
