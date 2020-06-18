@@ -10,20 +10,17 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 final databaseReference = Firestore.instance;
 
 void createRecord(String uid) async {
-  try{
+  try {
     await databaseReference
-      .collection("Users")
-      .document(uid)
-      .updateData({'preferits': FieldValue.arrayUnion([])});
-      }on PlatformException catch (e) {
-        await databaseReference.collection("Users")
-     .document(uid)
-     .setData({
-       'preferits': FieldValue.arrayUnion([])
-     });
-
-      }
-  
+        .collection("Users")
+        .document(uid)
+        .updateData({'preferits': FieldValue.arrayUnion([])});
+  } on PlatformException catch (e) {
+    await databaseReference
+        .collection("Users")
+        .document(uid)
+        .setData({'preferits': FieldValue.arrayUnion([])});
+  }
 }
 
 Future<User> signInWithGoogle() async {
