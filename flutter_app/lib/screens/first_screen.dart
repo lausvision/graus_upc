@@ -15,9 +15,6 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   bool mostraLlista = false;
 
-  
-
-
   @override
   Widget build(BuildContext context) {
     final authState = Provider.of<UserAuthState>(context);
@@ -31,13 +28,12 @@ class _FirstScreenState extends State<FirstScreen> {
 
           Map idsGraus = snapshot.data.data;
 
-          List<dynamic> listIds= [];
+          List<dynamic> listIds = [];
 
           idsGraus.forEach((k, v) => listIds.add(v));
-          
+
           //print(listIds[0].length);
           //print(listIds[0][0]);
-          
 
           return Scaffold(
               backgroundColor: Colors.blue[100],
@@ -80,31 +76,20 @@ class _FirstScreenState extends State<FirstScreen> {
                           builder: (context, snapshot) {
                             if (!snapshot.hasData)
                               return const Text('Loading...');
-
                             List<DocumentSnapshot> documents =
                                 snapshot.data.documents;
                             List<Grau> graus = documents
                                 .map((doc) => Grau.fromFirestore(doc))
                                 .toList();
+                            List<Grau> grausFiltratsxId = [];
 
-                            
-                            List<Grau> grausFiltratsxId=[];
-
-                            //listIds
-
-                           
                             for (int y = 0; y < graus.length; y++) {
-           
                               for (int i = 0; i < listIds[0].length; i++) {
-                                
-                                //print('hola ${listIds[i]}');
                                 if (graus[y].id == listIds[0][i]) {
                                   grausFiltratsxId.add(graus[y]);
                                 }
                               }
                             }
-
-                           
 
                             return Container(
                               padding: const EdgeInsets.only(
@@ -145,7 +130,8 @@ class _FirstScreenState extends State<FirstScreen> {
                     child: Text(
                       grau.nom,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
                       maxLines: 1,
                     ),
                   ),
@@ -175,7 +161,8 @@ class _FirstScreenState extends State<FirstScreen> {
                     child: Text(
                       grau.loc,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 14,color: Colors.blueGrey[500]),
+                      style:
+                          TextStyle(fontSize: 14, color: Colors.blueGrey[500]),
                     ),
                   ),
                   Expanded(child: Container()),
@@ -183,7 +170,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     child: Text(
                       grau.branca,
                       textAlign: TextAlign.end,
-                      style: TextStyle(fontSize: 14,color: Colors.pink[200]),
+                      style: TextStyle(fontSize: 14, color: Colors.pink[200]),
                       overflow: TextOverflow.fade,
                     ),
                   ),

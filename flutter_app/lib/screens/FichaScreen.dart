@@ -66,7 +66,8 @@ class _FichaScreenState extends State<FichaScreen> {
             FlatButton(
                 child: Text(
                   'Continuar',
-                  style: TextStyle(color: Colors.blue, fontWeight:FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.blue, fontWeight: FontWeight.bold),
                 ),
                 onPressed: () {
                   authState.signIn();
@@ -101,12 +102,9 @@ class _FichaScreenState extends State<FichaScreen> {
 
           idsGraus.forEach((k, v) => listIds.add(v));
 
-          //print(listIds[0].length);
-          //print(listIds[0][0]);
           bool favourite = false;
 
           for (int i = 0; i < listIds[0].length; i++) {
-            //print('hola ${listIds[i]}');
             if (id == listIds[0][i]) {
               favourite = true;
             }
@@ -161,7 +159,7 @@ class _FichaScreenState extends State<FichaScreen> {
               ],
             ),
             body: SingleChildScrollView(
-                          child: Stack(
+              child: Stack(
                 alignment: AlignmentDirectional.topCenter,
                 children: <Widget>[
                   Foton(foto: foto),
@@ -286,20 +284,14 @@ class Titol extends StatelessWidget {
         child: Container(
           child: Column(
             children: <Widget>[
-              
-                
-                  Text(
-                      nom,
-                      
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                
-                
-              
+              Text(
+                nom,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
               SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

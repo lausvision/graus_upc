@@ -188,6 +188,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
   }
 
   // Simple TableCalendar configuration (using Styles)
+  
   Widget _buildTableCalendar() {
     return TableCalendar(
       calendarController: _calendarController,
