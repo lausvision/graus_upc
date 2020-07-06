@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graus_upc/models/UserAuthState.dart';
-import 'package:graus_upc/screens/LoginSignupPage.dart';
+import 'package:graus_upc/screens/LoginPageB.dart';
+
 import 'package:graus_upc/screens/ProfileScreen.dart';
-import 'package:graus_upc/screens/root_page.dart';
-import 'package:graus_upc/services/authentification.dart';
+
 import 'package:provider/provider.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 
@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) {
-                      return RootPage(auth:  Auth());
+                      return LoginPageB(); 
                     },
                   ));
                 },
@@ -66,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                     EdgeInsets.only(top: 10.0, bottom: 10, left: 88, right: 88),
                 splashColor: Colors.blueGrey,
                 onPressed: () {
+                  
                   setState(() {});
                 },
                 child: Text(
